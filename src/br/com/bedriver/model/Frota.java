@@ -19,7 +19,7 @@ public class Frota implements Serializable {
 	private Integer qtd_veiculos;
 	private String veiculo;
 	private Integer id_cidade;
-	/*@ElementCollection(targetClass = String.class)
+	@ElementCollection(targetClass = String.class)
 	@JoinTable(name = "cidades", uniqueConstraints = { @UniqueConstraint(columnNames = { "nome",
 			}) }, joinColumns = @JoinColumn(name = "id"))
 	@Column(name = "nome", length = 120)
@@ -29,7 +29,7 @@ public class Frota implements Serializable {
 			"uf" }) }, joinColumns = @JoinColumn(name = "id"))
 	@Column(name = "uf")
 	private Set<String> uf = new HashSet<String>();;
-*/
+
 	public Integer getId() {
 		return id;
 	}
@@ -54,7 +54,7 @@ public class Frota implements Serializable {
 		this.veiculo = veiculo;
 	}
 
-	/*public Set<String> getCidade() {
+	public Set<String> getCidade() {
 		return cidade;
 	}
 
@@ -69,15 +69,15 @@ public class Frota implements Serializable {
 	public void setUf(Set<String> uf) {
 		this.uf = uf;
 	}
-*/
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-	//	result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
+		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((qtd_veiculos == null) ? 0 : qtd_veiculos.hashCode());
-		//result = prime * result + ((uf == null) ? 0 : uf.hashCode());
+		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
 		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
 		return result;
 	}
@@ -91,11 +91,11 @@ public class Frota implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Frota other = (Frota) obj;
-	/*	if (cidade == null) {
+		if (cidade == null) {
 			if (other.cidade != null)
 				return false;
 		} else if (!cidade.equals(other.cidade))
-			return false;*/
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -106,11 +106,11 @@ public class Frota implements Serializable {
 				return false;
 		} else if (!qtd_veiculos.equals(other.qtd_veiculos))
 			return false;
-		/*if (uf == null) {
+		if (uf == null) {
 			if (other.uf != null)
 				return false;
 		} else if (!uf.equals(other.uf))
-			return false;*/
+			return false;
 		if (veiculo == null) {
 			if (other.veiculo != null)
 				return false;

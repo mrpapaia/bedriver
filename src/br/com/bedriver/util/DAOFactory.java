@@ -8,7 +8,7 @@ public class DAOFactory {
 
 	public static FrotaDAO criarFrotaDAO() {
 		FrotaDAOHibernate frotaDAO = new FrotaDAOHibernate();
-		frotaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		frotaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());		
 		return frotaDAO;
 	}
 
