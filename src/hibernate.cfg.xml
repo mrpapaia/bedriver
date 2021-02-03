@@ -26,7 +26,7 @@
 		<property name="use_sql_comments">true</property>
 		-->
 		<!-- Mapeando classes --> 
-		<mapping class="br.com.javaparaweb.financeiro.frota_veiculo.Frota"/>
+		<mapping class="br.com.bedriver.model.Frota"/>
 		
 	</session-factory>
 </hibernate-configuration>
