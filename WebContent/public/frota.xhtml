@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Bedriver</title>
+</h:head>
+<h:body>
+	<h1>Frotas</h1>
+	<h:form>
+		<h:messages />
+		<h:dataTable value="#{frotaBean.lista}" var="frota" rules="rows"
+			cellpadding="5">
+			<h:column>
+				<f:facet name="header">UF</f:facet>
+				#{frota.cidade.estado.uf}
+			</h:column>
+			<h:column>
+				<f:facet name="header">MUNICIPIO</f:facet>
+				#{frota.cidade.nome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">TIPO DE VEICULO</f:facet>
+				#{frota.veiculo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">QUANTIDADE</f:facet>
+				#{frota.qtd_veiculos}
+			</h:column>				
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

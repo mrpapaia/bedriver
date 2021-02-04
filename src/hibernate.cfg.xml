@@ -27,6 +27,10 @@
 		-->
 		<!-- Mapeando classes --> 
 		<mapping class="br.com.bedriver.model.Frota"/>
-		
+		<mapping class="br.com.bedriver.model.Cidade"/>
+		<mapping class="br.com.bedriver.model.Estado"/>
+		<mapping class="br.com.bedriver.model.Regiao"/>
+		<mapping class="br.com.bedriver.model.Condutor"/>
+		<mapping class="br.com.bedriver.model.Infracao"/>
 	</session-factory>
 </hibernate-configuration>

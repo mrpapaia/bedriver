@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Bedriver</title>
+</h:head>
+<h:body>
+	<h1>Condutores</h1>
+	<h:form>
+		<h:messages />
+		<h:dataTable value="#{condutorBean.lista}" var="condutor" rules="rows"
+			cellpadding="5">
+			<h:column>
+				<f:facet name="header">REGIÃO</f:facet>
+				#{condutor.estado.regiao.nome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">UF</f:facet>
+				#{condutor.estado.uf}
+			</h:column>
+			<h:column>
+				<f:facet name="header">SEXO</f:facet>
+				#{condutor.sexo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">FAIXA ETARIA</f:facet>
+				#{condutor.faixa_etaria}
+			</h:column>		
+			<h:column>
+				<f:facet name="header">Categoria</f:facet>
+				#{condutor.categoria}
+			</h:column>		
+			<h:column>
+				<f:facet name="header">Quantidade</f:facet>
+				#{condutor.qtd_habilitados}
+			</h:column>		
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

@@ -13,7 +13,7 @@ public class FrotaDAOHibernate implements FrotaDAO {
 	private Session session;
 
 	public void setSession(Session session) {
-		System.out.println("Aasdasdasdasdasdasds"+session);
+		
 		this.session = session;
 	}
 

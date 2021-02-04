@@ -14,21 +14,14 @@ public class Frota implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
+	@GeneratedValue()
 	private Integer id;
 	private Integer qtd_veiculos;
 	private String veiculo;
-	private Integer id_cidade;
-	@ElementCollection(targetClass = String.class)
-	@JoinTable(name = "cidades", uniqueConstraints = { @UniqueConstraint(columnNames = { "nome",
-			}) }, joinColumns = @JoinColumn(name = "id"))
-	@Column(name = "nome", length = 120)
-	private Set<String> cidade = new HashSet<String>();
-	@ElementCollection(targetClass = String.class)
-	@JoinTable(name = "estados", uniqueConstraints = { @UniqueConstraint(columnNames = {
-			"uf" }) }, joinColumns = @JoinColumn(name = "id"))
-	@Column(name = "uf")
-	private Set<String> uf = new HashSet<String>();;
+	
+	@ManyToOne
+	@JoinColumn(name="id_cidade")
+	private Cidade cidade;
 
 	public Integer getId() {
 		return id;
@@ -54,20 +47,16 @@ public class Frota implements Serializable {
 		this.veiculo = veiculo;
 	}
 
-	public Set<String> getCidade() {
+	public Cidade getCidade() {
 		return cidade;
 	}
 
-	public void setCidade(Set<String> cidade) {
+	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
 
-	public Set<String> getUf() {
-		return uf;
-	}
-
-	public void setUf(Set<String> uf) {
-		this.uf = uf;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
@@ -77,7 +66,6 @@ public class Frota implements Serializable {
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((qtd_veiculos == null) ? 0 : qtd_veiculos.hashCode());
-		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
 		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
 		return result;
 	}
@@ -106,11 +94,6 @@ public class Frota implements Serializable {
 				return false;
 		} else if (!qtd_veiculos.equals(other.qtd_veiculos))
 			return false;
-		if (uf == null) {
-			if (other.uf != null)
-				return false;
-		} else if (!uf.equals(other.uf))
-			return false;
 		if (veiculo == null) {
 			if (other.veiculo != null)
 				return false;
@@ -118,19 +101,11 @@ public class Frota implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
 
-	/**
-	 * @return the id_cidade
-	 */
-	public Integer getId_cidade() {
-		return id_cidade;
-	}
+	
+	
 
-	/**
-	 * @param id_cidade the id_cidade to set
-	 */
-	public void setId_cidade(Integer id_cidade) {
-		this.id_cidade = id_cidade;
-	}
 
 }

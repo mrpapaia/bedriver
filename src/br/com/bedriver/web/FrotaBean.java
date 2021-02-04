@@ -18,12 +18,9 @@ public class FrotaBean {
 	
 	public List<Frota> getLista() {
 		
-		if (this.lista == null) {
-			
-			FrotaRN frotaRN = new FrotaRN();
-			System.out.println(frotaRN.listar());
-			this.lista = frotaRN.listar();
-		}
+		if (this.lista == null) {			
+			FrotaRN frotaRN = new FrotaRN();			
+			this.lista = frotaRN.listar();		}
 		return this.lista;
 	}
 }

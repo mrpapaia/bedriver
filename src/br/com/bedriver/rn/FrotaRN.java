@@ -9,15 +9,10 @@ import br.com.bedriver.util.DAOFactory;
 
 public class FrotaRN {
 	private FrotaDAO frotaDAO;
-	
-	
-	
+
 	public FrotaRN() {
-		
 		this.frotaDAO = DAOFactory.criarFrotaDAO();
 	}
-
-
 
 	public List<Frota> listar() {
 		return this.frotaDAO.listar();
