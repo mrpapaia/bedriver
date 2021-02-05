@@ -12,14 +12,14 @@ import br.com.bedriver.web.EstadoBean;
 public class EstadoConverter  implements Converter {
 
     @Override
-    public Object getAsObject(FacesContext ctx, UIComponent uiComponent, String beerId) {
+    public Object getAsObject(FacesContext ctx, UIComponent uiComponent, String estadoId) {
         ValueExpression vex =
                 ctx.getApplication().getExpressionFactory()
                         .createValueExpression(ctx.getELContext(),
                                 "#{estadoBean}", EstadoBean.class);
 
         EstadoBean estados = (EstadoBean)vex.getValue(ctx.getELContext());
-        return estados.getEstado(Integer.valueOf(beerId));
+        return estados.getEstado(Integer.valueOf(estadoId));
     }
 
     @Override
