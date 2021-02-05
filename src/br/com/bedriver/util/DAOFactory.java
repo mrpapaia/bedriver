@@ -1,10 +1,12 @@
 package br.com.bedriver.util;
 
 import br.com.bedriver.dao.CondutorDAOHibernate;
+import br.com.bedriver.dao.EstadoDAOHibernate;
 import br.com.bedriver.dao.FrotaDAOHibernate;
 import br.com.bedriver.dao.InfracaoDAOHIbernate;
 import br.com.bedriver.dao.UsuarioDAOHibernate;
 import br.com.bedriver.dao.intefaces.CondutorDAO;
+import br.com.bedriver.dao.intefaces.EstadoDAO;
 import br.com.bedriver.dao.intefaces.FrotaDAO;
 import br.com.bedriver.dao.intefaces.InfracaoDAO;
 import br.com.bedriver.dao.intefaces.UsuarioDAO;
@@ -37,5 +39,10 @@ public class DAOFactory {
 		usuarioDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return usuarioDAO;
 	}
-
+	
+	public static EstadoDAO criarEstadoDAO() {
+		EstadoDAOHibernate estadoDAO = new EstadoDAOHibernate();
+		estadoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return estadoDAO;
+	}
 }
