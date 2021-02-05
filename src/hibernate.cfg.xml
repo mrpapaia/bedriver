@@ -32,5 +32,6 @@
 		<mapping class="br.com.bedriver.model.Regiao"/>
 		<mapping class="br.com.bedriver.model.Condutor"/>
 		<mapping class="br.com.bedriver.model.Infracao"/>
+		<mapping class="br.com.bedriver.model.Usuario"/>
 	</session-factory>
 </hibernate-configuration>
