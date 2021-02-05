@@ -59,8 +59,8 @@ public class Usuario implements Serializable {
 	public Estado getEstado() {
 		return estado;
 	}
-
-	public void setCidade(Estado estado) {
+	
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 

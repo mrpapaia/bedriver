@@ -6,7 +6,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 
+import br.com.bedriver.model.Estado;
 import br.com.bedriver.model.Usuario;
 import br.com.bedriver.rn.UsuarioRN;
 
@@ -30,9 +32,11 @@ public class UsuarioBean {
 	}
 
 	public String salvar() {
+		
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		String senha = this.usuario.getSenha();
+		//System.out.println("estado: " + this.usuario.getEstado().getNome());
 		if (!senha.equals(this.confirmarSenha)) {
 			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
 			context.addMessage(null, facesMessage);
@@ -83,4 +87,11 @@ public class UsuarioBean {
 	public void setDestinoSalvar(String destinoSalvar) {
 		this.destinoSalvar = destinoSalvar;
 	}
+	
+//	public void changeEstadoSelected(ValueChangeEvent event) { 
+//		Estado estado = (Estado) event.getNewValue();
+//		System.out.println("estado = " + estado.getNome());
+//		this.usuario.setEstado(estado);
+//	}
+//	
 }

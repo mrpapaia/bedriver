@@ -22,10 +22,29 @@ public class EstadoBean {
 	}
 	
 	public List<Estado> getLista() {
+		checkNullList();
+		return this.lista;
+	}
+	
+    public Estado getEstado(Integer id) {
+        if (id == null){
+            throw new IllegalArgumentException("no id provided");
+        }
+        
+        checkNullList();
+        
+        for (Estado estado : lista){
+            if (id.equals(estado.getId())){
+                return estado;
+            }
+        }
+        return null;
+    }
+    
+	public void checkNullList() {
 		if (this.lista == null) {
 			EstadoRN estadoRN = new EstadoRN();
 			this.lista = estadoRN.listar();
 		}
-		return this.lista;
 	}
 }

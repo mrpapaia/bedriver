@@ -40,8 +40,8 @@
 				value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10"
 				required="true" redisplay="true" />
 			
-			<h:outputLabel value="Estado:" for="estado" />
-			<h:selectOneMenu value="#estadoBean.estadoAtual" >
+			<h:outputLabel value="Estado:" for="id_estado" />
+			<h:selectOneMenu value="#{usuarioBean.usuario.estado}" converter="estadoConverter" >
 				<f:selectItems value="#{estadoBean.lista}"
 					var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"/>
 			</h:selectOneMenu>
