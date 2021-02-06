@@ -5,6 +5,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Bedriver</title>
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
 	
@@ -17,13 +18,13 @@
 				<f:facet name="header">
              INFRAÇÔES
               </f:facet>
-		<p:column headerText="CÓDIGO">
+		<p:column headerText="CÓDIGO" styleClass="columnList">
 					<h:outputText value="#{infracao.codigo}" />
 				</p:column>
-		<p:column headerText="QUANTIDADE">
+		<p:column headerText="QUANTIDADE" styleClass="columnList">
 					<h:outputText value="	#{infracao.quantidade}" />
 				</p:column>
-			<p:column headerText="UF">
+			<p:column headerText="UF" styleClass="columnList">
 					<h:outputText value="#{infracao.estado.uf}" />
 				</p:column>
 			

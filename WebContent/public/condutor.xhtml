@@ -6,41 +6,42 @@
 
 <h:head>
 	<title>Bedriver</title>
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
-	<h1>Condutores</h1>
-	
-			<div class="card">
+
+
+	<div class="card">
 		<h:form id="form">
-			<p:dataTable id="condutores" var="condutor" value="#{condutorBean.lista}"
-				rowKey="#{condutor.id}"
+			<p:dataTable id="condutores" var="condutor"
+				value="#{condutorBean.lista}" rowKey="#{condutor.id}"
 				selection="#{dtContextMenuView.selectedProduct}"
 				selectionMode="single">
 				<f:facet name="header">
              CONDUTORES
               </f:facet>
-		<p:column headerText="REGIÃO">
+				<p:column headerText="REGIÃO" styleClass="columnList">
 					<h:outputText value="#{condutor.estado.regiao.nome}" />
 				</p:column>
-		
-			<p:column headerText="UF">
+
+				<p:column headerText="UF" styleClass="columnList">
 					<h:outputText value="#{condutor.estado.uf}" />
 				</p:column>
-			<p:column headerText="SEXO">
+				<p:column headerText="SEXO" styleClass="columnList">
 					<h:outputText value="#{condutor.sexo}" />
 				</p:column>
-				<p:column headerText="FAIXA ETARIA">
+				<p:column headerText="FAIXA ETARIA" styleClass="columnList">
 					<h:outputText value="#{condutor.faixa_etaria}" />
 				</p:column>
-			<p:column headerText="Categoria">
+				<p:column headerText="Categoria" styleClass="columnList">
 					<h:outputText value="#{condutor.categoria}" />
-				</p:column>	
-			<p:column headerText="Quantidade">
+				</p:column>
+				<p:column headerText="Quantidade" styleClass="columnList">
 					<h:outputText value="#{condutor.qtd_habilitados}" />
-				</p:column>	
-				
-		</p:dataTable>
-	</h:form>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
 	</div>
 </h:body>
 </html>

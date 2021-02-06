@@ -5,6 +5,6 @@
 }
 
 
-.borderless header{
-	color: #ff0000 !important
+td.columnList{
+    text-align: center;
 }

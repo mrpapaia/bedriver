@@ -7,7 +7,6 @@
 <h:head>
 	<title>Bedriver</title>
 	<h:outputStylesheet library="css" name="style.css" />
-
 </h:head>
 <h:body>
 
@@ -20,17 +19,17 @@
 				<f:facet name="header">
              Frotas
             </f:facet>
-				<p:column headerText="UF">
+				<p:column headerText="UF" styleClass="columnList">
 					<h:outputText value="#{frota.cidade.estado.uf}" />
 				</p:column>
 
-				<p:column headerText="MUNICIPIO">
+				<p:column headerText="MUNICIPIO" styleClass="columnList">
 					<h:outputText value="#{frota.cidade.nome}" />
 				</p:column>
-				<p:column headerText="TIPO DE VEICULO">
+				<p:column headerText="TIPO DE VEICULO" styleClass="columnList">
 					<h:outputText value="#{frota.veiculo}" />
 				</p:column>
-				<p:column headerText="QUANTIDADE">
+				<p:column headerText="QUANTIDADE" styleClass="columnList">
 					<h:outputText value="#{frota.qtd_veiculos}" />
 				</p:column>
 
