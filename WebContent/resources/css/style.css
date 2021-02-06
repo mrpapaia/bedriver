@@ -1,0 +1,10 @@
+* {
+	font-weight: bold;
+	font-family: arial;
+	font-size: 10px;
+}
+
+
+.borderless header{
+	color: #ff0000 !important
+}
