@@ -23,6 +23,7 @@ public class UsuarioBean {
 	public String novo() {
 		this.destinoSalvar = "usuariosucesso";
 		this.usuario = new Usuario();
+		this.usuario.setAtivo(true);
 		return "/public/usuario";
 	}
 
@@ -53,6 +54,17 @@ public class UsuarioBean {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.excluir(this.usuario);
 		this.lista = null;
+		return null;
+	}
+	
+	public String ativar() {
+		if (this.usuario.isAtivo())
+			this.usuario.setAtivo(false);
+		else
+			this.usuario.setAtivo(true);
+
+		UsuarioRN usuarioRN = new UsuarioRN();
+		usuarioRN.salvar(this.usuario);
 		return null;
 	}
 

@@ -18,10 +18,8 @@
 	<authentication-manager>
 		<authentication-provider>
 		<jdbc-user-service data-source-ref="BEDRIVERDataSource"
-				authorities-by-username-query="SELECT u.email
-																	FROM Usuario u 
-																	WHERE u.email = ?"
-				users-by-username-query="SELECT email, senha FROM usuarios WHERE email = ?" />
+				authorities-by-username-query="SELECT u.email, u.permissao FROM usuarios u WHERE  u.email = ?"
+                users-by-username-query="SELECT email, senha, ativo FROM usuarios WHERE email = ?" />
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>
