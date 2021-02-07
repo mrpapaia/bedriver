@@ -31,7 +31,7 @@ public class UsuarioBean {
 	public String editar() {
 		this.confirmarSenha = this.usuario.getSenha();
 		System.out.println("destino  EDITAR = " + destinoSalvar);
-		return "/public/usuarioEditar";
+		return "/admin/usuarioEditar";
 	}
 
 	public String salvar() {
