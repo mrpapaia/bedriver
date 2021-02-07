@@ -30,7 +30,8 @@ public class UsuarioBean {
 
 	public String editar() {
 		this.confirmarSenha = this.usuario.getSenha();
-		return "/public/usuario";
+		System.out.println("destino  EDITAR = " + destinoSalvar);
+		return "/public/usuarioEditar";
 	}
 
 	public String salvar() {
@@ -52,6 +53,23 @@ public class UsuarioBean {
 		usuarioRN.salvar(this.usuario);
 
 		return "/public/usuariosucesso";
+	}
+	
+	public String salvarEditar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		String senha = this.usuario.getSenha();
+
+		if (!senha.equals(this.confirmarSenha)) {
+			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
+			context.addMessage(null, facesMessage);
+			return null;
+		}
+		
+		UsuarioRN usuarioRN = new UsuarioRN();
+		usuarioRN.salvar(this.usuario);
+
+		return "/admin/principal";
 	}
 
 	public String excluir() {
