@@ -7,6 +7,7 @@ import br.com.bedriver.model.Usuario;
 import br.com.bedriver.util.DAOFactory;
 
 public class UsuarioRN {
+	
 	private UsuarioDAO usuarioDAO;
 
 	public UsuarioRN() {

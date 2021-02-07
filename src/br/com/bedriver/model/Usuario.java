@@ -10,8 +10,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuarios")
+@Table(name = "usuarios")
 public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue
@@ -19,11 +21,11 @@ public class Usuario implements Serializable {
 	private String nome;
 	private String email;
 	private String senha;
-	private boolean ativo;
-	
 	@ManyToOne
-	@JoinColumn(name="id_estado")
+	@JoinColumn(name = "id_estado")
 	private Estado estado;
+	private boolean ativo;
+	private String permissao;
 
 	public Integer getId() {
 		return id;
@@ -60,7 +62,7 @@ public class Usuario implements Serializable {
 	public Estado getEstado() {
 		return estado;
 	}
-	
+
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
@@ -73,6 +75,14 @@ public class Usuario implements Serializable {
 		this.ativo = ativo;
 	}
 
+	public String getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(String permissao) {
+		this.permissao = permissao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -82,6 +92,7 @@ public class Usuario implements Serializable {
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((permissao == null) ? 0 : permissao.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		return result;
 	}
@@ -117,6 +128,11 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (permissao == null) {
+			if (other.permissao != null)
+				return false;
+		} else if (!permissao.equals(other.permissao))
+			return false;
 		if (senha == null) {
 			if (other.senha != null)
 				return false;
@@ -124,4 +140,5 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
+
 }

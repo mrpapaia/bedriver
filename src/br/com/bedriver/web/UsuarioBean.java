@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
+import javax.servlet.http.HttpServletRequest;
 
 import br.com.bedriver.model.Estado;
 import br.com.bedriver.model.Usuario;
@@ -37,13 +38,16 @@ public class UsuarioBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		String senha = this.usuario.getSenha();
-		//System.out.println("estado: " + this.usuario.getEstado().getNome());
+
 		if (!senha.equals(this.confirmarSenha)) {
 			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
 			context.addMessage(null, facesMessage);
 			return null;
 		}
 
+		//Permissão padrão
+		this.usuario.setPermissao("ROLE_USUARIO");
+		
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
 
@@ -100,10 +104,17 @@ public class UsuarioBean {
 		this.destinoSalvar = destinoSalvar;
 	}
 	
-//	public void changeEstadoSelected(ValueChangeEvent event) { 
-//		Estado estado = (Estado) event.getNewValue();
-//		System.out.println("estado = " + estado.getNome());
-//		this.usuario.setEstado(estado);
-//	}
-//	
+	public void atribuiPermissao(Usuario usuario, String permissao) {
+		this.usuario = usuario;
+		
+		if(this.usuario.getPermissao().equals("ROLE_ADMINISTRADOR") && permissao.equals("ROLE_ADMINISTRADOR")) {
+			this.usuario.setPermissao("ROLE_USUARIO");
+		}else if(this.usuario.getPermissao().equals("ROLE_USUARIO") && permissao.equals("ROLE_ADMINISTRADOR")) {
+			this.usuario.setPermissao("ROLE_ADMINISTRADOR");
+		}
+
+		UsuarioRN usuarioRN = new UsuarioRN();
+		usuarioRN.salvar(this.usuario);
+	}
+	
 }
