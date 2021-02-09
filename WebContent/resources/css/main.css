@@ -1,0 +1,51 @@
+* {
+	font-weight: bold;
+	font-family: arial;
+	text-decoration: none;
+}
+
+.top-menu {
+	background: #8257E5;
+}
+
+.top-menu .buttons-top {
+	background: #8257E5;
+	display: flex;
+	align-items: center;
+}
+
+.painel-login {
+	width: 250px;
+	height: 200px;
+	border: 5px solid #774FD1;
+	border-radius: 25px;
+	display: flex;
+	align-items: center;
+	padding: 20px;
+}
+
+.ui-float-label {
+	margin-top: 20px !important;
+}
+
+.main-menu {
+	background: #D2C6EB;
+	padding: 20px
+}
+
+.div-item {
+	margin-top: 13px;
+}
+
+.menu-item {
+	font-family: Roboto !important;
+	font-size: 26px;
+	display: flex;
+	align-items: center;
+	width: 500px;
+	height: 60px;
+	background: #FFFFFF;
+	border-radius: 15px;
+	color: #8257E5;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}

@@ -1,22 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>BEDRIVER</title>
+	<h:outputStylesheet library="css" name="main.css" />
 </h:head>
 <h:body>
-	<h1>BEDRIVER</h1>
-	<h:form>
-		<h:outputLink value="public/frota.jsf">Frotas</h:outputLink >
-		<br/>
-		<h:outputLink value="public/infracao.jsf">Infrações</h:outputLink >
-		<br/>
-		<h:outputLink value="public/condutor.jsf">Condutores Habilitados</h:outputLink >
-		<br/>
-		<h:commandLink action="#{usuarioBean.novo()}">Novo usuário</h:commandLink>
-		<br/>
-		<h:outputLink value="restrito/principal.jsf">Entrar</h:outputLink >
-	</h:form>
+
+	<div class="top-menu">
+		<h1>BEDRIVER</h1>
+		<div class="buttons-top"></div>
+
+	</div>
+
+
+	<div class="main-menu">
+		<h:panelGroup rendered="#{!empty param.login_error}">
+			<span style="font-color: red"> Erro ao efetuar o login.</span>
+			<br />
+			<br />
+		Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
+	</h:panelGroup>
+		<div class="painel-login">
+			<form id="login" method="post"
+				action="#{request.contextPath}/j_spring_security_check">
+				<span class="ui-float-label"> <p:inputText id='j_username' />
+					<p:outputLabel for="@previous" value="E-mail" />
+				</span> <span class="ui-float-label"> <p:password id='j_password' />
+					<p:outputLabel for="@previous" value="Senha" />
+				</span> <input type="checkbox" name="_spring_security_remember_me" /> <input
+					type="submit" value="Entrar" />
+				<script>
+					document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}";
+				</script>
+			</form>
+
+		</div>
+
+		<h:form>
+
+			<div class="div-item">
+				<h:commandLink styleClass="menu-item" action="public/frota.jsf">
+					<h:graphicImage library="imagens" name="ic_frota.png" />
+					<h:outputText value="Frotas" />
+				</h:commandLink>
+			</div>
+
+			<div class="div-item">
+				<h:commandLink styleClass="menu-item" action="public/infracao.jsf">
+					<h:graphicImage library="imagens" name="ic_infracao.png" />
+					<h:outputText value="Infrações" />
+				</h:commandLink>
+			</div>
+
+			<div class="div-item">
+				<h:commandLink styleClass="menu-item" action="public/condutor.jsf">
+					<h:graphicImage library="imagens" name="ic_condutor.png" />
+					<h:outputText value="Condutores Habilitados" />
+				</h:commandLink>
+			</div>
+			<h:commandLink action="#{usuarioBean.novo()}">Novo usuário</h:commandLink>
+
+		</h:form>
+
+	</div>
+
+
 </h:body>
 </html>
