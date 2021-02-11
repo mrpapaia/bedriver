@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true">
+	<Resource name="jdbc/bedriver" 
+		auth="Container"
+		type="javax.sql.DataSource" 
+		maxActive="100" 
+		maxIdle="30"
+		maxWait="10000" 
+		username="papaia" 
+		password="852456"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/bedriver?autoReconnect=true" />
+		
+</Context>

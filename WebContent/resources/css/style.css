@@ -1,0 +1,21 @@
+* {
+	font-weight: bold;
+	font-family: arial;
+	font-size: 10px;
+}
+.ui-datatable-odd {
+    background: #F0F0F7;
+}
+
+.ui-datatable-even {
+    background: #D2C6EB;
+}
+
+td.columnList{
+    text-align: center;
+}
+
+.ui-datatable thead th {    
+    background-color: #FFFFFF !important;
+   
+}
