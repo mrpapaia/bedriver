@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:component>
+	<div id="menu-hamburguer">
+		<nav role="navigation">
+			<div id="menuToggle">
+				<input type="checkbox" /> <span></span> <span></span> <span></span>
+				<div id="menu">
+					<h:form>
+
+						<div class="div-item">
+							<h:commandLink styleClass="menu-h-item"
+								action="/public/frota.xhtml">
+								<h:graphicImage library="imagens" name="ic_frota.png" />
+								<h:outputText value="Frotas" />
+							</h:commandLink>
+						</div>
+
+						<div class="div-item">
+							<h:commandLink styleClass="menu-h-item"
+								action="/public/infracao.xhtml'">
+								<h:graphicImage library="imagens" name="ic_infracao.png" />
+								<h:outputText value="Infrações" />
+							</h:commandLink>
+						</div>
+
+						<div class="div-item">
+							<h:commandLink styleClass="menu-h-item"
+								action="/public/condutor.xhtml'">
+								<h:graphicImage library="imagens" name="ic_condutor.png" />
+								<h:outputText value="Condutores Habilitados" />
+							</h:commandLink>
+						</div>
+
+					</h:form>
+				</div>
+			</div>
+		</nav>
+
+	</div>
+</ui:component>
+
+</html>
