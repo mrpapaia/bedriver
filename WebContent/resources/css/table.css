@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-weight: bold;
+	font-family: Roboto !important;
+	font-size: 2.2rem;
+	
+}
+
+.ui-datatable-odd {
+    background: #F0F0F7;
+}
+
+.ui-datatable-even {
+    background: #D2C6EB;
+}
+.ui-datatable tbody td, th{
+	
+    border-color: #000000 !important;
+}
+.columnList{
+    text-align: center;
+    height: 3.18rem !important;
+    
+    line-height: 2.6rem;
+}
+
+.ui-datatable thead th {    
+    background-color: #FFFFFF !important;   
+}
+
+.ui-datatable-selectable{
+	height: 4.5rem;
+}

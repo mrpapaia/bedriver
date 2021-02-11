@@ -1,41 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>Bedriver</title>
-	<h:outputStylesheet library="css" name="style.css" />
-</h:head>
-<h:body>
+<ui:composition template="/templates/base.xhtml">
+	<ui:define name="corpo">
+		<div class="card">
+			<h:form id="form">
+				<p:dataTable id="frotas" var="frota" value="#{frotaBean.lista}"
+					rowKey="#{frota.id}"
+					selection="#{dtContextMenuView.selectedProduct}"
+					selectionMode="single">
+					
+					<p:column headerText="UF" styleClass="columnList">
+						<h:outputText value="#{frota.cidade.estado.uf}" />
+					</p:column>
 
-	<div class="card">
-		<h:form id="form">
-			<p:dataTable id="frotas" var="frota" value="#{frotaBean.lista}"
-				rowKey="#{frota.id}"
-				selection="#{dtContextMenuView.selectedProduct}"
-				selectionMode="single">
-				<f:facet name="header">
-             Frotas
-            </f:facet>
-				<p:column headerText="UF" styleClass="columnList">
-					<h:outputText value="#{frota.cidade.estado.uf}" />
-				</p:column>
+					<p:column headerText="MUNICIPIO" styleClass="columnList">
+						<h:outputText value="#{frota.cidade.nome}" />
+					</p:column>
+					<p:column headerText="TIPO DE VEICULO" styleClass="columnList">
+						<h:outputText value="#{frota.veiculo}" />
+					</p:column>
+					<p:column headerText="QUANTIDADE" styleClass="columnList">
+						<h:outputText value="#{frota.qtd_veiculos}" />
+					</p:column>
 
-				<p:column headerText="MUNICIPIO" styleClass="columnList">
-					<h:outputText value="#{frota.cidade.nome}" />
-				</p:column>
-				<p:column headerText="TIPO DE VEICULO" styleClass="columnList">
-					<h:outputText value="#{frota.veiculo}" />
-				</p:column>
-				<p:column headerText="QUANTIDADE" styleClass="columnList">
-					<h:outputText value="#{frota.qtd_veiculos}" />
-				</p:column>
-
-
-			</p:dataTable>
-		</h:form>
-	</div>
-</h:body>
+				</p:dataTable>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
 </html>
