@@ -2,18 +2,19 @@ package br.com.bedriver.dao.intefaces;
 
 import java.util.List;
 
-import br.com.bedriver.model.Condutor;
+
+import br.com.bedriver.model.CondutoresHab;
 
 
 
 public interface CondutorDAO {
-	public void salvar(Condutor condutor);
+	public void salvar(CondutoresHab condutor);
 
-	public void atualizar(Condutor condutor);
+	public void atualizar(CondutoresHab condutor);
 
-	public void excluir(Condutor condutor);
+	public void excluir(CondutoresHab condutor);
 
-	public Condutor carregar(Integer codigo);
+	public CondutoresHab carregar(Integer codigo);
 
-	public List<Condutor> listar();
+	public List<CondutoresHab> listar();
 }

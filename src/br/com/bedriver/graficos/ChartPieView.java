@@ -10,7 +10,8 @@ import javax.faces.bean.ManagedBean;
 
 import org.primefaces.model.chart.*;
 
-import br.com.bedriver.model.Condutor;
+
+import br.com.bedriver.model.CondutoresHab;
 import br.com.bedriver.rn.CondutorRN;
 
 @ManagedBean(name="chartPieView")
@@ -32,15 +33,15 @@ public class ChartPieView implements Serializable {
         Map<String, Number> dados = new HashMap<>();
         
         CondutorRN condutorRN = new CondutorRN();
-        List<Condutor> listaCondutores = condutorRN.listar();
+        List<CondutoresHab> listaCondutores = condutorRN.listar();
         
         Integer qtdMasculino = 0;
         Integer qtdFeminino = 0;
         
-        for(Condutor c : listaCondutores) {
+        for(CondutoresHab c : listaCondutores) {
         	switch (c.getSexo()) {
-				case "M": qtdMasculino += c.getQtd_habilitados(); break;
-				case "F": qtdFeminino  += c.getQtd_habilitados(); break;
+				case "M": qtdMasculino += c.getQtdHabilitados(); break;
+				case "F": qtdFeminino  += c.getQtdHabilitados(); break;
         	}
         }
         

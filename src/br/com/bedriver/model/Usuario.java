@@ -1,86 +1,125 @@
 package br.com.bedriver.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
+/**
+ * The persistent class for the usuarios database table.
+ * 
+ */
 @Entity
-@Table(name = "usuarios")
+@Table(name="usuarios")
+@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
-
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
 	private Integer id;
-	private String nome;
-	private String email;
-	private String senha;
-	@ManyToOne
-	@JoinColumn(name = "id_estado")
-	private Estado estado;
+
 	private boolean ativo;
+
+	private String email;
+
+	private String nome;
+
 	private String permissao;
 
+	private String senha;
+
+	//bi-directional many-to-one association to UsuarioSimulado
+//	@OneToMany(mappedBy="usuario")
+	//private List<UsuarioSimulado> usuarioSimulados;
+
+	//bi-directional many-to-one association to Estado
+	@ManyToOne
+	@JoinColumn(name="id_estado")
+	private Estado estado;
+
+	public Usuario() {
+	}
+
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public Estado getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
-	public boolean isAtivo() {
-		return ativo;
+	public boolean getAtivo() {
+		return this.ativo;
 	}
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public String getPermissao() {
-		return permissao;
+		return this.permissao;
 	}
 
 	public void setPermissao(String permissao) {
 		this.permissao = permissao;
+	}
+
+	public String getSenha() {
+		return this.senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	/*public List<UsuarioSimulado> getUsuarioSimulados() {
+		return this.usuarioSimulados;
+	}
+
+	public void setUsuarioSimulados(List<UsuarioSimulado> usuarioSimulados) {
+		this.usuarioSimulados = usuarioSimulados;
+	}
+
+	public UsuarioSimulado addUsuarioSimulado(UsuarioSimulado usuarioSimulado) {
+		getUsuarioSimulados().add(usuarioSimulado);
+		usuarioSimulado.setUsuario(this);
+
+		return usuarioSimulado;
+	}
+
+	public UsuarioSimulado removeUsuarioSimulado(UsuarioSimulado usuarioSimulado) {
+		getUsuarioSimulados().remove(usuarioSimulado);
+		usuarioSimulado.setUsuario(null);
+
+		return usuarioSimulado;
+	}*/
+
+	public Estado getEstado() {
+		return this.estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+	public boolean isAtivo() {
+		return ativo;
 	}
 
 	@Override
@@ -94,6 +133,7 @@ public class Usuario implements Serializable {
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((permissao == null) ? 0 : permissao.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		//result = prime * result + ((usuarioSimulados == null) ? 0 : usuarioSimulados.hashCode());
 		return result;
 	}
 
@@ -138,7 +178,12 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!senha.equals(other.senha))
 			return false;
+	/*	if (usuarioSimulados == null) {
+			if (other.usuarioSimulados != null)
+				return false;
+		} else if (!usuarioSimulados.equals(other.usuarioSimulados))
+			return false;*/
 		return true;
 	}
-
+	
 }

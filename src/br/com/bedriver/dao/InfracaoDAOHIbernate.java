@@ -5,8 +5,8 @@ import java.util.List;
 import org.hibernate.Session;
 
 import br.com.bedriver.dao.intefaces.InfracaoDAO;
-import br.com.bedriver.model.Frota;
-import br.com.bedriver.model.Infracao;
+import br.com.bedriver.model.Infracoe;
+
 
 public class InfracaoDAOHIbernate implements InfracaoDAO{
 	private Session session;
@@ -16,32 +16,32 @@ public class InfracaoDAOHIbernate implements InfracaoDAO{
 		this.session = session;
 	}
 	@Override
-	public void salvar(Infracao infracao) {
+	public void salvar(Infracoe infracao) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void atualizar(Infracao infracao) {
+	public void atualizar(Infracoe infracao) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void excluir(Infracao infracao) {
+	public void excluir(Infracoe infracao) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Infracao carregar(Integer codigo) {
+	public Infracoe carregar(Integer codigo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Infracao> listar() {
-		return this.session.createCriteria(Infracao.class).list();
+	public List<Infracoe> listar() {
+		return this.session.createCriteria(Infracoe.class).list();
 	}
 
 

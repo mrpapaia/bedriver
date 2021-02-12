@@ -24,7 +24,7 @@ public class UsuarioBean {
 	public String novo() {
 		this.destinoSalvar = "usuariosucesso";
 		this.usuario = new Usuario();
-		this.usuario.setAtivo(true);
+		this.usuario.setAtivo(true);;
 		return "/public/usuario";
 	}
 
@@ -41,12 +41,12 @@ public class UsuarioBean {
 		String senha = this.usuario.getSenha();
 
 		if (!senha.equals(this.confirmarSenha)) {
-			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
+			FacesMessage facesMessage = new FacesMessage("A senha nï¿½o foi confirmada corretamente");
 			context.addMessage(null, facesMessage);
 			return null;
 		}
 
-		//Permissão padrão
+		//Permissï¿½o padrï¿½o
 		this.usuario.setPermissao("ROLE_USUARIO");
 		
 		UsuarioRN usuarioRN = new UsuarioRN();
@@ -61,7 +61,7 @@ public class UsuarioBean {
 		String senha = this.usuario.getSenha();
 
 		if (!senha.equals(this.confirmarSenha)) {
-			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
+			FacesMessage facesMessage = new FacesMessage("A senha nï¿½o foi confirmada corretamente");
 			context.addMessage(null, facesMessage);
 			return null;
 		}

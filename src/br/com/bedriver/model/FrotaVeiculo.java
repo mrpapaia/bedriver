@@ -1,62 +1,77 @@
 package br.com.bedriver.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.*;
 
+
+/**
+ * The persistent class for the frota_veiculo database table.
+ * 
+ */
 @Entity
-@Table(name = "frota_veiculo")
-public class Frota implements Serializable {
-	/**
-	 * 
-	 */
+@Table(name="frota_veiculo")
+@NamedQuery(name="FrotaVeiculo.findAll", query="SELECT f FROM FrotaVeiculo f")
+public class FrotaVeiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue()
 	private Integer id;
-	private Integer qtd_veiculos;
+
+	@Column(name="qtd_veiculos")
+	private Integer qtdVeiculos;
+
 	private String veiculo;
-	
+
+	//bi-directional one-to-one association to Estado
+	@OneToOne(mappedBy="frotaVeiculo")
+	private Estado estado;
+
+	//bi-directional many-to-one association to Cidade
 	@ManyToOne
 	@JoinColumn(name="id_cidade")
 	private Cidade cidade;
 
+	public FrotaVeiculo() {
+	}
+
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Integer getQtd_veiculos() {
-		return qtd_veiculos;
+	public Integer getQtdVeiculos() {
+		return this.qtdVeiculos;
 	}
 
-	public void setQtd_veiculos(Integer qtd_veiculos) {
-		this.qtd_veiculos = qtd_veiculos;
+	public void setQtdVeiculos(Integer qtdVeiculos) {
+		this.qtdVeiculos = qtdVeiculos;
 	}
 
 	public String getVeiculo() {
-		return veiculo;
+		return this.veiculo;
 	}
 
 	public void setVeiculo(String veiculo) {
 		this.veiculo = veiculo;
 	}
 
+	public Estado getEstado() {
+		return this.estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
 	public Cidade getCidade() {
-		return cidade;
+		return this.cidade;
 	}
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	@Override
@@ -64,8 +79,8 @@ public class Frota implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((qtd_veiculos == null) ? 0 : qtd_veiculos.hashCode());
+		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
+		result = prime * result + ((qtdVeiculos == null) ? 0 : qtdVeiculos.hashCode());
 		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
 		return result;
 	}
@@ -78,21 +93,21 @@ public class Frota implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Frota other = (Frota) obj;
+		FrotaVeiculo other = (FrotaVeiculo) obj;
 		if (cidade == null) {
 			if (other.cidade != null)
 				return false;
 		} else if (!cidade.equals(other.cidade))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (estado == null) {
+			if (other.estado != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!estado.equals(other.estado))
 			return false;
-		if (qtd_veiculos == null) {
-			if (other.qtd_veiculos != null)
+		if (qtdVeiculos == null) {
+			if (other.qtdVeiculos != null)
 				return false;
-		} else if (!qtd_veiculos.equals(other.qtd_veiculos))
+		} else if (!qtdVeiculos.equals(other.qtdVeiculos))
 			return false;
 		if (veiculo == null) {
 			if (other.veiculo != null)
@@ -101,11 +116,5 @@ public class Frota implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-
-	
-	
-
 
 }

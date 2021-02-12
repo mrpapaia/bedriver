@@ -1,21 +1,36 @@
 package br.com.bedriver.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
+
+
+/**
+ * The persistent class for the infracoes database table.
+ * 
+ */
 @Entity
 @Table(name="infracoes")
-public class Infracao {
+@NamedQuery(name="Infracoe.findAll", query="SELECT i FROM Infracoe i")
+public class Infracoe implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue()
 	private Integer id;
+
 	private String codigo;
+
 	private Integer quantidade;
-	
+
+	//bi-directional many-to-one association to Estado
 	@ManyToOne
 	@JoinColumn(name="id_estado")
 	private Estado estado;
 
+	public Infracoe() {
+	}
+
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -23,7 +38,7 @@ public class Infracao {
 	}
 
 	public String getCodigo() {
-		return codigo;
+		return this.codigo;
 	}
 
 	public void setCodigo(String codigo) {
@@ -31,7 +46,7 @@ public class Infracao {
 	}
 
 	public Integer getQuantidade() {
-		return quantidade;
+		return this.quantidade;
 	}
 
 	public void setQuantidade(Integer quantidade) {
@@ -39,7 +54,7 @@ public class Infracao {
 	}
 
 	public Estado getEstado() {
-		return estado;
+		return this.estado;
 	}
 
 	public void setEstado(Estado estado) {
@@ -65,7 +80,7 @@ public class Infracao {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Infracao other = (Infracao) obj;
+		Infracoe other = (Infracoe) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -88,7 +103,5 @@ public class Infracao {
 			return false;
 		return true;
 	}
-	
-	
 
 }
