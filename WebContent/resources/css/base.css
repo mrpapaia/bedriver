@@ -5,7 +5,7 @@
 	--color-primary-lighter: #9871F5; 
 	--color-primary-light: #916BEA; 
 	--color-primary: #8257E5; 
-	--color-primary-dark: #774DD6; 
+	--color-primary-dark: #774FD1; 	
 	--color-primary-darker: #6842c2; 
 	--color-secondary: #04D361; 
 	--color-secondary-dark: #04BF58; 
@@ -49,8 +49,8 @@
 #menuToggle input
 {
   display: block;
-  width: 40px;
-  height: 32px;
+  width: 3rem;
+  height: 3rem;
   position: absolute;
   top: -7px;
   left: -5px;
@@ -69,11 +69,10 @@
 #menuToggle span
 {
   display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
-  position: relative;
-  
+  width: 2.5rem;
+  height: 0.2rem;
+  margin-bottom: 0.5rem;
+  position: relative;  
   background: var(--color-button-background);
   border-radius: 3px;
   
@@ -132,7 +131,7 @@
 {
   position: absolute;
   width: 30rem;
-  height: 108vh;
+  height: 120vh;
   margin: -12rem 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
@@ -164,16 +163,27 @@ html, body {
 .div-item{
 	 padding: 0.6rem 0;
 }
-
+.div-item a{
+	display: flex;
+	align-items:center;
+	
+}
+.menu-h-item img{
+	height: 4.5rem;
+	width: 4.5rem;
+	margin-right: 1rem;
+	margin-left: 1rem;
+}
 .menu-h-item {
 	font-family: Roboto !important;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font-weight: 900;
 	text-decoration:none;
 	display: flex;
 	align-items: center;
-	width: 200px;
-	height: 60px;
+	width: 20rem;
+	height: 4rem;
+	
 	background: var(--color-button-background);
 	border-radius: 15px;
 	color: #8257E5 !important;
@@ -183,7 +193,9 @@ body {
 	background-color: var(--color-background);
 	
 }
-
+#div-header{
+	background: var(--color-primary);
+}
 #header {	
 	background: var(--color-primary);	
 	width:100%;
@@ -209,38 +221,55 @@ body {
 	
 }
 .top-buttons{
-	margin-left:8rem;
-	display:flex;
-	align-items: center;
+	margin: 4rem 0 0 9rem;
+	align-items:center;
 	width: 10rem;
-	height: 10rem;
-	justify-content: center;
+	height: 10rem;	
 	
 }
 .top-button{
 	display:flex;
 	width: 10rem;
-	margin: 0.25rem;
+	margin-top: 0.25rem;
 		
 	
 }
 .top-button .menu-item {	
+	
+	padding:0.5rem;
+	width: 45rem ;
+	color: var(--color-button-text);
+	background: var(--color-button-background);
+	border-radius: 1rem;	
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.ui-button .ui-button-text{
 	font-family: Roboto !important;
 	font-size: 1rem !important;	
 	text-decoration:none !important;
 	text-align:center;
 	font-style: normal;
 	font-weight: bold;
-	padding:1rem;
-	width: 45rem;
-	color: var(--color-button-text);
-	background: var(--color-button-background);
-	border-radius: 15px;	
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-
-
-
+#div-tabs{
+	margin-left: 2rem;
+}
+.tab-item{
+	border:0;
+	height:3.6rem;
+	width:7rem;
+	background: var(--color-primary-dark);
+	color:var(--color-button-background);
+	box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.1);
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+.tab-item:nth-last-child(1){
+	
+	background: #D2C6EB;
+	
+}
 #container {
 margin: 0 auto;
 	width: 90vw;
@@ -250,7 +279,9 @@ margin: 0 auto;
 	border: 1px solid #8257E5;
 	box-sizing: border-box;
 	box-shadow: -2px 4px 13px rgba(0, 0, 0, 0.25);
-	border-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	
 }
 
 @media(min-width: 1100px){
@@ -318,8 +349,6 @@ margin: 0 auto;
 		height:75vh;
 		background: var(--color-background-container);
 		border: 1px solid #8257E5;
-		box-sizing: border-box;
-		box-shadow: -2px 4px 13px rgba(0, 0, 0, 0.25);
-		border-radius: 15px;
+	
 	}
 }
