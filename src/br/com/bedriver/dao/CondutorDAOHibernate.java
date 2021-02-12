@@ -10,7 +10,8 @@ import br.com.bedriver.model.Frota;
 
 public class CondutorDAOHibernate  implements CondutorDAO{
 	private Session session;
-
+//
+	//
 	public void setSession(Session session) {
 		
 		this.session = session;
