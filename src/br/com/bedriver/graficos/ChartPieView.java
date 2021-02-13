@@ -55,7 +55,7 @@ public class ChartPieView implements Serializable {
         pieModel.setDataLabelFormatString("%d %%");
         pieModel.setLegendPosition("w");
     }
-   
+    
     public PieChartModel getPieModel() {
         return pieModel;
     }

@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<style>
+			.container-charts {
+				background-color: #F0F0F7;
+				padding: 10px;
+				display: inline-block
+			}
+		</style>
+	</h:head>
+	
+	<h:body>
+		<div class="container-charts">
+			<div>
+			    <p:chart type="pie" model="#{chartPieView.pieModel}" style="width:600px;height:300px"/>
+			</div>
+			<div>
+			    <p:chart type="bar" model="#{chartBarView.barModel}" style="width:600px;height:300px"/>
+			</div>
+		</div>
+	</h:body>
+</html>
