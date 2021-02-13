@@ -77,9 +77,9 @@
  */
 #menu {
 	position: absolute;
-	width: 30rem;
+	width: 45rem;
 	height: 110vh;
-	margin: -12rem 0 0 -3.1rem;
+	margin: -12rem 0 0 -8rem;
 	padding: 50px;
 	padding-top: 125px;
 	background: #D2C6EB;
@@ -96,8 +96,8 @@
 }
 
 .divider {
-	margin-left: -1.7rem;
-	width: 26rem;
+
+	width: 38rem;
 	height: 0.2rem;
 	background: var(--color-background-container);
 	border-radius: 1rem;
@@ -108,8 +108,9 @@
 }
 
 .div-label {
-	width: 20rem !important;
-	height: 2.6rem;
+	width: 35rem !important;
+	height: 3rem;
+	
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -133,21 +134,21 @@
 }
 
 .menu-h-item img, .menu-h-item-sair img {
-	height: 4.5rem;
-	width: 4.5rem;
+	height: 8rem;
+	width: 8rem;
 	margin-right: 1rem;
 	margin-left: 1rem;
 }
 
 .menu-h-item {
 	font-family: Roboto !important;
-	font-size: 1.5rem;
+	font-size: 2.3rem;
 	font-weight: 900;
 	text-decoration: none;
 	display: flex;
 	align-items: center;
-	width: 20rem;
-	height: 4rem;
+	width: 35rem;
+	height: 7rem;
 	background: var(--color-button-background);
 	border-radius: 15px;
 	color: #8257E5 !important;
@@ -172,8 +173,8 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .painel-login {
-	width: 250px;
-	height: 200px;
+	width: 25rem;
+	height: 20rem;
 	border: 5px solid #FFFFFF;
 	border-radius: 25px;
 	display: flex;
@@ -189,8 +190,7 @@
 	opacity: 100% !important;
 	background: #FFFFFF !important;
 	width: 20rem !important;
-	height: 2rem !important;
-	
+	height: 5rem !important;	
 }
 
 
@@ -209,16 +209,23 @@
 }
 
 @media(min-width: 360px){
+	
    
     #menu{
     	height: 108vh;
     }    
 }
 @media(min-width: 375px){
-   
+ 
     #menu{
     	height: 107vh;
-    }    
+    } 
+    .menu-h-item, .div-label{
+      margin-left: 2rem;
+   } 
+    .menu-h-item-sair{
+      margin-left: 2rem;
+   }   
 }
 
 @media(min-width: 700px){
