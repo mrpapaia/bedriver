@@ -100,9 +100,7 @@ body {
 	font-style: normal;
 	font-weight: bold;
 }
-#div-tabs{
-	margin-left: 2rem;
-}
+
 .tab-item{
 	border:0;
 	height:3.6rem;
@@ -131,7 +129,9 @@ margin: 0 auto;
 	border-bottom-right-radius: 15px;
 	
 }
-
+#corpo{
+	margin-top:-4rem;
+}
 @media(min-width: 1100px){
     :root {
         font-size: 62.5%; /*1rem = 10px*/
@@ -143,8 +143,7 @@ margin: 0 auto;
 	
 	
 	#header {			
-		height:17rem;
-		
+		height:17rem;		
 		align-items: center;
 		justify-content: space-between;
 		padding: 1.6rem 0;

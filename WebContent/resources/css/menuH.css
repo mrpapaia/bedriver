@@ -1,3 +1,4 @@
+
 #menuToggle {
 	display: block;
 	position: relative;
@@ -77,8 +78,8 @@
 #menu {
 	position: absolute;
 	width: 30rem;
-	height: 120vh;
-	margin: -12rem 0 0 -50px;
+	height: 110vh;
+	margin: -12rem 0 0 -3.1rem;
 	padding: 50px;
 	padding-top: 125px;
 	background: #D2C6EB;
@@ -170,3 +171,45 @@
 	border-radius: 1rem;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
+@media(min-width: 280px){
+   
+    #menu{
+    	height: 112vh;
+    }    
+}
+
+@media(min-width: 360px){
+   
+    #menu{
+    	height: 108vh;
+    }    
+}
+@media(min-width: 375px){
+   
+    #menu{
+    	height: 107vh;
+    }    
+}
+
+@media(min-width: 700px){
+   
+    #menu{
+    	height: 105vh;
+    }    
+}
+@media(min-width: 1024px){
+   
+    #menu{
+    	height: 104vh;
+    }    
+}
+
+@media(min-width: 1300px){
+   
+    #menu{
+    	height: 120vh;
+    }    
+}
+
+    

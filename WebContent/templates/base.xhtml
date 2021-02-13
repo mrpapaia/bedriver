@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,11 +17,13 @@
 
 </h:head>
 <h:body>
+	
 	<div id="div-header">
 		<div id="header">
 			<ui:include src="/public/menu_ham.xhtml" />
 			<div id="title">
-				<ui:insert name="titulo">BEDRIVER</ui:insert>
+			
+				<ui:insert id="aqui" name="titulo">${title} </ui:insert>
 			</div>
 			<div id="div-top-buttons">
 				<h:form styleClass="top-buttons">
@@ -39,17 +43,9 @@
 				</h:form>
 			</div>
 		</div>
-		<div id="div-tabs">
-			<p:commandButton styleClass="tab-item" value="Lista"
-				action="#{bean.metodo}" />
-			<p:commandButton styleClass="tab-item" value="Graficos"
-				action="#{bean.metodo}" />
-		</div>
 
 	</div>
-
 	<div id="container">
-
 		<div id="corpo">
 			<ui:insert name="corpo" />
 		</div>
