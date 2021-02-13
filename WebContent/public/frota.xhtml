@@ -11,8 +11,10 @@
 			<h:form id="form">
 				<p:dataTable id="frotas" var="frota" value="#{frotaBean.lista}"
 					rowKey="#{frota.id}"
-					selection="#{dtContextMenuView.selectedProduct}"
-					selectionMode="single">
+					rows="13"
+					paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 					
 					<p:column headerText="UF" styleClass="columnList">
 						<h:outputText value="#{frota.cidade.estado.uf}" />

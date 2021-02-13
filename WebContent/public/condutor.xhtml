@@ -9,36 +9,36 @@
 
 
 <ui:composition template="/templates/base.xhtml">
-<ui:define name="corpo">
-	<div class="card">
-		<h:form id="form">
-			<p:dataTable id="condutores" var="condutor"
-				value="#{condutorBean.lista}" rowKey="#{condutor.id}"
-				selection="#{dtContextMenuView.selectedProduct}"
-				selectionMode="single">
-				
-				<p:column headerText="REGIÃO" styleClass="columnList">
-					<h:outputText value="#{condutor.estado.regiao.nome}" />
-				</p:column>
-				<p:column headerText="UF" styleClass="columnList , uf">
-					<h:outputText value="#{condutor.estado.uf}" />
-				</p:column>
-				<p:column headerText="SEXO" styleClass="columnList, sexo">
-					<h:outputText value="#{condutor.sexo}" />
-				</p:column>
-				<p:column headerText="FAIXA ETARIA" styleClass="columnList">
-					<h:outputText value="#{condutor.faixaEtaria}" />
-				</p:column>
-				<p:column headerText="Categoria" styleClass="columnList">
-					<h:outputText value="#{condutor.categoriaCnh.id}" />
-				</p:column>
-				<p:column headerText="Quantidade" styleClass="columnList">
-					<h:outputText value="#{condutor.qtdHabilitados}" />
-				</p:column>
+	<ui:define name="corpo">
+		<div class="card">
+			<h:form id="form">
+				<p:dataTable id="condutores" var="condutor"
+					value="#{condutorBean.lista}" rowKey="#{condutor.id}" rows="13"
+					paginator="true" paginatorPosition="bottom"
+					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
-			</p:dataTable>
-		</h:form>
-	</div>
+					<p:column headerText="REGIÃO" styleClass="columnList">
+						<h:outputText value="#{condutor.estado.regiao.nome}" />
+					</p:column>
+					<p:column headerText="UF" styleClass="columnList , uf">
+						<h:outputText value="#{condutor.estado.uf}" />
+					</p:column>
+					<p:column headerText="SEXO" styleClass="columnList, sexo">
+						<h:outputText value="#{condutor.sexo}" />
+					</p:column>
+					<p:column headerText="FAIXA ETARIA" styleClass="columnList">
+						<h:outputText value="#{condutor.faixaEtaria}" />
+					</p:column>
+					<p:column headerText="Categoria" styleClass="columnList">
+						<h:outputText value="#{condutor.categoriaCnh.id}" />
+					</p:column>
+					<p:column headerText="Quantidade" styleClass="columnList">
+						<h:outputText value="#{condutor.qtdHabilitados}" />
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 

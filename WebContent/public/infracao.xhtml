@@ -6,28 +6,29 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/templates/base.xhtml">
-<ui:define name="corpo">
-	<div class="card">
-		<h:form id="form">
-			<p:dataTable id="infrações" var="infracao"
-				value="#{infracaoBean.lista}" rowKey="#{infracao.id}"
-				selection="#{dtContextMenuView.selectedProduct}"
-				selectionMode="single">
-				
-				
-				<p:column headerText="CÓDIGO" styleClass="columnList">
-					<h:outputText value="#{infracao.codigo}" />
-				</p:column>
-				<p:column headerText="QUANTIDADE" styleClass="columnList">
-					<h:outputText value="	#{infracao.quantidade}" />
-				</p:column>
-				<p:column headerText="UF" styleClass="columnList">
-					<h:outputText value="#{infracao.estado.uf}" />
-				</p:column>
+	<ui:define name="corpo">
+		<div class="card">
+			<h:form id="form">
+				<p:dataTable id="infrações" var="infracao"
+					value="#{infracaoBean.lista}" rowKey="#{infracao.id}" rows="13"
+					paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
-			</p:dataTable>
-		</h:form>
-	</div>
+
+					<p:column headerText="CÓDIGO" styleClass="columnList">
+						<h:outputText value="#{infracao.codigo}" />
+					</p:column>
+					<p:column headerText="QUANTIDADE" styleClass="columnList">
+						<h:outputText value="	#{infracao.quantidade}" />
+					</p:column>
+					<p:column headerText="UF" styleClass="columnList">
+						<h:outputText value="#{infracao.estado.uf}" />
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
