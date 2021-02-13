@@ -1,0 +1,172 @@
+#menuToggle {
+	display: block;
+	position: relative;
+	margin-left: 2rem;
+	z-index: 1;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#menuToggle input {
+	display: block;
+	width: 3rem;
+	height: 3rem;
+	position: absolute;
+	top: -7px;
+	left: -5px;
+	cursor: pointer;
+	opacity: 0; /* hide this */
+	z-index: 2; /* and place it over the hamburger */
+	-webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span {
+	display: block;
+	width: 2.5rem;
+	height: 0.2rem;
+	margin-bottom: 0.5rem;
+	position: relative;
+	background: var(--color-button-background);
+	border-radius: 3px;
+	z-index: 1;
+	transform-origin: 4px 0px;
+	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+		background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+	transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+	transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span {
+	opacity: 1;
+	transform: rotate(45deg) translate(-2px, -1px);
+	background: var(- -color-button-background);
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3) {
+	opacity: 0;
+	transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2) {
+	transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+	position: absolute;
+	width: 30rem;
+	height: 120vh;
+	margin: -12rem 0 0 -50px;
+	padding: 50px;
+	padding-top: 125px;
+	background: #D2C6EB;
+	list-style-type: none;
+	-webkit-font-smoothing: antialiased;
+	/* to stop flickering of text in safari */
+	transform-origin: 0% 0%;
+	transform: translate(-100%, 0);
+	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#menuToggle input:checked ~ div {
+	transform: none;
+}
+
+.divider {
+	margin-left: -1.7rem;
+	width: 26rem;
+	height: 0.2rem;
+	background: var(--color-background-container);
+	border-radius: 1rem;
+}
+
+.div-item {
+	padding: 0.6rem 0;
+}
+
+.div-label {
+	width: 20rem !important;
+	height: 2.6rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--color-button-background);
+	border: 2px solid #8257E5;
+	box-sizing: border-box;
+	border-radius: 1rem;
+}
+
+.menu-h-label {
+	font-family: Roboto !important;
+	font-size: 1.5rem !important;
+	font-weight: 900 !important;
+	text-decoration: none !important;
+	color: #8257E5 !important;
+}
+
+.div-item a {
+	display: flex;
+	align-items: center;
+}
+
+.menu-h-item img, .menu-h-item-sair img {
+	height: 4.5rem;
+	width: 4.5rem;
+	margin-right: 1rem;
+	margin-left: 1rem;
+}
+
+.menu-h-item {
+	font-family: Roboto !important;
+	font-size: 1.5rem;
+	font-weight: 900;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	width: 20rem;
+	height: 4rem;
+	background: var(--color-button-background);
+	border-radius: 15px;
+	color: #8257E5 !important;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.menu-h-item-sair {
+	margin-top: 9rem;
+	font-family: Roboto !important;
+	font-size: 1.5rem;
+	font-weight: 900;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	width: 20rem;
+	height: 4rem;
+	color: var(--color-background-container);
+	background: #E19F9F;
+	border: 3px solid #FFFFFF;
+	box-sizing: border-box;
+	border-radius: 1rem;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
