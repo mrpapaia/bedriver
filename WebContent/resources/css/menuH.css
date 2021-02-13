@@ -171,7 +171,36 @@
 	border-radius: 1rem;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+.painel-login {
+	width: 250px;
+	height: 200px;
+	border: 5px solid #FFFFFF;
+	border-radius: 25px;
+	display: flex;
+	align-items: center;
+	padding: 20px;
+	background: #D2C6EB;
+	margin-left: -2.5rem;
+	margin-bottom: 2.5rem;
+	
+}
 
+.painel-login span {
+	opacity: 100% !important;
+	background: #FFFFFF !important;
+	width: 20rem !important;
+	height: 2rem !important;
+	
+}
+
+
+
+
+ .ui-inputfield{
+	background: #000000 !important;
+	width: 20rem !important;
+	height: 4rem !important;
+}
 @media(min-width: 280px){
    
     #menu{

@@ -101,21 +101,7 @@ body {
 	font-weight: bold;
 }
 
-.tab-item{
-	border:0;
-	height:3.6rem;
-	width:7rem;
-	background: var(--color-primary-dark);
-	color:var(--color-button-background);
-	box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.1);
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
-}
-.tab-item:nth-last-child(1){
-	
-	background: #D2C6EB;
-	
-}
+
 #container {
 margin: 0 auto;
 	width: 90vw;
@@ -125,12 +111,12 @@ margin: 0 auto;
 	border: 1px solid #8257E5;
 	box-sizing: border-box;
 	box-shadow: -2px 4px 13px rgba(0, 0, 0, 0.25);
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
 	
 }
 #corpo{
-	margin-top:-4rem;
+	margin-top:-4.5rem;
 }
 @media(min-width: 1100px){
     :root {

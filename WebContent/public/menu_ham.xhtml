@@ -5,14 +5,33 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <ui:component>
+
 	<div id="menu-hamburguer">
+
 		<nav role="navigation">
 			<div id="menuToggle">
 				<input type="checkbox" /> <span></span> <span></span> <span></span>
 				<div id="menu">
+					<div class="painel-login">
+						<form id="login" method="post"
+							action="#{request.contextPath}/j_spring_security_check">
+							<span class="ui-float-label"> <p:inputText id='j_username' />
+								<p:outputLabel for="@previous" value="E-mail" />
+							</span> <span class="ui-float-label"> <p:password id='j_password' />
+								<p:outputLabel for="@previous" value="Senha" />
+							</span> <input type="checkbox" name="_spring_security_remember_me" /> <input
+								type="submit" value="Entrar" />
+							<script>
+								document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}";
+							</script>
+						</form>
+
+					</div>
 					<h:form>
-						<div class="divider"></div>
-						<div class="div-item">
+					<div class="divider"></div>
+					<h:panelGroup
+				rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')||request.isUserInRole('ROLE_USUARIO')}">
+				<div class="div-item">
 							<div class="div-label">
 								<h:outputLabel styleClass="menu-h-label" value="Simulados" />
 							</div>
@@ -32,6 +51,9 @@
 								<h:outputText value="Histórico" />
 							</h:commandLink>
 						</div>
+			</h:panelGroup>				
+						
+						
 						<div class="divider"></div>
 						<div class="div-item">
 							<div class="div-label">
@@ -62,13 +84,16 @@
 							</h:commandLink>
 						</div>
 						<div class="divider"></div>
-							<div class="div-item">
+							<h:panelGroup
+				rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')||request.isUserInRole('ROLE_USUARIO')}">
+						<div class="div-item">
 							<h:commandLink styleClass="menu-h-item-sair"
 								action="/public/condutor.xhtml'">
 								<h:graphicImage library="imagens" name="ic_sair.png" />
 								<h:outputText value="SAIR" />
 							</h:commandLink>
 						</div>
+						</h:panelGroup>
 					</h:form>
 				</div>
 			</div>

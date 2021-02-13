@@ -36,7 +36,26 @@ th.uf,tf.uf , th.sexo, td.sexo{
 .ui-datatable-selectable {
 	height: 4.5rem;
 }
-
+.tab-item{
+	border:0;
+	height:3.6rem;
+	width:7rem;
+	background: var(--color-primary-dark);
+	color:var(--color-button-background);
+	box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.1);
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+.tab-item:nth-last-child(1){
+	
+	background: #D2C6EB;
+	
+}
+.ui-paginator-bottom{
+	height:3.5rem;
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+}
 @media ( min-width : 1100px) {
 	* {	
 	font-size: 2.2rem;	
@@ -52,4 +71,7 @@ th.uf,tf.uf , th.sexo, td.sexo{
 	.ui-datatable-selectable {
 		height: 4.5rem;
 	}
+	.tab-item{
+	width:25rem;
+	height:4.5rem;}
 }
