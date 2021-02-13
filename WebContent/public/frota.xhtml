@@ -8,22 +8,24 @@
 
 <ui:composition template="/templates/base.xhtml">
 	<ui:define name="corpo">
-	<c:set var="title" scope="session" value="Frotas" />
-	<div id="div-tabs">
-			<p:commandButton styleClass="tab-item" value="Lista"
-				action="#{bean.metodo}" />
-			<p:commandButton styleClass="tab-item" value="Graficos"
-				action="#{bean.metodo}" />
-		</div>
-		<div class="card">
-			<h:form id="form">
+		<c:set var="title" scope="session" value="Frotas" />
+
+		<h:form>
+			<div id="div-tabs">
+				<p:commandButton styleClass="tab-item" value="Lista"
+					action="#{frotaBean.setMostraLista(true)}" update=":card" />
+				<p:commandButton styleClass="tab-item" value="Graficos"
+					action="#{frotaBean.setMostraGrafico(true)}" update=":card" />
+			</div>
+		</h:form>
+
+		<h:panelGroup id="card">
+			<h:form id="form" rendered="#{frotaBean.mostraLista}">
 				<p:dataTable id="frotas" var="frota" value="#{frotaBean.lista}"
-					rowKey="#{frota.id}"
-					rows="13"
-					paginator="true"
+					rowKey="#{frota.id}" rows="13" paginator="true"
 					paginatorPosition="bottom"
 					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
-					
+
 					<p:column headerText="UF" styleClass="columnList">
 						<h:outputText value="#{frota.cidade.estado.uf}" />
 					</p:column>
@@ -40,7 +42,13 @@
 
 				</p:dataTable>
 			</h:form>
-		</div>
+
+			<h:form id="formGraph" rendered="#{frotaBean.mostraGrafico}">
+				<ui:include src="/public/graficos.xhtml" />
+			</h:form>
+
+		</h:panelGroup>
+
 	</ui:define>
 </ui:composition>
 </html>
