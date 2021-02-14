@@ -46,22 +46,30 @@ body {
 #header {
 	background: var(--color-primary);	
 	width:100%;
-	height:17rem;
+	height:19rem;
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
 	align-self:center;
 	
-	padding: 1.6rem 0;
+	padding: 1.1rem 0;
+}
+
+.seta_left {
+	margin: -6rem 4rem 3.2rem;
+	
 }
 
 .container {
     background: var(--color-box-base);
     width: 100%;
     max-width: 74rem;
-    border-radius: 0.8rem;
     margin: -3.2rem auto 3.2rem;
     padding-top: 1.4rem;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0px 5px 5px var(--color-line-in-white);
+    
     overflow: hidden;
 }
 
@@ -79,9 +87,11 @@ body {
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-indent: 0.5rem;
     width: 100%;
-    padding-bottom: 1.6rem;
+    height: 3.5rem;
     box-sizing: border-box;
     border: 1px solid var(--color-line-in-white);
     border-radius: 8px;
@@ -96,7 +106,7 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding-bottom: 1.6rem;
+    height: 3.5rem;
     box-sizing: border-box;
     border: 1px solid var(--color-line-in-white);
     border-radius: 8px;
@@ -104,10 +114,9 @@ body {
 }
 
 h1 {
-	font: 700 1.6rem Archivo;
-	margin: 0 20rem;
+	margin: 0 17rem;
 	color: var(--color-box-base);
-	font-size: 4rem;
+	font-size: 5rem;
 	
 }
 
@@ -143,7 +152,7 @@ h2 {
     border: 0;
     border-radius: 0.8rem;
     cursor: pointer;
-    font: 700 1.6rem Archivo;
+    font: 700 2rem Archivo;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,7 +160,14 @@ h2 {
     transition: background-color 0.2s;
     margin-top: 3.2rem;
     margin-left: 3.4rem;
+    margin-bottom: 3rem;
  
+}
+
+#footer .logo_rodape {
+	margin-left: 128rem;
+	margin-top: -10.5rem;
+	
 }
 
 .button .apply:hover {
