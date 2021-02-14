@@ -59,7 +59,8 @@ body {
 
 
 #header #title{
-	margin-left:1rem;
+	margin-left:2rem;
+	margin-bottom:2rem;
 	font-family: "Mr Dafoe";
 	font-style: normal;
 	font-weight: normal;
@@ -196,10 +197,7 @@ margin: 0 auto;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	}
 	
-	#menu
-{
-	height: 103vh;
-}
+
 	
 	#container {
 	margin: 0 auto;

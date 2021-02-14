@@ -1,8 +1,18 @@
-
+#menu-hamburguer{
+	display:flex;
+	
+	justify-content: center;
+	align-items: center;
+	height: 4rem;
+	margin-left: 3rem;
+}
+#menu-hamburguer nav{
+	
+	height: 4rem;
+}
 #menuToggle {
 	display: block;
-	position: relative;
-	margin-left: 2rem;
+	position: relative;	
 	z-index: 1;
 	-webkit-user-select: none;
 	user-select: none;
@@ -11,7 +21,7 @@
 #menuToggle input {
 	display: block;
 	width: 3rem;
-	height: 3rem;
+	height: 2rem;
 	position: absolute;
 	top: -7px;
 	left: -5px;
@@ -173,33 +183,53 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .painel-login {
-	width: 25rem;
-	height: 20rem;
+	width: 35rem;
+	height: 25rem;
 	border: 5px solid #FFFFFF;
 	border-radius: 25px;
 	display: flex;
-	align-items: center;
-	padding: 20px;
+	
+	padding: 1rem;
 	background: #D2C6EB;
-	margin-left: -2.5rem;
+	margin-top:-5rem;
 	margin-bottom: 2.5rem;
 	
 }
 
-.painel-login span {
-	opacity: 100% !important;
+
+#login{
+	margin-left:1rem;
+}
+
+#div-email label, #div-senha label{
+	color: #000000 !important;
+	font-size: 2rem !important;
+	top:1rem;
+	
+}
+
+#div-email input, #div-senha input{
+	color: #000000 !important;
+	font-size: 2rem;
+	opacity:100% !important;
 	background: #FFFFFF !important;
-	width: 20rem !important;
+	width: 30rem !important;
 	height: 5rem !important;	
 }
 
-
-
-
- .ui-inputfield{
-	background: #000000 !important;
-	width: 20rem !important;
-	height: 4rem !important;
+#div-submit span{
+	background: none;
+}
+#div-submit button{
+	margin-top: 5rem;
+	height:5rem !important;
+	width: 10rem !important;
+}
+#login #div-email{
+	margin-top:5rem;
+}
+#login #div-senha{
+	margin-top:6rem;
 }
 @media(min-width: 280px){
    

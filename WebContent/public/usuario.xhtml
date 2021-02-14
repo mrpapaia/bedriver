@@ -1,56 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet name="cadastro.css" library="css" />
 	<title>Cadastro de Usuários</title>
 </h:head>
 <h:body>
-	<h1>Cadastro de Usuários</h1>
-	<h:form id="cadastro">
-		<h:messages />
-		<h:inputHidden value="#{usuarioBean.usuario.id}" />
-		<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
+	<div id="input">
 
-		<h:panelGrid columns="2">
-			<h:outputLabel value="Nome:" for="nome" />
-			<h:inputText id="nome" label="Nome"
-				value="#{usuarioBean.usuario.nome}" size="30" maxlength="30"
-				required="true" requiredMessage="Você não tem nome?">
-				<f:validateLength minimum="10" maximum="30" />
-			</h:inputText>
-
-			<h:outputLabel value="e-Mail:" for="email" />
-			<h:panelGroup>
-				<h:inputText id="email" label="e-Mail"
-					value="#{usuarioBean.usuario.email}" size="50" maxlength="50"
-					required="true" validatorMessage="e-mail inválido">
-					<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
-				</h:inputText>
-				<h:message for="email" />
-			</h:panelGroup>
-
-			<h:outputLabel value="Senha:" for="senha" />
-			<h:inputSecret id="senha" label="Senha"
-				value="#{usuarioBean.usuario.senha}" size="10" maxlength="10"
-				required="true" redisplay="true" />
-
-			<h:outputLabel value="Confirmar Senha:" for="confirmarsenha" />
-			<h:inputSecret id="confirmarsenha" label="Confirmar Senha"
-				value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10"
-				required="true" redisplay="true" />
-			
-			<h:outputLabel value="Estado:" for="id_estado" />
-			<h:selectOneMenu value="#{usuarioBean.usuario.estado}" converter="estadoConverter" >
-				<f:selectItems value="#{estadoBean.lista}"
-					var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"/>
-			</h:selectOneMenu>
-		</h:panelGrid>
-		
+		<div id="header">
+			<h1>Cadastro</h1>
+		</div>
 
 
-		<h:commandButton action="#{usuarioBean.salvar}" value="Salvar" />
-	</h:form>
+		<div class="container">
+
+			<h:form id="cadastro">
+				<h:messages />
+				<h:inputHidden value="#{usuarioBean.usuario.id}" />
+				<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
+
+				<div id="spam">
+					<h2>Seus Dados</h2>
+				</div>
+
+				<h:panelGrid columns="1">
+					<h:outputLabel value="Nome:" for="nome" styleClass="text" />
+					<h:inputText id="nome" label="Nome"
+						value="#{usuarioBean.usuario.nome}" size="30" maxlength="30"
+						required="true" requiredMessage="Você não tem nome?"
+						styleClass="input">
+						<f:validateLength minimum="10" maximum="30" />
+					</h:inputText>
+
+					<h:outputLabel value="e-Mail:" for="email" styleClass="text" />
+					<h:panelGroup>
+						<h:inputText id="email" label="e-Mail"
+							value="#{usuarioBean.usuario.email}" size="50" maxlength="50"
+							required="true" validatorMessage="e-mail inválido"
+							styleClass="input">
+							<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
+						</h:inputText>
+						<h:message for="email" />
+					</h:panelGroup>
+
+					<h:outputLabel value="Senha:" for="senha" styleClass="text" />
+					<h:inputSecret id="senha" label="Senha"
+						value="#{usuarioBean.usuario.senha}" size="10" maxlength="10"
+						required="true" redisplay="true" styleClass="input" />
+
+					<h:outputLabel value="Confirmar Senha:" for="confirmarsenha"
+						styleClass="text" />
+					<h:inputSecret id="confirmarsenha" label="Confirmar Senha"
+						value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10"
+						required="true" redisplay="true" styleClass="input" />
+
+					<h:outputLabel value="Estado:" for="id_estado" styleClass="text" />
+					<h:selectOneMenu value="#{usuarioBean.usuario.estado}"
+						converter="estadoConverter" styleClass="menu">
+						<f:selectItems value="#{estadoBean.lista}" var="estado"
+							itemValue="#{estado}" itemLabel="#{estado.nome}" style="background-color: red"/>
+					</h:selectOneMenu>
+				</h:panelGrid>
+
+
+				<div class="button">
+					<h:commandButton action="#{usuarioBean.salvar}"
+						value="Salvar Cadastro" styleClass="apply" />
+				</div>
+			</h:form>
+
+		</div>
+	</div>
 </h:body>
 </html>
