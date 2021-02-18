@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title><ui:insert name="titulo">BEDRIVER</ui:insert></title>
+	<h:outputStylesheet library="css" name="base2.css" />
+	<h:outputStylesheet library="css" name="menuH.css" />
+	<h:outputStylesheet library="css" name="simulado.css" />
+	<h:outputStylesheet library="stylesheet" type="text/css"
+		href="//fonts.googleapis.com/css?family=Mr+Dafoe" />
+
+</h:head>
+<h:body>
+	
+	<div id="div-header">
+		<div id="header">
+			<ui:include src="/public/menu_ham.xhtml" />
+			<div id="title">
+			
+				<ui:insert id="aqui" name="titulo">${title} </ui:insert>
+			</div>
+			<div id="div-top-buttons">
+				<h:form styleClass="top-buttons">
+
+					<div class="top-button">
+						<p:commandButton styleClass="menu-item" value="Ínicio"
+							action="#{bean.metodo}" />
+					</div>
+
+					<div class="top-button">
+						<div class="top-button">
+							<p:commandButton styleClass="menu-item" value="Auto-Escolas"
+								action="#{bean.metodo}" />
+						</div>
+					</div>
+
+				</h:form>
+			</div>
+		</div>
+
+	</div>
+	<div id="container">
+		
+					
+		<div id="corpo">
+			<ui:insert name="corpo" />
+		</div>
+			
+	</div>
+	
+	<div id="footer">
+		<h:form>
+			<h:graphicImage library="imagens" name="logo_rodape.png"
+				style="border:0" styleClass="logo_rodape" />
+		</h:form>
+
+	</div>
+	
+</h:body>
+</html>

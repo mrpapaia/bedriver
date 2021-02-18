@@ -1,0 +1,224 @@
+:root {
+	/*variáveis css*/ 
+	--color-background: #D6D6D6; 
+	--color-background-container: #FFFFFF; 
+	--color-primary-lighter: #9871F5; 
+	--color-primary-light: #916BEA; 
+	--color-primary: #8257E5; 
+	--color-primary-dark: #774FD1; 	
+	--color-primary-darker: #6842c2; 
+	--color-secondary: #04D361; 
+	--color-secondary-dark: #04BF58; 
+	--color-title-in-primary: #FFFFFF; 
+	--color-text-in-primary: #D4C2FF; 
+	--color-text-title: #32264D; 
+	--color-text-complement: #9C98A6; 
+	--color-text-base: #6A6180; 
+	--color-line-in-white: #E6E6F0; 
+	--color-input-background: #F8F8FC; 
+	--color-button-text: #774FD1; 
+	--color-button-background: #FFFFFF; 
+	--color-box-base: #FFFFFF; 
+	--color-box-footer: #FAFAFC; 
+	--color-small-info: #C1BCCC;
+	font-size: 45%; /* controle das medidas rem */
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+<!--qiwqii-->
+
+html, body {
+	height: 100vh;
+}
+
+body {
+	background-color: var(--color-background);
+	
+}
+#div-header{
+	background: var(--color-primary);
+}
+#header {	
+	background: var(--color-primary);	
+	width:100%;
+	height:19rem;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	align-self:center;
+	
+	padding: 1.1rem 0;
+	
+}
+
+
+#header #title{
+	margin-bottom:2rem;
+	font-family: "Mr Dafoe";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 2rem;
+	line-height:2.5rem;
+	color: var(--color-title-in-primary);
+	
+}
+.top-buttons{
+		
+	margin-left:15rem;
+	width: 1rem;
+	height: 10rem;	
+	
+}
+.top-button{
+	margin-top:0.05rem;	
+	display:flex;
+	width: 15rem;
+		
+	
+}
+.top-button .menu-item {	
+	
+	padding:0.5rem;
+	width: 15rem ;
+	color: var(--color-button-text);
+	background: var(--color-button-background);
+	border-radius: 1rem;	
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+ .ui-button-text{
+	font-family: Roboto !important;
+	font-size: 1.5rem !important;
+	margin-top: -0.4rem;	
+	text-decoration:none !important;
+	text-align:center;
+	font-style: normal;
+	font-weight: bold;
+}
+
+
+#container {
+	background: var(--color-box-base);
+    width: 90%;
+    max-width: 74rem;
+    margin: -3.2rem auto 3.2rem;
+    padding-top: 1.4rem;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 5px 5px var(--color-line-in-white);
+    
+    overflow: hidden;
+	
+}
+#corpo{
+	margin-top:-3.2rem;
+}
+
+#footer .logo_rodape {
+	margin-left: 114rem;
+	margin-top: -10.5rem;
+	
+}
+
+@media(min-width: 360px){
+	.top-buttons{
+		
+	margin-left:20rem;
+	}
+}
+@media(min-width: 375px){
+	:root{
+	font-size: 50%;}
+	
+}
+
+@media(min-width: 700px){
+	:root{
+	font-size: 60%;}
+	.top-buttons{
+		display:flex;
+		margin-left:30rem;
+		align-items:center;	
+		justify-content: rigth;	
+	}
+	.top-button{
+		height: 5rem;		
+	}
+}
+@media(min-width: 1024px){
+    :root {
+        font-size: 62.5%; /*1rem = 10px*/
+    }
+    html, body {
+	height: 100vh;
+	}
+	
+	
+	
+	#header {			
+		height:20rem;		
+		align-items: center;
+		justify-content: space-between;
+		padding: 1.6rem 0;
+		
+	}
+	#header #title{
+		font-family: "Mr Dafoe";
+		font-style: normal;
+		font-weight: normal;
+		font-size: 5.4rem;
+		margin-left: -35.2rem;
+		line-height:7.5rem;
+		color: var(--color-title-in-primary);
+	}
+	.top-buttons{
+		margin-left:10rem;
+		width: 70rem;
+		height: 20rem;
+		
+		
+	}
+	.top-button{
+		
+		width: 30rem;
+		
+			
+		
+	}
+	.top-button .menu-item {	
+	
+		font-size: 4rem !important;	
+	
+		
+		padding:1rem;
+		width: 45rem;
+		color: var(--color-button-text);
+		background: var(--color-button-background);
+		border-radius: 15px;	
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	}
+	
+
+	
+	#container {
+		margin: -3.2rem auto 3.2rem;
+		
+		background: var(--color-background-container);
+	
+	}
+}
+
+
+
+@media(min-width: 360px){
+	
+	#corpo{
+		margin-top:-5rem;
+	}
+}
