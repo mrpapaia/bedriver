@@ -38,6 +38,9 @@ public class Usuario implements Serializable {
 	@JoinColumn(name="id_estado")
 	private Estado estado;
 
+	@Column(name = "reset_password_token")
+	private String resetPasswordToken;
+
 	public Usuario() {
 	}
 
@@ -121,6 +124,14 @@ public class Usuario implements Serializable {
 	public boolean isAtivo() {
 		return ativo;
 	}
+	
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
 
 	@Override
 	public int hashCode() {
@@ -132,8 +143,8 @@ public class Usuario implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((permissao == null) ? 0 : permissao.hashCode());
+		result = prime * result + ((resetPasswordToken == null) ? 0 : resetPasswordToken.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
-		//result = prime * result + ((usuarioSimulados == null) ? 0 : usuarioSimulados.hashCode());
 		return result;
 	}
 
@@ -173,17 +184,24 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!permissao.equals(other.permissao))
 			return false;
+		if (resetPasswordToken == null) {
+			if (other.resetPasswordToken != null)
+				return false;
+		} else if (!resetPasswordToken.equals(other.resetPasswordToken))
+			return false;
 		if (senha == null) {
 			if (other.senha != null)
 				return false;
 		} else if (!senha.equals(other.senha))
 			return false;
-	/*	if (usuarioSimulados == null) {
-			if (other.usuarioSimulados != null)
-				return false;
-		} else if (!usuarioSimulados.equals(other.usuarioSimulados))
-			return false;*/
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", ativo=" + ativo + ", email=" + email + ", nome=" + nome + ", permissao="
+				+ permissao + ", senha=" + senha + ", estado=" + estado.getNome() + ", resetPasswordToken=" + resetPasswordToken
+				+ "]";
 	}
 	
 }

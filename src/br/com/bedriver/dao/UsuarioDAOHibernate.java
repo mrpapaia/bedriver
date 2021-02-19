@@ -4,12 +4,17 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.bedriver.dao.intefaces.UsuarioDAO;
 import br.com.bedriver.model.Usuario;
 
 public class UsuarioDAOHibernate implements UsuarioDAO {
 
+	@Autowired
+	private SessionFactory sessionFactory;
+	
 	private Session session;
 
 	public void setSession(Session session) {
@@ -41,9 +46,16 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 	}
 
 	public Usuario buscarPorLogin(String login) {
-		String hql = "select u from usuarios u where u.email = :email";
+		String hql = "select u from Usuario u where u.email = :login";
 		Query consulta = this.session.createQuery(hql);
 		consulta.setString("login", login);
+		return (Usuario) consulta.uniqueResult();
+	}
+	
+	public Usuario buscarPorResetPasswordToken(String resetPasswordToken) {
+		String hql = "select u from Usuario u where u.resetPasswordToken = :rpt";
+		Query consulta = this.session.createQuery(hql);
+		consulta.setString("rpt", resetPasswordToken);
 		return (Usuario) consulta.uniqueResult();
 	}
 }

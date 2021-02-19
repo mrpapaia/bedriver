@@ -6,16 +6,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ValueChangeEvent;
-import javax.servlet.http.HttpServletRequest;
 
-import br.com.bedriver.model.Estado;
 import br.com.bedriver.model.Usuario;
 import br.com.bedriver.rn.UsuarioRN;
 
 @ManagedBean(name = "usuarioBean")
 @RequestScoped
 public class UsuarioBean {
+	
 	private Usuario usuario = new Usuario();
 	private String confirmarSenha;
 	private List<Usuario> lista;
@@ -30,7 +28,6 @@ public class UsuarioBean {
 
 	public String editar() {
 		this.confirmarSenha = this.usuario.getSenha();
-		System.out.println("destino  EDITAR = " + destinoSalvar);
 		return "/admin/usuarioEditar";
 	}
 
@@ -41,14 +38,14 @@ public class UsuarioBean {
 		String senha = this.usuario.getSenha();
 
 		if (!senha.equals(this.confirmarSenha)) {
-			FacesMessage facesMessage = new FacesMessage("A senha nï¿½o foi confirmada corretamente");
+			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
 			context.addMessage(null, facesMessage);
 			return null;
 		}
 
 		//Permissï¿½o padrï¿½o
 		this.usuario.setPermissao("ROLE_USUARIO");
-		
+
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
 
@@ -134,5 +131,6 @@ public class UsuarioBean {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
 	}
+
 	
 }

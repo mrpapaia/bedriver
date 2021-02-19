@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.bedriver.dao.intefaces.UsuarioDAO;
 import br.com.bedriver.model.Usuario;
+import br.com.bedriver.util.DAOException;
 import br.com.bedriver.util.DAOFactory;
 
 public class UsuarioRN {
@@ -38,4 +39,22 @@ public class UsuarioRN {
 	public List<Usuario> listar() {
 		return this.usuarioDAO.listar();
 	}
+	
+	public void updateResetPasswordToken(String token, String email) throws DAOException {
+		
+		Usuario usuario = this.usuarioDAO.buscarPorLogin(email);
+		
+		if(usuario != null) {
+			usuario.setResetPasswordToken(token);
+			this.usuarioDAO.salvar(usuario);
+		}else {
+			throw new DAOException("Não foi encontrado nenhum usuário com este email " + email);
+		}
+		
+	}
+	
+	public Usuario get(String resetPasswordToken) {
+		return this.usuarioDAO.buscarPorResetPasswordToken(resetPasswordToken);
+	}
+
 }

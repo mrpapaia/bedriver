@@ -39,6 +39,10 @@
 							<script>
 								document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}";
 							</script>
+							
+							
+							<h:commandLink value="Esqueceu a senha?" action="/public/recuperar_senha.xhtml"/><br/>
+							<h:commandLink value="Novo usuário" action="/public/usuario.xhtml" />
 						</h:form>
 
 					</div>
