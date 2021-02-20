@@ -8,9 +8,9 @@
 	<http auto-config="true">
 		<intercept-url pattern="/admin/**" access="ROLE_ADMINISTRADOR" />
 		<intercept-url pattern="/restrito/**" access="ROLE_USUARIO,ROLE_ADMINISTRADOR" />
-		<form-login login-page="/public/login.jsf"
-			always-use-default-target="true" default-target-url="/restrito/principal.jsf"
-			authentication-failure-url="/public/login.jsf?login_error=1" />
+		<form-login login-page="/index.jsf"
+			always-use-default-target="true" default-target-url="/index.jsf"
+			authentication-failure-url="/index.jsf?login_error=1" />
 		<logout />
 		<remember-me />
 	</http>

@@ -26,10 +26,10 @@ public class ChartBarViewCondutores implements Serializable {
     
     @PostConstruct
     public void init() {
-    	createBarModel();
+    	createBarModelCondutores();
     }
     
-    private void createBarModel() {
+    private void createBarModelCondutores() {
     	
     	barModel = new BarChartModel();
 

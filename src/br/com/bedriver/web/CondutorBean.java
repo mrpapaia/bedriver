@@ -13,8 +13,33 @@ import br.com.bedriver.rn.CondutorRN;
 @ManagedBean(name = "condutorBean")
 @RequestScoped
 public class CondutorBean {
+	
 	private List<CondutoresHab> lista;
+	private boolean mostraLista = true;
+	private boolean mostraGrafico = false;
 
+	public boolean isMostraLista() {
+		return mostraLista;
+	}
+
+	public boolean isMostraGrafico() {
+		return mostraGrafico;
+	}
+
+	public void setMostraGrafico(boolean mostraGrafico) {
+		this.mostraGrafico = mostraGrafico;
+		this.mostraLista = !mostraGrafico;
+	}
+
+	public void setMostraLista(boolean mostraLista) {
+		this.mostraLista = mostraLista;
+		this.mostraGrafico = !mostraLista;
+	}
+
+	public void setLista(List<CondutoresHab> lista) {
+		this.lista = lista;
+	}
+	
 	public List<CondutoresHab> getLista() {
 		if (this.lista == null) {
 			CondutorRN condutorRN = new CondutorRN();

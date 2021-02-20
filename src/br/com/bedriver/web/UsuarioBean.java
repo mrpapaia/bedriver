@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import br.com.bedriver.model.Usuario;
 import br.com.bedriver.rn.UsuarioRN;
@@ -132,5 +133,15 @@ public class UsuarioBean {
 		usuarioRN.salvar(this.usuario);
 	}
 
-	
+	public String getNameUser(HttpServletRequest request) {
+		String email = request.getRemoteUser();
+		if(email == null) {
+			return "";
+		}
+		UsuarioRN usuarioRN = new UsuarioRN();
+		String nome = usuarioRN.buscarPorLogin(email).getNome();
+		String nomeSplited[] = nome.split(" ");
+		
+		return nomeSplited[0] + " " + nomeSplited[1];
+	}
 }

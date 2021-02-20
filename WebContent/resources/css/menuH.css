@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
 #menu-hamburguer{
 	display:flex;
 	
@@ -24,6 +26,47 @@
 	left: 0 !important;
 	width: 10rem !important;
 	opacity: 100% !important;
+}
+
+#painel-logado {
+	width: 50rem;
+	margin: 1rem 1rem 2rem 2rem;
+	display: flex;
+	padding: 1rem;
+	font-family: 'Roboto';
+	display:flex;
+	align-items: center;
+}
+
+#foto-user {
+	width: 8rem;
+	height: 8rem;
+	background: #fff;
+	border-radius: 10rem;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	color: #8348FF;
+	border: 4px solid #8257E5;
+	box-sizing: border-box;
+	font-size: 5rem;
+}
+
+#nome-user {
+	width: 24rem;
+	height: auto;
+	padding: 0.5rem;
+	background: #fff;
+	color: #8348FF;
+	margin-left: 2rem;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	color: #8348FF;
+	border: 4px solid #8257E5;
+	border-radius: 2rem;
+	box-sizing: border-box;
+	font-size: 2.5rem;
 }
 
 #menuToggle input {
@@ -189,6 +232,7 @@
 	box-sizing: border-box;
 	border-radius: 1rem;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	cursor: pointer;
 }
 .painel-login {
 	width: 35rem;
