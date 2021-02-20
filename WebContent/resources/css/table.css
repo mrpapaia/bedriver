@@ -30,7 +30,7 @@ th.uf,tf.uf , th.sexo, td.sexo{
 	text-align: center;
 }
 .ui-datatable thead th {
-	background-color: #FFFFFF !important;
+	background-color:  var(--color-title-in-primary) !important;
 }
 
 .ui-datatable-selectable {
@@ -38,33 +38,49 @@ th.uf,tf.uf , th.sexo, td.sexo{
 }
 .tab-item{
 	border:0;
-	height:3rem;
-	width:10rem;
-	background: var(--color-primary-dark);
-	color:var(--color-button-background);
-	box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.1);
-	border-top-left-radius: 15px !important;
-	border-top-right-radius: 15px !important;
+	height:5rem !important;
+	width:15rem !important;
+	background: var(--color-text-in-primary)!important;
+	color:var(--color-button-background) !important;
+	box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.1) !important;
+	border-top-left-radius:0.9rem !important;
+	border-top-right-radius: 0.9rem  !important;
 	border-bottom-left-radius: 0rem !important;
 	border-bottom-right-radius: 0rem !important;
+	border-color:var(--color-text-in-primary)!important;
 }
 
-.tab-item:nth-last-child(1){
-	
-	background: #D2C6EB;
-	
+.tab-item.ui-state-hover {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: var(--color-title-in-primary) !important;
 }
+.tab-item.ui-state-focus {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+  color: var(--color-title-in-primary) !important;
+}
+
 .ui-paginator-bottom{
 	height:3.5rem;
 	border-bottom-left-radius: 1rem;
 	border-bottom-right-radius: 1rem;
 }
-@media ( min-width : 700px) {
-	.columnList {
-	
-	width:5rem;
-	
+
+.ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-hover, 
+.ui-paginator .ui-paginator-next.ui-state-hover, .ui-paginator .ui-paginator-last.ui-state-hover,
+.ui-paginator .ui-paginator-prev.ui-state-hover, .ui-paginator .ui-paginator-first.ui-state-hover{
+    background: var(--color-text-in-primary)!important;
+    color: var(--color-title-in-primary) !important;
 }
+.ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {
+    background: var(--color-primary-dark) !important;
+    color: var(--color-title-in-primary) !important;
+}
+@media ( min-width : 700px) {
+	.columnList {	
+	width:5rem;	
+  }
 }
 @media ( min-width : 1100px) {
 	* {	

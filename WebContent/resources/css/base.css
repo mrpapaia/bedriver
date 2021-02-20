@@ -81,7 +81,7 @@ body {
 	margin-top:0.05rem;	
 	display:flex;
 	width: 15rem;
-		
+	
 	
 }
 .top-button .menu-item {	
@@ -92,6 +92,19 @@ body {
 	background: var(--color-button-background);
 	border-radius: 1rem;	
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	border-color:var(--color-text-in-primary)!important;	
+}
+.top-button .menu-item.ui-state-hover {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: #ffffff;
+}
+.top-button .menu-item.ui-state-focus {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: #ffffff;
+    border:1rem !important;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
 }
 
  .ui-button-text{
