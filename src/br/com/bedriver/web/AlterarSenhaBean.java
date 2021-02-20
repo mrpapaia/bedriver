@@ -8,6 +8,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import br.com.bedriver.model.Usuario;
 import br.com.bedriver.rn.UsuarioRN;
 import br.com.bedriver.util.DAOException;
@@ -65,8 +67,11 @@ public class AlterarSenhaBean {
 			context.addMessage("MessageId", facesMessage);
 			return null;
 		}
-
-		this.usuario.setSenha(this.novaSenha);
+		
+		//Utilizando BCrypt na senha
+		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
+		this.usuario.setSenha(bcpe.encode(this.novaSenha));
+		
 		this.usuario.setResetPasswordToken(null);
 
 		UsuarioRN usuarioRN = new UsuarioRN();

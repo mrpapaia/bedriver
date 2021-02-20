@@ -8,6 +8,9 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import br.com.bedriver.model.Usuario;
 import br.com.bedriver.rn.UsuarioRN;
 
@@ -43,14 +46,21 @@ public class UsuarioBean {
 			context.addMessage(null, facesMessage);
 			return null;
 		}
+		
+		//Utilizando BCrypt na senha
+		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
+		this.usuario.setSenha(bcpe.encode(senha));
 
-		//Permissï¿½o padrï¿½o
+		//Permisssão padrão de usuário
 		this.usuario.setPermissao("ROLE_USUARIO");
+		
+		//Setando o usuário como ativo
+		this.usuario.setAtivo(true);
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
 
-		return "/public/usuariosucesso";
+		return "/index";
 	}
 	
 	public String salvarEditar() {

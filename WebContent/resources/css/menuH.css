@@ -20,14 +20,76 @@
 	user-select: none;
 }
 
+.error-msg {
+	font-family: 'Roboto';
+	font-size: 2rem;
+	color: red;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 #painel-login2 input {
 	position: relative !important;
 	top: 0 !important;
 	left: 0 !important;
-	width: 10rem !important;
+	width: 30rem !important;
+	height: 4rem !important;
 	opacity: 100% !important;
+	border-radius: 15px;
+	border: 0;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	background-repeat: no-repeat;
+	background-position: 1rem 0.8rem;
+	font-family: 'Roboto' !important;
+	font-size: 1.8rem;
+	outline: none;
 }
 
+#input-email {
+	background-image: url(#{resource['imagens:ic_email.png']});
+	padding-left: 4.2rem !important;
+	margin-top: 1rem;
+}
+
+#input-senha {
+	background-image: url(#{resource['imagens:ic_password.png']});
+	padding-left: 4.2rem !important;
+	margin-top: 2rem;
+}
+
+.img-login {
+	width: 20rem;
+	height: 8rem;
+}
+
+#painel-login2 a {
+	margin-top: 2rem;
+	text-decoration: none;
+	color: #8348FF;
+	float:right;
+	font-family: 'Roboto';
+	font-weight: bold;
+	font-size: 1.8rem;
+}
+
+#new-account {
+	margin-top: 1.5rem !important;
+	font-size: 2.5rem !important;
+	text-align: center;
+	float:none !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#input-submit {
+	margin-top: 6rem;
+	margin-left: 1rem;
+	background-color: #04D361;
+	color: #fff;
+}
+	
 #painel-logado {
 	width: 50rem;
 	margin: 1rem 1rem 2rem 2rem;
@@ -67,6 +129,7 @@
 	border-radius: 2rem;
 	box-sizing: border-box;
 	font-size: 2.5rem;
+	font-weight: bold;
 }
 
 #menuToggle input {
@@ -236,15 +299,16 @@
 }
 .painel-login {
 	width: 35rem;
-	height: 25rem;
-	border: 5px solid #FFFFFF;
+	height: 28rem;
+	border: 5px solid #774FD1;
 	border-radius: 25px;
 	display: flex;
 	
 	padding: 1rem;
 	background: #D2C6EB;
-	margin-top:-5rem;
+	margin-top: 1rem;
 	margin-bottom: 2.5rem;
+	margin-left: 1rem;
 	
 }
 
