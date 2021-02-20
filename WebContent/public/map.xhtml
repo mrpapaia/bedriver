@@ -28,9 +28,7 @@
 			</div>
 			<div id="div-top-buttons">
 				<h:form styleClass="top-buttons">
-
 					<div class="top-button">
-
 						<p:commandButton
 							rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}"
 							styleClass="menu-item" value="Entrar" action="#{bean.metodo}" />
@@ -51,18 +49,16 @@
 		</div>
 
 	</div>
-
-	<script
-		src="https://maps.googleapis.com/maps/api/js? key=AIzaSyBrf17T2gCZwAjxgrEFC68_bZcAEt8k7iE&amp;libraries=place&amp;callback=initMap"></script>
+<!-- <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyBrf17T2gCZwAjxgrEFC68_bZcAEt8k7iE&amp;sensor=false&amp;callback=initMap"></script>
+ -->
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+	
 <div id="div-search">
 	<input id="input-search" class="controls" type="text"
 			placeholder="Search Box" />
 		<h:graphicImage styleClass="ic-search" library="imagens" name="search.png" />
 	</div>
-	<div class="card">
-	
-	
-		
+	<div class="card">		
 		<p:gmap center="-17.72428524014474, -48.160838406295795" zoom="15"
 			type="HYBRID"  id="gmap"/>
 	</div>
