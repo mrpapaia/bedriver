@@ -31,14 +31,14 @@
 					<div class="top-button">
 						
 						<p:commandButton rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}" styleClass="menu-item" value="Entrar"
-							action="#{bean.metodo}" />
+							action="/index.xhtml" />
 					</div>
 
 					<div class="top-button">
 					
 						<div class="top-button">									
 							<p:commandButton rendered="#{request.getRequestURI().toString()!='/bedriver/'}" styleClass="menu-item" value="Ínicio"
-								action="/public/map.xhtml"/>
+								action="/index.xhtml"/>
 						</div>
 					</div>
 

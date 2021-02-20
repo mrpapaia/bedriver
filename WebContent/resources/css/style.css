@@ -1,0 +1,102 @@
+:root {
+	/*variáveis css*/ 
+	--color-background: #D6D6D6; 
+	--color-background-container: #FFFFFF; 
+	--color-primary-lighter: #9871F5; 
+	--color-primary-light: #916BEA; 
+	--color-primary: #8257E5; 
+	--color-primary-dark: #774FD1; 	
+	--color-primary-darker: #6842c2; 
+	--color-secondary: #04D361; 
+	--color-secondary-dark: #04BF58; 
+	--color-title-in-primary: #FFFFFF; 
+	--color-text-in-primary: #D4C2FF; 
+	--color-text-title: #32264D; 
+	--color-text-complement: #9C98A6; 
+	--color-text-base: #6A6180; 
+	--color-line-in-white: #E6E6F0; 
+	--color-input-background: #F8F8FC; 
+	--color-button-text: #774FD1; 
+	--color-button-background: #FFFFFF; 
+	--color-box-base: #FFFFFF; 
+	--color-box-footer: #FAFAFC; 
+	--color-small-info: #C1BCCC;
+	 font-size: 62.5%; /* /* controle das medidas rem */
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html, body {
+	height: 100vh;
+}
+
+body {
+	 background-image:url(#{resource['imagens:inicio-bg.gif']}) ;
+	  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#header {	
+	width:100%;
+
+	margin: 0 auto;
+	display: flex;
+	align-self:center;
+	height:17rem;		
+	
+	justify-content: space-between;
+	padding: 1.6rem 0;
+}
+
+
+
+.top-buttons{
+	margin-top:1rem;	
+	margin-left:10rem;
+	width: 70rem;
+	height: 20rem;
+}
+.top-button{
+	margin-top:0.05rem;	
+	margin-left:20rem;
+	display:flex;
+	width: 30rem;
+	
+	
+}
+.top-button .menu-item {	
+	font-size: 4rem !important;
+	padding:1rem;
+	width: 30rem;
+	color: var(--color-button-text);
+	background: var(--color-button-background);	
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	padding:0.5rem;	
+	
+	border-radius: 1rem;		
+	border-color:var(--color-text-in-primary)!important;	
+}
+.top-button .menu-item.ui-state-hover {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: #ffffff;
+}
+.top-button .menu-item.ui-state-focus {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: #ffffff;
+    border:1rem !important;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+ .ui-button-text{
+	font-family: Roboto !important;
+	font-size: 1.5rem !important;	
+	text-decoration:none !important;
+	text-align:center;
+	font-style: normal;
+	font-weight: bold;
+}
