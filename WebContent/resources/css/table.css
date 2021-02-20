@@ -8,11 +8,11 @@
 }
 
 .ui-datatable-odd {
-	background: #F0F0F7;
+	background: #F0F0F7 !important ;
 }
 
 .ui-datatable-even {
-	background: #D2C6EB;
+	background: #D2C6EB !important ;
 }
 
 .ui-datatable tbody td, th {
@@ -20,7 +20,7 @@
 }
 
 .columnList {
-	text-align: center;
+	text-align: center !important;
 	height: 3.18rem !important;
 	width:10rem;
 	line-height: 2.6rem;
@@ -43,9 +43,12 @@ th.uf,tf.uf , th.sexo, td.sexo{
 	background: var(--color-primary-dark);
 	color:var(--color-button-background);
 	box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.1);
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
+	border-top-left-radius: 15px !important;
+	border-top-right-radius: 15px !important;
+	border-bottom-left-radius: 0rem !important;
+	border-bottom-right-radius: 0rem !important;
 }
+
 .tab-item:nth-last-child(1){
 	
 	background: #D2C6EB;
