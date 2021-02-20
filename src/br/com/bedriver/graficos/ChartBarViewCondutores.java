@@ -17,8 +17,8 @@ import org.primefaces.model.chart.PieChartModel;
 import br.com.bedriver.model.CondutoresHab;
 import br.com.bedriver.rn.CondutorRN;
 
-@ManagedBean(name="chartBarView")
-public class ChartBarView implements Serializable {
+@ManagedBean(name="chartBarViewCondutores")
+public class ChartBarViewCondutores implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
