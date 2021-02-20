@@ -12,33 +12,37 @@
 	<h:outputStylesheet library="css" name="base.css" />
 	<h:outputStylesheet library="css" name="table.css" />
 	<h:outputStylesheet library="css" name="menuH.css" />
+	<h:outputStylesheet library="css" name="map.css" />
 	<h:outputStylesheet library="stylesheet" type="text/css"
 		href="//fonts.googleapis.com/css?family=Mr+Dafoe" />
 
 </h:head>
 <h:body>
-	
+
 	<div id="div-header">
 		<div id="header">
 			<ui:include src="/public/menu_ham.xhtml" />
 			<div id="title">
-			
-				<ui:insert id="aqui" name="titulo">${title} </ui:insert>
+
+				<ui:insert id="aqui" name="titulo">Auto-Escolas </ui:insert>
 			</div>
 			<div id="div-top-buttons">
 				<h:form styleClass="top-buttons">
 
 					<div class="top-button">
-						
-						<p:commandButton rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}" styleClass="menu-item" value="Entrar"
-							action="#{bean.metodo}" />
+
+						<p:commandButton
+							rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}"
+							styleClass="menu-item" value="Entrar" action="#{bean.metodo}" />
 					</div>
 
 					<div class="top-button">
-					
-						<div class="top-button">									
-							<p:commandButton rendered="#{request.getRequestURI().toString()!='/bedriver/'}" styleClass="menu-item" value="Ínicio"
-								action="/public/map.xhtml'"/>
+
+						<div class="top-button">
+							<p:commandButton
+								rendered="#{request.getRequestURI().toString()!='/bedriver/'}"
+								styleClass="menu-item" value="Ínicio"
+								action="/public/map.xhtml'" />
 						</div>
 					</div>
 
@@ -47,19 +51,21 @@
 		</div>
 
 	</div>
-	<div id="container">
-		
-				
-		<div id="corpo">
-			<ui:insert name="corpo" />
-		</div>
-		<div id="rodape">
-			<ui:insert name="rodape">
 
-				<!-- <ui:include src="/publico/rodape.xhtml" /> -->
-
-			</ui:insert>
-		</div>
+	<script
+		src="https://maps.googleapis.com/maps/api/js? key=AIzaSyBrf17T2gCZwAjxgrEFC68_bZcAEt8k7iE&amp;libraries=place&amp;callback=initMap"></script>
+<div id="div-search">
+	<input id="input-search" class="controls" type="text"
+			placeholder="Search Box" />
+		<h:graphicImage styleClass="ic-search" library="imagens" name="search.png" />
 	</div>
+	<div class="card">
+	
+	
+		
+		<p:gmap center="-17.72428524014474, -48.160838406295795" zoom="15"
+			type="HYBRID"  id="gmap"/>
+	</div>
+
 </h:body>
 </html>

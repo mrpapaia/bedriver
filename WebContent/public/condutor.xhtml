@@ -6,21 +6,20 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jstl/core">
 
+
+
+
 <ui:composition template="/templates/base.xhtml">
 	<ui:define name="corpo">
 	<c:set var="title" scope="session" value="Condutores" />
-	
-		<h:form>
-			<div id="div-tabs">
-				<p:commandButton styleClass="tab-item" value="Lista"
-					action="#{condutorBean.setMostraLista(true)}" update=":card" />
-				<p:commandButton styleClass="tab-item" value="Graficos"
-					action="#{condutorBean.setMostraGrafico(true)}" update=":card" />
-			</div>
-		</h:form>
-
-		<h:panelGroup id="card">
-			<h:form id="form" rendered="#{condutorBean.mostraLista}">
+	<div id="div-tabs">
+			<p:commandButton styleClass="tab-item" value="Lista"
+				action="#{bean.metodo}" />
+			<p:commandButton styleClass="tab-item" value="Graficos"
+				action="#{bean.metodo}" />
+		</div>
+		<div class="card">
+			<h:form id="form">
 				<p:dataTable id="condutores" var="condutor"
 					value="#{condutorBean.lista}" rowKey="#{condutor.id}" rows="13"
 					paginator="true" paginatorPosition="bottom"
@@ -47,12 +46,7 @@
 
 				</p:dataTable>
 			</h:form>
-			
-			<h:form id="formGraph" rendered="#{condutorBean.mostraGrafico}">
-				<ui:include src="/public/grafico_condutores.xhtml" />
-			</h:form>
-			
-		</h:panelGroup>
+		</div>
 	</ui:define>
 </ui:composition>
 
