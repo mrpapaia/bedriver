@@ -1,0 +1,208 @@
+:root {
+    font-size: 60%;
+
+    --color-background: #F0F0F7;
+    --color-primary-lighter: #9871F5;
+    --color-primary-light: #916BEA;
+    --color-primary: #8257E5;
+    --color-primary-dark: #774DD6;
+    --color-primary-darker: #6842C2;
+    --color-secundary: #04D361;
+    --color-secundary-dark: #04BF58;
+    --color-title-in-primary: #FFFFFF;
+    --color-text-in-primary: #D4C2FF;
+    --color-text-title: #32264D;
+    --color-text-complement: #9C98A6;
+    --color-text-base: #6A6180;
+    --color-line-in-white: #E6E6F0;
+    --color-input-background: #F8F8FC;
+    --color-button-text: #FFFFFF;
+    --color-box-base: #FFFFFF;
+    --color-line: #C2C2C2;
+    --color-container-bottons: #FAFAFC;
+    --color-box-footer: #FAFAFC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+hmlt, body, #root {
+    height: 100vh;
+}
+
+body {
+    background: var(--color-background);
+    font: 500 1.6rem Poppins;
+    color: var(--color-text-base);
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#header {
+	background: var(--color-primary);	
+	width:100%;
+	height:19rem;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	align-self:center;
+	
+	padding: 1.1rem 0;
+}
+
+.seta_left {
+	margin: -6rem 4rem 3.2rem;
+	
+}
+
+.container {
+    background: var(--color-box-base);
+    width: 100%;
+    max-width: 74rem;
+    margin: -3.2rem auto 3.2rem;
+    padding-top: 1.4rem;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 5px 5px var(--color-line-in-white);
+    
+    overflow: hidden;
+}
+
+h1 {
+	margin: 0 17rem;
+	color: var(--color-box-base);
+	font-size: 5rem;
+	
+}
+
+#spam {
+	border: 0;
+	margin-top: 1.4rem;
+    padding: 0 2.4rem;
+}
+
+h2 {
+	font: 700 2rem Archivo;
+    color: var(--color-text-title);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+h3 {
+	font: 700 1.6rem Archivo;
+    color: var(--color-text-complement);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 1.6rem;
+    margin-left: 0.9rem;
+
+    
+}
+
+p {
+	font: 700 1.9rem Archivo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 1.6rem;
+   	text-indent: 3.1rem;
+   	
+
+}
+
+.grid-radio td {
+	padding: .3rem;
+	padding-left: 3rem;
+	color: var(--color-text-title);
+	font-size: 1.3rem;
+	
+}
+
+h4 {
+	font: 700 1.6rem Archivo;
+    color: var(--color-text-complement);
+    width: 100%;
+    padding-bottom: 1rem;
+    margin-left: 0.1rem;
+   
+}
+
+.borda {
+	border-bottom: 2px solid var(--color-line);
+	margin-top: 3rem;
+}
+
+.container-buttons {
+	display: flex;
+	background: var(--color-container-bottons);
+}
+
+.container-buttons .icon1 {
+	margin: 3rem 3rem;
+}
+
+.text-h4 {
+	display: flex;
+	flex-direction: column;
+	margin-top: 3.3rem;
+	margin-left: -3rem;
+}
+
+
+.button input {
+	margin: 5px;
+    padding: 5px 5px 5px 20px; /* 20px makes room for your background image */
+    border: 1px solid #aaa;
+}
+
+.button .apply {
+	width: 90%;
+    height: 3.6rem;
+    background: var(--color-secundary);
+    color: var(--color-button-text);
+    border: 0;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font: 700 2rem Archivo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-top: 4.3rem;
+    margin-left: 7.4rem;
+    margin-bottom: 3rem;
+    
+
+ 
+}
+
+#footer .logo_rodape {
+	margin-left: 128rem;
+	margin-top: -10.5rem;
+	
+}
+
+.button .apply:hover {
+    background: var(--color-secundary-dark);
+}
+
+
+@media (min-width: 700px) {
+    :root {
+        font-size: 62.5%;
+    }
+}

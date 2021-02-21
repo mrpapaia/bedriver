@@ -1,28 +1,28 @@
 .form-buttons {
-	width: 620px;
-	display: block;
-	margin-top: 5rem;
-	margin-left: 13rem;
-	align-items: center;
+	width: 620px !important;
+	display: block !important;
+	margin-top: 5rem !important;
+	margin-left: 13rem !important;
+	align-items: center !important;
 }
 
 .buttons {
-	width: 30%;
-    height: 5.6rem;
-    float: left;
-    background: #04D361;
-    color: #FFFFFF;
-    border: 0;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: background-color 0.2s;
-    margin-top: 2.2rem;
-    margin-left: 3.4rem;
-    margin-bottom: 3.4rem;
+	width: 30% !important;
+    height: 5.6rem !important;
+    float: left !important;
+    background: #04D361 !important;
+    color: #FFFFFF !important;
+    border: 0 !important;
+    border-radius: 0.8rem !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s !important;
+    margin-top: 2.2rem !important;
+    margin-left: 3.4rem !important;
+    margin-bottom: 3.4rem !important;
  
 }
 

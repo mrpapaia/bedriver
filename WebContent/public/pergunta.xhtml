@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet name="pergunta.css" library="css" />
+	<title>Perguntas</title>
+</h:head>
+<h:body>
+
+	<div id="header">
+		<h:form>
+			<p:commandLink onclick="history.go(-1)">
+				<h:graphicImage library="imagens" name="seta_left.png"
+					style="border:0" styleClass="seta_left" />
+			</p:commandLink>
+		</h:form>
+
+		<h1>Simulado</h1>
+
+	</div>
+
+	<div class="container">
+
+		<h:form id="cadastro">
+			<h:inputHidden value="#{usuarioBean.usuario.id}" />
+			<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
+
+			<div id="spam">
+				<h2>QUESTÕES</h2>
+			</div>
+
+			<h:panelGrid columns="1">
+
+				<div id="spam">
+					<h3>Questões 1</h3>
+				</div>
+
+				<div id="questão">
+					<p>Mussum Ipsum, cacilds vidis litro abertis. Em pé sem cair,
+						deitado sem dormir, sentado sem cochilar e fazendo pose. Diuretics
+						paradis num copo é motivis de denguis.</p>
+				</div>
+
+
+				<h:form>
+
+					<p:selectOneRadio id="city" value="#{radioView.city}" layout="grid"
+						columns="1" styleClass="grid-radio">
+						<f:selectItems value="#{radioView.cities}" var="c"
+							itemLabel="#{city}" itemValue="#{city}" />
+					</p:selectOneRadio>
+
+				</h:form>
+
+			</h:panelGrid>
+
+			<div class="borda"></div>
+
+			<div class="container-buttons">
+				<h:form>
+					<h:graphicImage library="imagens" name="icon_!.png"
+						style="border:0" styleClass="icon1" />
+				</h:form>
+
+				<div class="text-h4">
+					<h4>Importante!</h4>
+					<h4>Não deixe as questões em branco</h4>
+				</div>
+
+				<div class="button">
+					<p:commandButton styleClass="apply" value="Anterior"
+						action="pergunta.xhtml" />
+				</div>
+
+				<div class="button">
+					<p:commandButton styleClass="apply" value="Próxima"
+						action="pergunta.xhtml" />
+				</div>
+			</div>
+		</h:form>
+
+	</div>
+
+	<div id="footer">
+		<h:form>
+			<h:commandLink>
+				<h:graphicImage library="imagens" name="logo_rodape.png"
+					style="border:0" styleClass="logo_rodape" />
+			</h:commandLink>
+		</h:form>
+
+	</div>
+</h:body>
+</html>
