@@ -28,14 +28,25 @@ public class AlterarSenhaBean {
 
 	public void recuperarSenha() {
 
+		UsuarioRN usuarioRN = new UsuarioRN();
+		
+		if(usuarioRN.buscarPorLogin(this.email) == null) {
+			FacesContext context = FacesContext.getCurrentInstance();
+			FacesMessage facesMessage = new FacesMessage();
+			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
+			facesMessage.setSummary("Aviso:");
+			facesMessage.setDetail("E-mail não encontrado em nosso site.");
+			context.addMessage("MessageEmailNotFound", facesMessage);
+			return;
+		}
+		
 		this.setEmailSend(true);
 		String token = RandomString.make(45);
 
 		String resetPasswordLink = "http://localhost:8080/bedriver/public/resetar_senha.jsf?token=" + token;
 
 		try {
-			UsuarioRN usuarioRN = new UsuarioRN();
-			usuarioRN.updateResetPasswordToken(token, email);
+			usuarioRN.updateResetPasswordToken(token, this.email);
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}

@@ -22,7 +22,8 @@
 					</h:inputText>
 					<h:message for="email" />
 				</h:panelGroup>
-	
+				<p:messages for="MessageEmailNotFound" showDetail="true" autoUpdate="true"
+					closable="true" />
 				<h:commandButton action="#{alterarSenhaBean.recuperarSenha}"
 					value="Recuperar Senha" styleClass="apply" update=":formrec" />
 	
