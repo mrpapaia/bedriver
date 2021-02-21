@@ -9,8 +9,10 @@
 <ui:composition template="/templates/base.xhtml">
 	<ui:define name="corpo">
 		<c:set var="title" scope="session" value="Recuperar Senha" />
+		
 
-		<div style="margin-top:10%;">
+		<div style="margin-top: 10%;">
+		<h2>Por favor, digite o seu E-Mail no campo abaixo:</h2>
 			<h:form id="formrec" rendered="#{not alterarSenhaBean.emailSend}">
 				<h:outputLabel value="E-Mail:" for="email" styleClass="text" />
 				<h:panelGroup>
@@ -22,13 +24,14 @@
 					</h:inputText>
 					<h:message for="email" />
 				</h:panelGroup>
-				<p:messages for="MessageEmailNotFound" showDetail="true" autoUpdate="true"
-					closable="true" />
-				<h:commandButton action="#{alterarSenhaBean.recuperarSenha}"
-					value="Recuperar Senha" styleClass="apply" update=":formrec" />
-	
+				<p:messages for="MessageEmailNotFound" showDetail="true"
+					autoUpdate="true" closable="true" />
+				<div class="button">
+					<h:commandButton action="#{alterarSenhaBean.recuperarSenha}"
+						value="Recuperar Senha" styleClass="apply" update=":formrec" />
+				</div>
 			</h:form>
-			
+
 			<h:form rendered="#{alterarSenhaBean.emailSend}">
 				Foi enviado um email para (#{alterarSenhaBean.email}) contendo as instruções.
 			</h:form>

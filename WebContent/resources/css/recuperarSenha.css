@@ -1,0 +1,72 @@
+.text {
+	display: flex;
+    margin: 0 3rem;
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-complement);
+}
+
+.input {
+    color: var(--color-text-title);
+    margin-left: 3.0rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-indent: 0.5rem;
+    width: 50%;
+    height: 3.5rem;
+    box-sizing: border-box;
+    border: 1px solid var(--color-line-in-white);
+    border-radius: 8px;
+    box-shadow: 10px 5px 5px var(--color-line-in-white);
+}
+
+.button input {
+	margin: 5px !important;
+    padding: 5px 5px 5px 20px !important; /* 20px makes room for your background image */
+    border: 1px solid #aaa !important;
+}
+
+.button .apply {
+	width: 30% !important;
+    height: 5.6rem !important;
+    background: #04D361 !important;
+    color: #FFFFFF !important; 
+    border: 0 !important;
+    border-radius: 0.8rem !important;
+    cursor: pointer !important;
+    font: 700 2rem Archivo !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s !important;
+    margin-top: 3.2rem !important;
+    margin-left: 3.4rem !important;
+    margin-bottom: 3rem !important;
+ 
+}
+
+.button .apply:hover {
+    background: #04BF58 !important;
+}
+
+h2 {
+	color: var(--color-text-complement);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+	margin-top: -9rem;
+	margin-left: 2.7rem;
+	margin-bottom: 3rem;
+}
+
+@media (min-width: 700px) {
+    :root {
+        font-size: 62.5%;
+    }
+}
