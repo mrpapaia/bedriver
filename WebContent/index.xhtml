@@ -19,7 +19,9 @@
 				<h:form styleClass="top-buttons">
 					<div class="top-button">						
 						<p:commandButton rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}" styleClass="menu-item" value="Entrar"
-							action="#{bean.metodo}" />
+						 >
+						<p:ajax update=":tas"  event="click" listener="#{utilBean.change()}"/>
+							</p:commandButton>
 					</div>
 				</h:form>
 			</div>

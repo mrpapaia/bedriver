@@ -18,28 +18,33 @@
 
 </h:head>
 <h:body>
-	
+
 	<div id="div-header">
 		<div id="header">
 			<ui:include src="/public/menu_ham.xhtml" />
 			<div id="title">
-			
+
 				<ui:insert id="aqui" name="titulo">${title} </ui:insert>
 			</div>
 			<div id="div-top-buttons">
 				<h:form styleClass="top-buttons">
 
 					<div class="top-button">
-						
-						<p:commandButton rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}" styleClass="menu-item" value="Entrar"
-							action="/index.xhtml" />
+
+						<p:commandButton
+							rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}"
+							styleClass="menu-item" value="Entrar">
+							<p:ajax update=":tas" event="click"
+								listener="#{utilBean.change()}" />
+						</p:commandButton>
 					</div>
 
 					<div class="top-button">
-					
-						<div class="top-button">									
-							<p:commandButton rendered="#{request.getRequestURI().toString()!='/bedriver/'}" styleClass="menu-item" value="Ínicio"
-								action="/index.xhtml"/>
+
+						<div class="top-button">
+							<p:commandButton
+								rendered="#{request.getRequestURI().toString()!='/bedriver/'}"
+								styleClass="menu-item" value="Ínicio" action="/index.xhtml" />
 						</div>
 					</div>
 
@@ -49,8 +54,8 @@
 
 	</div>
 	<div id="container">
-		
-				
+
+
 		<div id="corpo">
 			<ui:insert name="corpo" />
 		</div>
