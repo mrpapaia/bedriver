@@ -1,71 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Gerenciamento de Usuários</title>
-</h:head>
-<h:body>
-	<h1>Gerenciamento de Usuários</h1>
-	<h:form>
-		<h:messages />
-		<h:dataTable value="#{usuarioBean.lista}" var="usuario" rules="rows"
-			cellpadding="5">
-			<f:facet name="caption"> 
-				A listagem a seguir exibe a relação de todos os usuários do sistema.
-			</f:facet>
-			<f:facet name="header">Listagem de Usuários</f:facet>
-			<f:facet name="footer">Final da listagem</f:facet>
-			<h:column>
-				<h:commandLink action="#{usuarioBean.ativar}">
-					<h:graphicImage library="imagens"
-						name="usuario_ativo_#{usuario.ativo}.png" style="border:0" />
-					<f:setPropertyActionListener target="#{usuarioBean.usuario}"
-						value="#{usuario}" />
-				</h:commandLink>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Id</f:facet>
-				#{usuario.id}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Nome</f:facet>
-				#{usuario.nome}
-			</h:column>
-			<h:column>
-				<f:facet name="header">E-Mail</f:facet>
-				<a href="mailto:#{usuario.email}">#{usuario.email}</a>
-			</h:column>
-			<h:column>
-				<h:commandLink action="#{usuarioBean.excluir}"
-					onclick="if (!confirm('Confirma a exclusão do usuário #{usuario.nome}?')) return false;">
-					<h:graphicImage library="imagens" name="excluir16.png"
-						style="border:0" />
-					<f:setPropertyActionListener target="#{usuarioBean.usuario}"
-						value="#{usuario}" />
-				</h:commandLink>
-			</h:column>
-			<h:column>
-				<h:commandLink action="#{usuarioBean.editar}">
-					<h:graphicImage library="imagens" name="editar16.png"
-						style="border:0" />
-					<f:setPropertyActionListener target="#{usuarioBean.usuario}"
-						value="#{usuario}" />
-				</h:commandLink>
-			</h:column>
-			<h:column>
-				<f:facet name="header">Permissões</f:facet>
-				<h:commandLink
-					action="#{usuarioBean.atribuiPermissao(usuario, 'ROLE_ADMINISTRADOR')}"
-					title="Permissão Administrador">
-					<h:graphicImage library="imagens"
-						name="ROLE_ADMINISTRADOR_#{usuario.permissao.equals('ROLE_ADMINISTRADOR')}.png"
-						style="border:0" />
-				</h:commandLink>
-			</h:column>
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jstl/core">
 
-		</h:dataTable>
-	</h:form>
-</h:body>
+<ui:composition template="/templates/base.xhtml">
+	<ui:define name="corpo">
+		<c:set var="title" scope="session" value="Administração" />
+
+		<h:form id="form">
+			<p:dataTable id="usuarios" var="usuario" value="#{usuarioBean.lista}"
+				rowKey="#{usuario.id}" rows="13" paginator="true"
+				paginatorPosition="bottom"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+
+				<p:column headerText="Nome" styleClass="columnList">
+					<h:outputText value="#{usuario.nome}" />
+				</p:column>
+				
+				<p:column headerText="E-mail" styleClass="columnList">
+					<h:outputText value="#{usuario.email}" />
+				</p:column>
+				
+				<p:column headerText="Estado" styleClass="columnList">
+					<h:outputText value="#{usuario.estado.uf}" />
+				</p:column>
+				
+				<p:column headerText="Permissão" styleClass="columnList">
+					<h:outputText  value="#{usuario.permissao.equals('ROLE_USUARIO') ? 'User' : 'Admin'}" />
+				</p:column>
+				
+				<p:column headerText="Opções" styleClass="columnList">
+					<h:commandLink action="#{usuarioBean.excluir(usuario.email)}"
+						onclick="if (!confirm('Confirma a exclusão do usuário #{usuario.nome}?')) return false;">
+						<h:graphicImage styleClass="img-table" library="imagens" name="ic_tresh_new.png"/>
+					</h:commandLink>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
 </html>

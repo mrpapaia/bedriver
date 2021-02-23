@@ -281,13 +281,13 @@
 .menu-h-item-sair {
 	margin-top: 9rem;
 	font-family: Roboto !important;
-	font-size: 1.5rem;
+	font-size: 2rem;
 	font-weight: 900;
 	text-decoration: none;
 	display: flex;
 	align-items: center;
-	width: 20rem;
-	height: 4rem;
+	width: 35rem;
+	height: 7rem;
 	color: var(--color-background-container);
 	background: #E19F9F;
 	border: 3px solid #FFFFFF;
@@ -296,6 +296,38 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	cursor: pointer;
 }
+
+.button-admin {
+	margin-top: 1rem;
+	font-family: Roboto !important;
+	font-size: 2rem;
+	font-weight: 900;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 25rem;
+	height: 5rem;
+	color: var(--color-background-container);
+	background: #000;
+	border: 3px solid #fff;
+	box-sizing: border-box;
+	border-radius: 1rem;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.button-admin img{
+	width: 5rem;
+	height: 5rem;	
+}
+
+#container-bt-admin {
+	display: flex !important;
+	justify-content: center !important;
+	margin-left: 4rem !important;
+}
+
 .painel-login {
 	width: 35rem;
 	height: 28rem;

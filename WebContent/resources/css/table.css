@@ -19,6 +19,11 @@
 	border-color: #000000 !important;
 }
 
+.img-table{
+	width: 3rem;
+	height: 3rem;
+}
+
 .columnList {
 	text-align: center !important;
 	height: 3.18rem !important;

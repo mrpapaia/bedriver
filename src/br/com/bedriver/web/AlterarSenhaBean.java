@@ -29,7 +29,7 @@ public class AlterarSenhaBean {
 	public void recuperarSenha() {
 
 		UsuarioRN usuarioRN = new UsuarioRN();
-		
+
 		if(usuarioRN.buscarPorLogin(this.email) == null) {
 			FacesContext context = FacesContext.getCurrentInstance();
 			FacesMessage facesMessage = new FacesMessage();

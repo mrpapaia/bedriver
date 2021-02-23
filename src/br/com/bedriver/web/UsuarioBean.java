@@ -80,9 +80,9 @@ public class UsuarioBean {
 		return "/admin/principal";
 	}
 
-	public String excluir() {
+	public String excluir(String email) {
 		UsuarioRN usuarioRN = new UsuarioRN();
-		usuarioRN.excluir(this.usuario);
+		usuarioRN.excluir(usuarioRN.buscarPorLogin(email));
 		this.lista = null;
 		return null;
 	}

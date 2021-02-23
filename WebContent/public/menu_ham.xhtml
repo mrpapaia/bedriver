@@ -13,6 +13,17 @@
 				<input id="check-menu" type="checkbox"/> <span></span> <span></span> <span></span>
 				<div id="menu">
 				
+				<h:panelGroup rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}">
+					<div class="div-item" id="container-bt-admin">
+						<h:form>
+							<h:commandLink styleClass="button-admin" action="/admin/principal.xhtml">
+									<h:graphicImage library="imagens" name="ic_admin.png" />
+									<h:outputText value="ADMINISTRAÇÃO" />	
+							</h:commandLink>
+						</h:form>
+					</div>
+				</h:panelGroup>
+				
 				<h:panelGroup rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')||request.isUserInRole('ROLE_USUARIO')}">
 				
 					<c:set var="nomeUsuario" scope="session" value="#{usuarioBean.getNameUser(request)}" />
@@ -74,7 +85,6 @@
 								</h:commandLink>
 							</div>
 						</h:panelGroup>
-
 
 						<div class="divider"></div>
 						<div class="div-item">
