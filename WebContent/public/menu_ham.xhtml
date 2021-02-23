@@ -7,12 +7,17 @@
 	xmlns:c="http://java.sun.com/jstl/core">
 <ui:component>
 
+<f:metadata>
+	<f:event type="preRenderView"
+		listener="#{utilBean.setErrorLogin(!empty param.login_error)}" />
+</f:metadata>
+
 	<div id="menu-hamburguer">
 		<nav role="navigation">
 			<div id="menuToggle">
 				<h:panelGroup>
 					<h:selectBooleanCheckbox id="tas" styleClass="check-menu"
-						type="checkbox" value="#{utilBean.checked}" />
+						type="checkbox" value="#{utilBean.opControl}" />
 					<span></span>
 					<span></span>
 					<span></span>
@@ -60,11 +65,14 @@
 									action="#{request.contextPath}/j_spring_security_check">
 
 									<input placeholder="E-mail" autocomplete="off" id="input-email"
-										type='text' name='j_username' /> <input placeholder="Senha"
+										type='text' name='j_username' />
+									 <input placeholder="Senha"
 										autocomplete="off" id="input-senha" type='password'
-										name='j_password' /> <a
-										href="#{request.contextPath}/public/recuperar_senha.jsf">Esqueci
-										a senha.</a> <input id="input-submit" type="submit" value="Entrar" />
+										name='j_password' /> 
+									<a href="#{request.contextPath}/public/recuperar_senha.jsf">Esqueci
+										a senha.</a>
+										
+									 <input id="input-submit" type="submit" value="Entrar" />
 
 									<a id="new-account"
 										href="#{request.contextPath}/public/usuario.jsf">Não tenho
