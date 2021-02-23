@@ -1,5 +1,6 @@
 package br.com.bedriver.web;
 
+import java.io.Serializable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,8 +19,10 @@ import net.bytebuddy.utility.RandomString;
 
 @ManagedBean(name = "alterarSenhaBean")
 @ViewScoped
-public class AlterarSenhaBean {
+public class AlterarSenhaBean implements Serializable {
 
+	private static final long serialVersionUID = -8218240456882550331L;
+	
 	private Usuario usuario;
 	private String novaSenha;
 	private String confirmarNovaSenha;
@@ -30,7 +33,7 @@ public class AlterarSenhaBean {
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 
-		if(usuarioRN.buscarPorLogin(this.email) == null) {
+		if (usuarioRN.buscarPorLogin(this.email) == null) {
 			FacesContext context = FacesContext.getCurrentInstance();
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
@@ -39,7 +42,7 @@ public class AlterarSenhaBean {
 			context.addMessage("MessageEmailNotFound", facesMessage);
 			return;
 		}
-		
+
 		this.setEmailSend(true);
 		String token = RandomString.make(45);
 
@@ -50,45 +53,53 @@ public class AlterarSenhaBean {
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
-		
+
 		ExecutorService emailExecutor = Executors.newCachedThreadPool();
 		emailExecutor.execute(new Runnable() {
 			@Override
 			public void run() {
-				Utils.sendEmail(email, 
-						"Recuperação de Senha", resetPasswordLink);
+				Utils.sendEmail(email, "Recuperação de Senha", resetPasswordLink);
 			}
 		});
 
 	}
-	
+
 	public String salvarNovaSenha() {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		if (!this.getNovaSenha().equals(this.getConfirmarNovaSenha())) {
-
-			this.setNovaSenha("");
-			this.setConfirmarNovaSenha("");
-
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("As senhas não conferem, tente novamente.");
-			context.addMessage("MessageId", facesMessage);
+			facesMessage.setDetail("A senha não foi confirmada corretamente.");
+			context.addMessage("NewPassNotEquals", facesMessage);
 			return null;
 		}
-		
-		//Utilizando BCrypt na senha
+
+		if (!Utils.isStrongPassword(this.getNovaSenha()) || !Utils.isStrongPassword(this.getConfirmarNovaSenha())) {
+			FacesMessage facesMessage = new FacesMessage();
+			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
+			facesMessage.setSummary("Aviso:");
+			facesMessage.setDetail("Informe uma senha mais forte, contendo: "
+					+ "8 ou mais caracteres, "
+					+ "letras maiúsculas e minúsculas, " 
+					+ "números, " 
+					+ "caracteres especiais.");
+			context.addMessage("NewPasswordNotStrong", facesMessage);
+			return null;
+		}
+
+		// Utilizando BCrypt na senha
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		this.usuario.setSenha(bcpe.encode(this.novaSenha));
-		
+
 		this.usuario.setResetPasswordToken(null);
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
-
-		return "/public/home";
+		
+		return "/index";
 	}
 
 	public boolean isEmailSend() {
@@ -111,7 +122,7 @@ public class AlterarSenhaBean {
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 		Usuario usuario = usuarioRN.get(token);
-		
+
 		if (usuario == null) {
 			return;
 		}

@@ -13,11 +13,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.bedriver.model.Usuario;
 import br.com.bedriver.rn.UsuarioRN;
+import br.com.bedriver.util.Utils;
 
 @ManagedBean(name = "usuarioBean")
 @RequestScoped
 public class UsuarioBean {
-	
+
 	private Usuario usuario = new Usuario();
 	private String confirmarSenha;
 	private List<Usuario> lista;
@@ -26,7 +27,8 @@ public class UsuarioBean {
 	public String novo() {
 		this.destinoSalvar = "usuariosucesso";
 		this.usuario = new Usuario();
-		this.usuario.setAtivo(true);;
+		this.usuario.setAtivo(true);
+		;
 		return "/public/usuario";
 	}
 
@@ -36,25 +38,41 @@ public class UsuarioBean {
 	}
 
 	public String salvar() {
-		
+
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		String senha = this.usuario.getSenha();
 
 		if (!senha.equals(this.confirmarSenha)) {
-			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
-			context.addMessage(null, facesMessage);
+			FacesMessage facesMessage = new FacesMessage();
+			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
+			facesMessage.setSummary("Aviso:");
+			facesMessage.setDetail("A senha não foi confirmada corretamente.");
+			context.addMessage("PasswordNotEquals", facesMessage);
 			return null;
 		}
 		
-		//Utilizando BCrypt na senha
+		if (!Utils.isStrongPassword(senha) || !Utils.isStrongPassword(confirmarSenha)) {
+			FacesMessage facesMessage = new FacesMessage();
+			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
+			facesMessage.setSummary("Aviso:");
+			facesMessage.setDetail("Informe uma senha mais forte, contendo: " 
+					+ "8 ou mais caracteres, "
+					+ "letras maiúsculas e minúsculas, " 
+					+ "números, " 
+					+ "caracteres especiais.");
+			context.addMessage("PasswordNotStrong", facesMessage);
+			return null;
+		}
+
+		// Utilizando BCrypt na senha
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		this.usuario.setSenha(bcpe.encode(senha));
 
-		//Permisssão padrão de usuário
+		// Permisssão padrão de usuário
 		this.usuario.setPermissao("ROLE_USUARIO");
-		
-		//Setando o usuário como ativo
+
+		// Setando o usuário como ativo
 		this.usuario.setAtivo(true);
 
 		UsuarioRN usuarioRN = new UsuarioRN();
@@ -62,7 +80,7 @@ public class UsuarioBean {
 
 		return "/index";
 	}
-	
+
 	public String salvarEditar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 
@@ -73,7 +91,7 @@ public class UsuarioBean {
 			context.addMessage(null, facesMessage);
 			return null;
 		}
-		
+
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
 
@@ -86,7 +104,7 @@ public class UsuarioBean {
 		this.lista = null;
 		return null;
 	}
-	
+
 	public String ativar() {
 		if (this.usuario.isAtivo())
 			this.usuario.setAtivo(false);
@@ -129,13 +147,13 @@ public class UsuarioBean {
 	public void setDestinoSalvar(String destinoSalvar) {
 		this.destinoSalvar = destinoSalvar;
 	}
-	
+
 	public void atribuiPermissao(Usuario usuario, String permissao) {
 		this.usuario = usuario;
-		
-		if(this.usuario.getPermissao().equals("ROLE_ADMINISTRADOR") && permissao.equals("ROLE_ADMINISTRADOR")) {
+
+		if (this.usuario.getPermissao().equals("ROLE_ADMINISTRADOR") && permissao.equals("ROLE_ADMINISTRADOR")) {
 			this.usuario.setPermissao("ROLE_USUARIO");
-		}else if(this.usuario.getPermissao().equals("ROLE_USUARIO") && permissao.equals("ROLE_ADMINISTRADOR")) {
+		} else if (this.usuario.getPermissao().equals("ROLE_USUARIO") && permissao.equals("ROLE_ADMINISTRADOR")) {
 			this.usuario.setPermissao("ROLE_ADMINISTRADOR");
 		}
 
@@ -145,13 +163,13 @@ public class UsuarioBean {
 
 	public String getNameUser(HttpServletRequest request) {
 		String email = request.getRemoteUser();
-		if(email == null) {
+		if (email == null) {
 			return "";
 		}
 		UsuarioRN usuarioRN = new UsuarioRN();
 		String nome = usuarioRN.buscarPorLogin(email).getNome();
 		String nomeSplited[] = nome.split(" ");
-		
+
 		return nomeSplited[0] + " " + nomeSplited[1];
 	}
 }

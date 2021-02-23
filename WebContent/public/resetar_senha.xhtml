@@ -39,23 +39,23 @@
 			<h:panelGrid columns="1">
 				<h:outputLabel value="Senha:" for="senha" styleClass="text" />
 				<h:inputSecret id="senha" label="Senha"
-					value="#{alterarSenhaBean.novaSenha}" size="10" maxlength="10"
+					value="#{alterarSenhaBean.novaSenha}" size="30" maxlength="30"
 					required="true" redisplay="true" styleClass="input" />
 
 				<h:outputLabel value="Confirmar Senha:" for="confirmarsenha"
 					styleClass="text" />
 				<h:inputSecret id="confirmarsenha" label="Confirmar Senha"
-					value="#{alterarSenhaBean.confirmarNovaSenha}" size="10"
-					maxlength="10" required="true" redisplay="true" styleClass="input" />
-				<p:messages for="MessageId" showDetail="true" autoUpdate="true"
-					closable="true" />
+					value="#{alterarSenhaBean.confirmarNovaSenha}" size="30"
+					maxlength="30" required="true" redisplay="true" styleClass="input" />
+				<p:messages for="NewPassNotEquals" showDetail="true"
+					autoUpdate="true" closable="true" />
+				<p:messages for="NewPasswordNotStrong" showDetail="true"
+					autoUpdate="true" closable="true" />
 			</h:panelGrid>
 
 			<div class="button">
 				<p:commandButton action="#{alterarSenhaBean.salvarNovaSenha}"
-					value="Atualizar" styleClass="apply"
-					onclick="alert('Sua senha foi alterada!')"
-					ajax="false">
+					value="Atualizar" styleClass="apply" ajax="false">
 				</p:commandButton>
 			</div>
 

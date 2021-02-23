@@ -12,6 +12,10 @@ import javax.mail.internet.MimeMessage;
 
 public class Utils {
 	
+	public static boolean isStrongPassword(String password) {
+		return password.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+	}
+	
 	public static void sendEmail(String emailReceiver, String titleEmail,
 			String linkPasswordReset) {
 
