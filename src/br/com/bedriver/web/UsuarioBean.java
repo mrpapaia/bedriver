@@ -8,7 +8,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.bedriver.model.Usuario;
@@ -24,92 +23,25 @@ public class UsuarioBean {
 	private List<Usuario> lista;
 	private String destinoSalvar;
 
-	public String novo() {
-		this.destinoSalvar = "usuariosucesso";
-		this.usuario = new Usuario();
-		this.usuario.setAtivo(true);
-		;
-		return "/public/usuario";
-	}
-
-	public String editar() {
-		this.confirmarSenha = this.usuario.getSenha();
-		return "/admin/usuarioEditar";
-	}
-
 	public String salvar() {
-		
-		System.out.println("entrou no salvar");
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		String nome = this.usuario.getNome();
+		String errorMsg = checkErrors();
 		
-		if (nome.equals("")) {
-			
+		if(!errorMsg.equals("")) {
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("Informe um nome válido.");
-			context.addMessage("NameInvalid", facesMessage);
-			return null;
-			
-		} else if(nome.length() < 5){
-			
-			FacesMessage facesMessage = new FacesMessage();
-			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
-			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("Informe um nome com mais de 5 letras.");
-			context.addMessage("NameInvalid", facesMessage);
-			return null;
-			
-		}
-		
-		String email = this.usuario.getEmail();
-		
-		if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
-			
-			FacesMessage facesMessage = new FacesMessage();
-			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
-			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("Informe um e-mail válido.");
-			context.addMessage("InvalidEmail", facesMessage);
-			return null;
-			
-		}
-		
-		String senha = this.usuario.getSenha();
-
-		if (!senha.equals(this.confirmarSenha)) {
-			FacesMessage facesMessage = new FacesMessage();
-			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
-			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("A senha não foi confirmada corretamente.");
-			context.addMessage("PasswordNotEquals", facesMessage);
-			return null;
-		}
-		
-		if (!Utils.isStrongPassword(senha) || !Utils.isStrongPassword(confirmarSenha)) {
-			FacesMessage facesMessage = new FacesMessage();
-			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
-			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("Informe uma senha mais forte, contendo: " 
-					+ "8 ou mais caracteres, "
-					+ "letras maiúsculas e minúsculas, " 
-					+ "números, " 
-					+ "caracteres especiais.");
-			context.addMessage("PasswordNotStrong", facesMessage);
+			facesMessage.setDetail(errorMsg);
+			context.addMessage("InvalidsInputs", facesMessage);
 			return null;
 		}
 
-		// Utilizando BCrypt na senha
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
-		this.usuario.setSenha(bcpe.encode(senha));
-
-		// Permisssão padrão de usuário
+		
+		this.usuario.setSenha(bcpe.encode(this.usuario.getSenha()));
 		this.usuario.setPermissao("ROLE_USUARIO");
-
-		// Setando o usuário como ativo
 		this.usuario.setAtivo(true);
 
 		UsuarioRN usuarioRN = new UsuarioRN();
@@ -117,39 +49,51 @@ public class UsuarioBean {
 
 		return "/index";
 	}
-
-	public String salvarEditar() {
-		FacesContext context = FacesContext.getCurrentInstance();
-
+	
+	public String checkErrors() {
+		
+		String detailsErrors = "";
+		
+		String nome = this.usuario.getNome();
+		String email = this.usuario.getEmail();
 		String senha = this.usuario.getSenha();
-
-		if (!senha.equals(this.confirmarSenha)) {
-			FacesMessage facesMessage = new FacesMessage("A senha nï¿½o foi confirmada corretamente");
-			context.addMessage(null, facesMessage);
-			return null;
+		String confirmSenha = this.confirmarSenha;
+		
+		UsuarioRN usuarioRN = new UsuarioRN();
+		
+		String regexSenha = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
+		
+		if (!senha.matches(regexSenha) || !confirmSenha.matches(regexSenha)) {
+			detailsErrors = "Senha inválida, informe pelo menos: " 
+					+ "8 ou mais caracteres, "
+					+ "letras maiúsculas e minúsculas, " 
+					+ "números, " 
+					+ "caracteres especiais.";
 		}
 
-		UsuarioRN usuarioRN = new UsuarioRN();
-		usuarioRN.salvar(this.usuario);
+		if (!senha.equals(confirmSenha)) {
+			detailsErrors = "A senha não foi confirmada corretamente.";
+		}
 
-		return "/admin/principal";
+		if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
+			detailsErrors = "Informe um e-mail válido.";
+		}else if(usuarioRN.buscarPorLogin(email) != null){
+			detailsErrors = "E-mail já utilizado.";
+		}
+		
+		if (nome.equals("")) {
+			detailsErrors = "Informe um nome.";
+		} else if(nome.length() < 5){
+			detailsErrors = "Informe um nome com mais de 5 letras.";
+		}
+		
+		return detailsErrors;
 	}
 
 	public String excluir(String email) {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.excluir(usuarioRN.buscarPorLogin(email));
 		this.lista = null;
-		return null;
-	}
-
-	public String ativar() {
-		if (this.usuario.isAtivo())
-			this.usuario.setAtivo(false);
-		else
-			this.usuario.setAtivo(true);
-
-		UsuarioRN usuarioRN = new UsuarioRN();
-		usuarioRN.salvar(this.usuario);
 		return null;
 	}
 
@@ -183,19 +127,6 @@ public class UsuarioBean {
 
 	public void setDestinoSalvar(String destinoSalvar) {
 		this.destinoSalvar = destinoSalvar;
-	}
-
-	public void atribuiPermissao(Usuario usuario, String permissao) {
-		this.usuario = usuario;
-
-		if (this.usuario.getPermissao().equals("ROLE_ADMINISTRADOR") && permissao.equals("ROLE_ADMINISTRADOR")) {
-			this.usuario.setPermissao("ROLE_USUARIO");
-		} else if (this.usuario.getPermissao().equals("ROLE_USUARIO") && permissao.equals("ROLE_ADMINISTRADOR")) {
-			this.usuario.setPermissao("ROLE_ADMINISTRADOR");
-		}
-
-		UsuarioRN usuarioRN = new UsuarioRN();
-		usuarioRN.salvar(this.usuario);
 	}
 
 	public String getNameUser(HttpServletRequest request) {

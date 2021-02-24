@@ -12,7 +12,10 @@
 		
 
 		<div style="margin-top: 10%;">
-		<h2>Por favor, digite o seu E-Mail no campo abaixo:</h2>
+		<h:form rendered="#{not alterarSenhaBean.emailSend}">
+			<h2>Por favor, digite o seu E-Mail no campo abaixo:</h2>
+		</h:form>
+		
 			<h:form id="formrec" rendered="#{not alterarSenhaBean.emailSend}">
 				<h:outputLabel value="E-Mail:" for="email" styleClass="text" />
 				<h:panelGroup>
@@ -33,7 +36,7 @@
 			</h:form>
 
 			<h:form rendered="#{alterarSenhaBean.emailSend}">
-				Foi enviado um email para (#{alterarSenhaBean.email}) contendo as instruções.
+				<h2>Foi enviado um email para (#{alterarSenhaBean.email}) contendo as instruções.</h2>
 			</h:form>
 		</div>
 	</ui:define>

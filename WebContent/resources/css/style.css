@@ -34,9 +34,9 @@ html, body {
 }
 
 body {
-	 background-image:url(#{resource['imagens:inicio-bg.gif']}) ;
-	  background-repeat: no-repeat;
-     background-size: 100%;
+	
+	 background-image:url(#{resource['imagens:img_init.png']});
+	 background-repeat: no-repeat;
 }
 
 #header {	
@@ -105,7 +105,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: 90rem;
-	margin-left: -30rem;
+	margin-top: 75rem;
+	margin-left: -50rem;
 }
 

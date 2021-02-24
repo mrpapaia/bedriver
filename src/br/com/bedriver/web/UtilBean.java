@@ -1,10 +1,14 @@
 package br.com.bedriver.web;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
+
+import org.springframework.core.io.ClassPathResource;
 
 @ManagedBean(name = "utilBean")
 @ViewScoped

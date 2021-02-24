@@ -61,6 +61,8 @@
 .img-login {
 	width: 20rem;
 	height: 8rem;
+	margin-left: 8rem;
+	margin-top: -4rem;
 }
 
 #painel-login2 a {
@@ -91,7 +93,7 @@
 	
 #painel-logado {
 	width: 50rem;
-	margin: 1rem 1rem 2rem 2rem;
+	margin: 0 1rem 0.1rem 2rem;
 	display: flex;
 	padding: 1rem;
 	font-family: 'Roboto';
@@ -133,8 +135,8 @@
 
 #menuToggle input {
 	display: block;
-	width: 3rem;
-	height: 2rem;
+	width: 4rem;
+	height: 4rem;
 	position: absolute;
 	top: -7px;
 	left: -5px;
@@ -151,7 +153,7 @@
 	display: block;
 	width: 3.3rem;
 	height: 0.5rem;
-	margin-bottom: 0.5rem;
+	margin-top: 0.5rem;
 	position: relative;
 	background: var(--color-button-background);
 	border-radius: 3px;
@@ -282,7 +284,7 @@
 }
 
 .menu-h-item-sair {
-	margin-top: 9rem;
+	margin-top: 1rem;
 	font-family: Roboto !important;
 	font-size: 2rem;
 	font-weight: 900;
@@ -424,7 +426,7 @@
 @media(min-width: 1300px){
    
     #menu{
-    	height: 120vh;
+    	height: 107.6vh;
     }    
 }
 
