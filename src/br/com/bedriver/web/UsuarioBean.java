@@ -38,9 +38,46 @@ public class UsuarioBean {
 	}
 
 	public String salvar() {
-
+		
+		System.out.println("entrou no salvar");
+		
 		FacesContext context = FacesContext.getCurrentInstance();
 
+		String nome = this.usuario.getNome();
+		
+		if (nome.equals("")) {
+			
+			FacesMessage facesMessage = new FacesMessage();
+			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
+			facesMessage.setSummary("Aviso:");
+			facesMessage.setDetail("Informe um nome válido.");
+			context.addMessage("NameInvalid", facesMessage);
+			return null;
+			
+		} else if(nome.length() < 5){
+			
+			FacesMessage facesMessage = new FacesMessage();
+			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
+			facesMessage.setSummary("Aviso:");
+			facesMessage.setDetail("Informe um nome com mais de 5 letras.");
+			context.addMessage("NameInvalid", facesMessage);
+			return null;
+			
+		}
+		
+		String email = this.usuario.getEmail();
+		
+		if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
+			
+			FacesMessage facesMessage = new FacesMessage();
+			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
+			facesMessage.setSummary("Aviso:");
+			facesMessage.setDetail("Informe um e-mail válido.");
+			context.addMessage("InvalidEmail", facesMessage);
+			return null;
+			
+		}
+		
 		String senha = this.usuario.getSenha();
 
 		if (!senha.equals(this.confirmarSenha)) {

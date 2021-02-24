@@ -25,33 +25,28 @@
 	<div class="container">
 
 		<h:form id="cadastro">
-			<h:inputHidden value="#{usuarioBean.usuario.id}" />
-			<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
-
+		
 			<div id="spam">
 				<h2>Seus Dados</h2>
 			</div>
 
 			<h:panelGrid columns="1">
+			
+				<!-- Nome -->
 				<h:outputLabel value="Nome:" for="nome" styleClass="text" />
-				<h:inputText id="nome" label="Nome"
-					value="#{usuarioBean.usuario.nome}" size="30" maxlength="30"
-					required="true" requiredMessage="Você não tem nome?"
-					styleClass="input">
-					<f:validateLength minimum="5" maximum="30" />
-				</h:inputText>
-
+				<h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}"
+				 	size="30" maxlength="30" styleClass="input" />
+				<p:messages for="NameInvalid" showDetail="true"
+									autoUpdate="true" closable="true" />
+				
+				<!-- Email -->			
 				<h:outputLabel value="E-Mail:" for="email" styleClass="text" />
-				<h:panelGroup>
-					<h:inputText id="email" label="E-Mail"
-						value="#{usuarioBean.usuario.email}" size="50" maxlength="50"
-						required="true" validatorMessage="e-mail inválido"
-						styleClass="input">
-						<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
-					</h:inputText>
-					<h:message for="email" />
-				</h:panelGroup>
+				<h:inputText id="email" label="E-Mail" value="#{usuarioBean.usuario.email}" 
+						size="50" maxlength="50" styleClass="input" />
+				<p:messages for="InvalidEmail" showDetail="true"
+					autoUpdate="true" closable="true" />
 
+				<!-- Senha -->
 				<h:outputLabel value="Senha:" for="senha" styleClass="text" />
 				<h:inputSecret id="senha" label="Senha"
 					value="#{usuarioBean.usuario.senha}" size="30" maxlength="30"
@@ -68,6 +63,7 @@
 				<p:messages for="PasswordNotStrong" showDetail="true"
 					autoUpdate="true" closable="true" />
 
+				<!-- Estado -->
 				<h:outputLabel value="Estado:" for="id_estado" styleClass="text" />
 				<h:selectOneMenu value="#{usuarioBean.usuario.estado}"
 					converter="estadoConverter" styleClass="menu">
