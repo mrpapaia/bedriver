@@ -6,7 +6,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:c="http://java.sun.com/jstl/core">
 <h:head>
-<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="style.css" />
 	<h:outputStylesheet library="css" name="menuH.css" />
 	<title>BEDRIVER</title>
 </h:head>
@@ -14,21 +14,29 @@
 	<div id="div-header">
 		<div id="header">
 			<ui:include src="/public/menu_ham.xhtml" />
-			
+
 			<div id="div-top-buttons">
 				<h:form styleClass="top-buttons">
-					<div class="top-button">						
-						<p:commandButton rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}" styleClass="menu-item" value="Entrar"
-						 >
-						<p:ajax update=":tas"  event="click" listener="#{utilBean.change()}"/>
-							</p:commandButton>
+					<div class="top-button">
+						<p:commandButton
+							rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}"
+							styleClass="menu-item" value="Entrar">
+							<p:ajax update=":tas" event="click"
+								listener="#{utilBean.change()}" />
+						</p:commandButton>
 					</div>
+					<h:form>
+						<h:commandLink>
+							<h:graphicImage library="imagens" name="logo_bedriver.png"
+								style="border:0" styleClass="logo_rodape" />
+						</h:commandLink>
+					</h:form>
 				</h:form>
 			</div>
 		</div>
 
-	</div>	
-	
-	
+	</div>
+
+
 </h:body>
 </html>

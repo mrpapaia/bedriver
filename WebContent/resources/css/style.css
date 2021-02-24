@@ -36,7 +36,7 @@ html, body {
 body {
 	 background-image:url(#{resource['imagens:inicio-bg.gif']}) ;
 	  background-repeat: no-repeat;
-  background-size: 100%;
+     background-size: 100%;
 }
 
 #header {	
@@ -55,13 +55,13 @@ body {
 
 .top-buttons{
 	margin-top:1rem;	
-	margin-left:10rem;
+	margin-left:50rem;
 	width: 70rem;
 	height: 20rem;
 }
 .top-button{
 	margin-top:0.05rem;	
-	margin-left:20rem;
+	margin-left:40rem;
 	display:flex;
 	width: 30rem;
 	
@@ -70,14 +70,14 @@ body {
 .top-button .menu-item {	
 	font-size: 4rem !important;
 	padding:1rem;
-	width: 30rem;
+	width: 22rem;
 	color: var(--color-button-text);
 	background: var(--color-button-background);	
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 3.5px 2.5px 2.5px #c2c2c2;
 	padding:0.5rem;	
 	
-	border-radius: 1rem;		
-	border-color:var(--color-text-in-primary)!important;	
+	border-radius: 15px;		
+	border-color: var(--color-text-in-primary)!important;	
 }
 .top-button .menu-item.ui-state-hover {
     background:  var(--color-primary-dark) !important;
@@ -89,14 +89,23 @@ body {
     border-color: var(--color-text-in-primary)!important;
     color: #ffffff;
     border:1rem !important;
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
 }
 
  .ui-button-text{
 	font-family: Roboto !important;
-	font-size: 1.5rem !important;	
+	font-size: 3rem !important;	
 	text-decoration:none !important;
 	text-align:center;
 	font-style: normal;
 	font-weight: bold;
 }
+
+.logo_rodape {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 90rem;
+	margin-left: -30rem;
+}
+
