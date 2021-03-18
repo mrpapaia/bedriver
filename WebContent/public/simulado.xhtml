@@ -11,9 +11,11 @@
 		<c:set var="title" scope="session" value="Simulado" />
 
 		<h:form styleClass="form-buttons">
-
+			
+		  <p:dataTable id="simulados" var="simulado" value="#{simuladoBean.lista}">
+		  
 			<div class="buttons1">
-				<p:commandButton styleClass="buttons" value="Simulado-GO"
+				<p:commandButton styleClass="buttons" value="#{simulado.estado.uf}"
 					action="pergunta.xhtml" />
 			</div>
 
@@ -41,6 +43,7 @@
 				<p:commandButton styleClass="buttons" value="Simulado-GO"
 					action="pergunta.xhtml" />
 			</div>
+			</p:dataTable>
 
 		</h:form>
 
