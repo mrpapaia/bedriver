@@ -29,8 +29,8 @@ public class BedriverWS {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		List<Historico> retorno = new ArrayList<Historico>();
 		Historico historicoItem = null;
-
-		Usuario usuarioPesquisado = usuarioRN.buscarPorLogin(email);
+		//System.out.println(email);
+		Usuario usuarioPesquisado = usuarioRN.buscarPorLogin("diogothiago@gmail.com");
 		List<UsuarioSimulado> lista =usuarioSimuladoRN.listar(usuarioPesquisado, de, ate);
 		for (UsuarioSimulado usuarioSimulado : lista) {
 			historicoItem = new Historico();

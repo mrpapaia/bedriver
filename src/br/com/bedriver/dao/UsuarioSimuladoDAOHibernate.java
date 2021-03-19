@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import br.com.bedriver.dao.intefaces.UsuarioSimuladoDAO;
 import br.com.bedriver.model.Usuario;
 import br.com.bedriver.model.UsuarioSimulado;
+import br.com.bedriver.util.HibernateUtil;
 
 
 public class UsuarioSimuladoDAOHibernate implements UsuarioSimuladoDAO {
@@ -35,18 +36,19 @@ public class UsuarioSimuladoDAOHibernate implements UsuarioSimuladoDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<UsuarioSimulado> listar(Usuario usuario, Date dataInicio, Date dataFim) {
-		Criteria criteria = this.session.createCriteria(UsuarioSimulado.class);
+		Session session1 = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session1.createCriteria(UsuarioSimulado.class);
 		System.out.println("sdadasddasdasdasdasdasdasdasdasdasdasdasd");
 		if (dataInicio != null && dataFim != null) {
-			criteria.add(Restrictions.between("data_realizado", dataInicio, dataFim));
+			criteria.add(Restrictions.between("dataRealizado", dataInicio, dataFim));
 		} else if (dataInicio != null) {
-			criteria.add(Restrictions.ge("data_realizado", dataInicio));
+			criteria.add(Restrictions.ge("dataRealizado", dataInicio));
 		} else if (dataFim != null) {
-			criteria.add(Restrictions.le("data_realizado", dataFim));
+			criteria.add(Restrictions.le("dataRealizado", dataFim));
 		}
 
-		criteria.add(Restrictions.eq("id_usuario", usuario.getId()));
-		criteria.addOrder(Order.asc("data_realizado"));
+		criteria.add(Restrictions.eq("usuario", usuario));
+		criteria.addOrder(Order.asc("dataRealizado"));
 		return criteria.list();
 	}
 
