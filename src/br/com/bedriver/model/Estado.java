@@ -45,8 +45,8 @@ public class Estado implements Serializable {
 	private List<Infracoe> infracoes;
 
 	//bi-directional many-to-one association to Simulado
-//	@OneToMany(mappedBy="estado")
-	//private List<Simulado> simulados;
+	@OneToMany(mappedBy="estado")
+	private List<Simulado> simulados;
 
 	//bi-directional many-to-one association to Usuario
 	@OneToMany(mappedBy="estado")
@@ -135,8 +135,8 @@ public class Estado implements Serializable {
 		return this.regiao;
 	}
 
-	public void setRegioe(Regiao regioe) {
-		this.regiao = regioe;
+	public void setRegiao(Regiao regiao) {
+		this.regiao = regiao;
 	}
 
 	public List<Infracoe> getInfracoes() {
@@ -160,7 +160,7 @@ public class Estado implements Serializable {
 
 		return infracoe;
 	}
-/*
+
 	public List<Simulado> getSimulados() {
 		return this.simulados;
 	}
@@ -182,7 +182,7 @@ public class Estado implements Serializable {
 
 		return simulado;
 	}
-*/
+
 	public List<Usuario> getUsuarios() {
 		return this.usuarios;
 	}
@@ -216,7 +216,7 @@ public class Estado implements Serializable {
 		result = prime * result + ((infracoes == null) ? 0 : infracoes.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((regiao == null) ? 0 : regiao.hashCode());
-		//result = prime * result + ((simulados == null) ? 0 : simulados.hashCode());
+		result = prime * result + ((simulados == null) ? 0 : simulados.hashCode());
 		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
 		result = prime * result + ((usuarios == null) ? 0 : usuarios.hashCode());
 		return result;
@@ -266,11 +266,11 @@ public class Estado implements Serializable {
 				return false;
 		} else if (!regiao.equals(other.regiao))
 			return false;
-	/*	if (simulados == null) {
+		if (simulados == null) {
 			if (other.simulados != null)
 				return false;
 		} else if (!simulados.equals(other.simulados))
-			return false;*/
+			return false;
 		if (uf == null) {
 			if (other.uf != null)
 				return false;

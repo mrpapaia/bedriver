@@ -16,8 +16,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
-	private Integer id;
+	private int id;
 
 	private boolean ativo;
 
@@ -27,28 +26,28 @@ public class Usuario implements Serializable {
 
 	private String permissao;
 
+	@Column(name="reset_password_token")
+	private String resetPasswordToken;
+
 	private String senha;
 
 	//bi-directional many-to-one association to UsuarioSimulado
-//	@OneToMany(mappedBy="usuario")
-	//private List<UsuarioSimulado> usuarioSimulados;
+	@OneToMany(mappedBy="usuario")
+	private List<UsuarioSimulado> usuarioSimulados;
 
 	//bi-directional many-to-one association to Estado
 	@ManyToOne
 	@JoinColumn(name="id_estado")
 	private Estado estado;
 
-	@Column(name = "reset_password_token")
-	private String resetPasswordToken;
-
 	public Usuario() {
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -84,6 +83,14 @@ public class Usuario implements Serializable {
 		this.permissao = permissao;
 	}
 
+	public String getResetPasswordToken() {
+		return this.resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
+
 	public String getSenha() {
 		return this.senha;
 	}
@@ -92,7 +99,7 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	/*public List<UsuarioSimulado> getUsuarioSimulados() {
+	public List<UsuarioSimulado> getUsuarioSimulados() {
 		return this.usuarioSimulados;
 	}
 
@@ -112,7 +119,7 @@ public class Usuario implements Serializable {
 		usuarioSimulado.setUsuario(null);
 
 		return usuarioSimulado;
-	}*/
+	}
 
 	public Estado getEstado() {
 		return this.estado;
@@ -120,17 +127,6 @@ public class Usuario implements Serializable {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
-	}
-	public boolean isAtivo() {
-		return ativo;
-	}
-	
-	public String getResetPasswordToken() {
-		return resetPasswordToken;
-	}
-
-	public void setResetPasswordToken(String resetPasswordToken) {
-		this.resetPasswordToken = resetPasswordToken;
 	}
 
 	@Override
@@ -140,11 +136,12 @@ public class Usuario implements Serializable {
 		result = prime * result + (ativo ? 1231 : 1237);
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((permissao == null) ? 0 : permissao.hashCode());
 		result = prime * result + ((resetPasswordToken == null) ? 0 : resetPasswordToken.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		result = prime * result + ((usuarioSimulados == null) ? 0 : usuarioSimulados.hashCode());
 		return result;
 	}
 
@@ -169,10 +166,7 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!estado.equals(other.estado))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
@@ -194,14 +188,12 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!senha.equals(other.senha))
 			return false;
+		if (usuarioSimulados == null) {
+			if (other.usuarioSimulados != null)
+				return false;
+		} else if (!usuarioSimulados.equals(other.usuarioSimulados))
+			return false;
 		return true;
 	}
-	
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", ativo=" + ativo + ", email=" + email + ", nome=" + nome + ", permissao="
-				+ permissao + ", senha=" + senha + ", estado=" + estado.getNome() + ", resetPasswordToken=" + resetPasswordToken
-				+ "]";
-	}
-	
+
 }

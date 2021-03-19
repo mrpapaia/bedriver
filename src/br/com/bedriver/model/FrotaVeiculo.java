@@ -15,10 +15,10 @@ public class FrotaVeiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer id;
+	private int id;
 
 	@Column(name="qtd_veiculos")
-	private Integer qtdVeiculos;
+	private int qtdVeiculos;
 
 	private String veiculo;
 
@@ -34,19 +34,19 @@ public class FrotaVeiculo implements Serializable {
 	public FrotaVeiculo() {
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Integer getQtdVeiculos() {
+	public int getQtdVeiculos() {
 		return this.qtdVeiculos;
 	}
 
-	public void setQtdVeiculos(Integer qtdVeiculos) {
+	public void setQtdVeiculos(int qtdVeiculos) {
 		this.qtdVeiculos = qtdVeiculos;
 	}
 
@@ -80,7 +80,8 @@ public class FrotaVeiculo implements Serializable {
 		int result = 1;
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
-		result = prime * result + ((qtdVeiculos == null) ? 0 : qtdVeiculos.hashCode());
+		result = prime * result + id;
+		result = prime * result + qtdVeiculos;
 		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
 		return result;
 	}
@@ -104,10 +105,9 @@ public class FrotaVeiculo implements Serializable {
 				return false;
 		} else if (!estado.equals(other.estado))
 			return false;
-		if (qtdVeiculos == null) {
-			if (other.qtdVeiculos != null)
-				return false;
-		} else if (!qtdVeiculos.equals(other.qtdVeiculos))
+		if (id != other.id)
+			return false;
+		if (qtdVeiculos != other.qtdVeiculos)
 			return false;
 		if (veiculo == null) {
 			if (other.veiculo != null)

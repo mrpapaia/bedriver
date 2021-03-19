@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- * The persistent class for the regioes database table.
+ * The persistent class for the regiaos database table.
  * 
  */
 @Entity
@@ -16,7 +16,7 @@ public class Regiao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer id;
+	private int id;
 
 	private String nome;
 
@@ -27,11 +27,11 @@ public class Regiao implements Serializable {
 	public Regiao() {
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -53,14 +53,14 @@ public class Regiao implements Serializable {
 
 	public Estado addEstado(Estado estado) {
 		getEstados().add(estado);
-		estado.setRegioe(this);
+		estado.setRegiao(this);
 
 		return estado;
 	}
 
 	public Estado removeEstado(Estado estado) {
 		getEstados().remove(estado);
-		estado.setRegioe(null);
+		estado.setRegiao(null);
 
 		return estado;
 	}
@@ -70,7 +70,7 @@ public class Regiao implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((estados == null) ? 0 : estados.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
@@ -89,10 +89,7 @@ public class Regiao implements Serializable {
 				return false;
 		} else if (!estados.equals(other.estados))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
@@ -101,7 +98,5 @@ public class Regiao implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 
 }

@@ -32,8 +32,8 @@
 		<mapping class="br.com.bedriver.model.Regiao" />
 		<mapping class="br.com.bedriver.model.Simulado" />
 		<mapping class="br.com.bedriver.model.Pergunta" />
-		<!--<mapping class="br.com.bedriver.model.CategoriaPergunta" /> 
-		<mapping class="br.com.bedriver.model.UsuarioSimulado" /> -->
+		<mapping class="br.com.bedriver.model.CategoriaPergunta" /> 
+		<mapping class="br.com.bedriver.model.UsuarioSimulado" />
 		<mapping class="br.com.bedriver.model.Usuario" /> 
 	</session-factory>
 </hibernate-configuration>

@@ -15,15 +15,13 @@ public class CondutoresHab implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer id;
-
-	
+	private int id;
 
 	@Column(name="faixa_etaria")
 	private String faixaEtaria;
 
 	@Column(name="qtd_habilitados")
-	private Integer qtdHabilitados;
+	private int qtdHabilitados;
 
 	private String sexo;
 
@@ -40,17 +38,13 @@ public class CondutoresHab implements Serializable {
 	public CondutoresHab() {
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-
-	
-
-	
 
 	public String getFaixaEtaria() {
 		return this.faixaEtaria;
@@ -60,11 +54,11 @@ public class CondutoresHab implements Serializable {
 		this.faixaEtaria = faixaEtaria;
 	}
 
-	public Integer getQtdHabilitados() {
+	public int getQtdHabilitados() {
 		return this.qtdHabilitados;
 	}
 
-	public void setQtdHabilitados(Integer qtdHabilitados) {
+	public void setQtdHabilitados(int qtdHabilitados) {
 		this.qtdHabilitados = qtdHabilitados;
 	}
 
@@ -96,11 +90,11 @@ public class CondutoresHab implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		
 		result = prime * result + ((categoriaCnh == null) ? 0 : categoriaCnh.hashCode());
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((faixaEtaria == null) ? 0 : faixaEtaria.hashCode());
-		result = prime * result + ((qtdHabilitados == null) ? 0 : qtdHabilitados.hashCode());
+		result = prime * result + id;
+		result = prime * result + qtdHabilitados;
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
 		return result;
 	}
@@ -114,7 +108,6 @@ public class CondutoresHab implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CondutoresHab other = (CondutoresHab) obj;
-		
 		if (categoriaCnh == null) {
 			if (other.categoriaCnh != null)
 				return false;
@@ -130,10 +123,9 @@ public class CondutoresHab implements Serializable {
 				return false;
 		} else if (!faixaEtaria.equals(other.faixaEtaria))
 			return false;
-		if (qtdHabilitados == null) {
-			if (other.qtdHabilitados != null)
-				return false;
-		} else if (!qtdHabilitados.equals(other.qtdHabilitados))
+		if (id != other.id)
+			return false;
+		if (qtdHabilitados != other.qtdHabilitados)
 			return false;
 		if (sexo == null) {
 			if (other.sexo != null)

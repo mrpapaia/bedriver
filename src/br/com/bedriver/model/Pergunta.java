@@ -16,11 +16,11 @@ public class Pergunta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer id;
+	private int id;
 
 	private String alternativas;
 
-	private Integer resposta;
+	private int resposta;
 
 	private String texto;
 
@@ -36,11 +36,11 @@ public class Pergunta implements Serializable {
 	public Pergunta() {
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -52,11 +52,11 @@ public class Pergunta implements Serializable {
 		this.alternativas = alternativas;
 	}
 
-	public Integer getResposta() {
+	public int getResposta() {
 		return this.resposta;
 	}
 
-	public void setResposta(Integer resposta) {
+	public void setResposta(int resposta) {
 		this.resposta = resposta;
 	}
 
@@ -90,8 +90,8 @@ public class Pergunta implements Serializable {
 		int result = 1;
 		result = prime * result + ((alternativas == null) ? 0 : alternativas.hashCode());
 		result = prime * result + ((categoriaPergunta == null) ? 0 : categoriaPergunta.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((resposta == null) ? 0 : resposta.hashCode());
+		result = prime * result + id;
+		result = prime * result + resposta;
 		result = prime * result + ((simulados == null) ? 0 : simulados.hashCode());
 		result = prime * result + ((texto == null) ? 0 : texto.hashCode());
 		return result;
@@ -116,15 +116,9 @@ public class Pergunta implements Serializable {
 				return false;
 		} else if (!categoriaPergunta.equals(other.categoriaPergunta))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
-		if (resposta == null) {
-			if (other.resposta != null)
-				return false;
-		} else if (!resposta.equals(other.resposta))
+		if (resposta != other.resposta)
 			return false;
 		if (simulados == null) {
 			if (other.simulados != null)

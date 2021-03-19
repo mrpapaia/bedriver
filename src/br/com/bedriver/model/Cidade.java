@@ -16,7 +16,7 @@ public class Cidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer id;
+	private int id;
 
 	private String nome;
 
@@ -32,11 +32,11 @@ public class Cidade implements Serializable {
 	public Cidade() {
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -84,7 +84,7 @@ public class Cidade implements Serializable {
 		int result = 1;
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((frotaVeiculos == null) ? 0 : frotaVeiculos.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
@@ -108,10 +108,7 @@ public class Cidade implements Serializable {
 				return false;
 		} else if (!frotaVeiculos.equals(other.frotaVeiculos))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (nome == null) {
 			if (other.nome != null)

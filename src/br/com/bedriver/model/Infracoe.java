@@ -15,11 +15,11 @@ public class Infracoe implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer id;
+	private int id;
 
 	private String codigo;
 
-	private Integer quantidade;
+	private int quantidade;
 
 	//bi-directional many-to-one association to Estado
 	@ManyToOne
@@ -29,11 +29,11 @@ public class Infracoe implements Serializable {
 	public Infracoe() {
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -45,11 +45,11 @@ public class Infracoe implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public Integer getQuantidade() {
+	public int getQuantidade() {
 		return this.quantidade;
 	}
 
-	public void setQuantidade(Integer quantidade) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
@@ -67,8 +67,8 @@ public class Infracoe implements Serializable {
 		int result = 1;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((quantidade == null) ? 0 : quantidade.hashCode());
+		result = prime * result + id;
+		result = prime * result + quantidade;
 		return result;
 	}
 
@@ -91,15 +91,9 @@ public class Infracoe implements Serializable {
 				return false;
 		} else if (!estado.equals(other.estado))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
-		if (quantidade == null) {
-			if (other.quantidade != null)
-				return false;
-		} else if (!quantidade.equals(other.quantidade))
+		if (quantidade != other.quantidade)
 			return false;
 		return true;
 	}

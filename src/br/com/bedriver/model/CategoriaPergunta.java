@@ -16,7 +16,7 @@ public class CategoriaPergunta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer id;
+	private int id;
 
 	private String descricao;
 
@@ -29,11 +29,11 @@ public class CategoriaPergunta implements Serializable {
 	public CategoriaPergunta() {
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -80,7 +80,7 @@ public class CategoriaPergunta implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((perguntas == null) ? 0 : perguntas.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
@@ -100,10 +100,7 @@ public class CategoriaPergunta implements Serializable {
 				return false;
 		} else if (!descricao.equals(other.descricao))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (perguntas == null) {
 			if (other.perguntas != null)

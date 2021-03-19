@@ -13,45 +13,48 @@ public class UsuarioSimuladoPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="id_usuario", insertable=false, updatable=false)
-	private Integer idUsuario;
+	private int idUsuario;
 
 	@Column(name="id_simulados", insertable=false, updatable=false)
-	private Integer idSimulados;
+	private int idSimulados;
 
 	public UsuarioSimuladoPK() {
 	}
-	public Integer getIdUsuario() {
+	public int getIdUsuario() {
 		return this.idUsuario;
 	}
-	public void setIdUsuario(Integer idUsuario) {
+	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	public Integer getIdSimulados() {
+	public int getIdSimulados() {
 		return this.idSimulados;
 	}
-	public void setIdSimulados(Integer idSimulados) {
+	public void setIdSimulados(int idSimulados) {
 		this.idSimulados = idSimulados;
 	}
 
-	public boolean equals(Object other) {
-		if (this == other) {
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		}
-		if (!(other instanceof UsuarioSimuladoPK)) {
+		if (obj == null)
 			return false;
-		}
-		UsuarioSimuladoPK castOther = (UsuarioSimuladoPK)other;
-		return 
-			(this.idUsuario == castOther.idUsuario)
-			&& (this.idSimulados == castOther.idSimulados);
+		if (getClass() != obj.getClass())
+			return false;
+		UsuarioSimuladoPK other = (UsuarioSimuladoPK) obj;
+		if (idSimulados != other.idSimulados)
+			return false;
+		if (idUsuario != other.idUsuario)
+			return false;
+		return true;
 	}
 
+	@Override
 	public int hashCode() {
-		final Integer prime = 31;
-		Integer hash = 17;
-		hash = hash * prime + this.idUsuario;
-		hash = hash * prime + this.idSimulados;
-		
-		return hash;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idSimulados;
+		result = prime * result + idUsuario;
+		return result;
 	}
 }
