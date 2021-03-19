@@ -7,6 +7,7 @@ import br.com.bedriver.dao.InfracaoDAOHIbernate;
 import br.com.bedriver.dao.PerguntaDAOHibernate;
 import br.com.bedriver.dao.SimuladoDAOHibernate;
 import br.com.bedriver.dao.UsuarioDAOHibernate;
+import br.com.bedriver.dao.UsuarioSimuladoDAOHibernate;
 import br.com.bedriver.dao.intefaces.CondutorDAO;
 import br.com.bedriver.dao.intefaces.EstadoDAO;
 import br.com.bedriver.dao.intefaces.FrotaDAO;
@@ -14,6 +15,7 @@ import br.com.bedriver.dao.intefaces.InfracaoDAO;
 import br.com.bedriver.dao.intefaces.PerguntaDAO;
 import br.com.bedriver.dao.intefaces.SimuladoDAO;
 import br.com.bedriver.dao.intefaces.UsuarioDAO;
+import br.com.bedriver.dao.intefaces.UsuarioSimuladoDAO;
 
 
 public class DAOFactory {
@@ -36,12 +38,18 @@ public class DAOFactory {
 		return infracaoDAO;
 	}
 	
-	// Factory Usuário
+	// Factory Usuï¿½rio
 	
 	public static UsuarioDAO criarUsuarioDAO() {
 		UsuarioDAOHibernate usuarioDAO = new UsuarioDAOHibernate();
 		usuarioDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return usuarioDAO;
+	}
+	
+	public static UsuarioSimuladoDAO criarUsuarioSimuladoDAO() {
+		UsuarioSimuladoDAOHibernate usuarioSimuladoDAO = new UsuarioSimuladoDAOHibernate();
+		usuarioSimuladoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return usuarioSimuladoDAO;
 	}
 	
 	public static EstadoDAO criarEstadoDAO() {

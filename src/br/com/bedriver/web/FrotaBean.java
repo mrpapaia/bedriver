@@ -8,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 
 import br.com.bedriver.model.FrotaVeiculo;
 import br.com.bedriver.rn.FrotaRN;
+import br.com.bedriver.rn.UsuarioRN;
 
 @ManagedBean(name = "frotaBean")
 @RequestScoped
@@ -40,6 +41,8 @@ public class FrotaBean {
 	}
 
 	public List<FrotaVeiculo> getLista() {
+		
+		
 		if (this.lista == null) {			
 			FrotaRN frotaRN = new FrotaRN();			
 			this.lista = frotaRN.listar();		}

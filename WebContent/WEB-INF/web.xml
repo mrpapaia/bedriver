@@ -49,6 +49,23 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	
+<!-- WEBSERVICE-->
+	<listener>
+		<listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+	</listener>
+	<servlet>
+		<description>Webservices do BEDRIVER</description>
+		<display-name>bedriverWS</display-name>
+		<servlet-name>bedriverWS</servlet-name>
+		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bedriverWS</servlet-name>
+		<url-pattern>/webservice/bedriverWS</url-pattern>
+	</servlet-mapping>
 	 
 	<welcome-file-list>
 		<welcome-file>index.jsf</welcome-file>
