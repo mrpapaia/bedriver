@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- * The persistent class for the regiaos database table.
+ * The persistent class for the regioes database table.
  * 
  */
 @Entity
@@ -21,7 +21,7 @@ public class Regiao implements Serializable {
 	private String nome;
 
 	//bi-directional many-to-one association to Estado
-	@OneToMany(mappedBy="regiao")
+	@OneToMany(mappedBy="regioe")
 	private List<Estado> estados;
 
 	public Regiao() {
@@ -53,14 +53,14 @@ public class Regiao implements Serializable {
 
 	public Estado addEstado(Estado estado) {
 		getEstados().add(estado);
-		estado.setRegiao(this);
+		estado.setRegioe(this);
 
 		return estado;
 	}
 
 	public Estado removeEstado(Estado estado) {
 		getEstados().remove(estado);
-		estado.setRegiao(null);
+		estado.setRegioe(null);
 
 		return estado;
 	}

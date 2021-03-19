@@ -38,7 +38,7 @@ public class Estado implements Serializable {
 	//bi-directional many-to-one association to Regioe
 	@ManyToOne
 	@JoinColumn(name="id_regiao")
-	private Regiao regiao;
+	private Regiao regioe;
 
 	//bi-directional many-to-one association to Infracoe
 	@OneToMany(mappedBy="estado")
@@ -131,12 +131,12 @@ public class Estado implements Serializable {
 		this.frotaVeiculo = frotaVeiculo;
 	}
 
-	public Regiao getRegiao() {
-		return this.regiao;
+	public Regiao getRegioe() {
+		return this.regioe;
 	}
 
-	public void setRegiao(Regiao regiao) {
-		this.regiao = regiao;
+	public void setRegioe(Regiao regioe) {
+		this.regioe = regioe;
 	}
 
 	public List<Infracoe> getInfracoes() {
@@ -215,7 +215,7 @@ public class Estado implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((infracoes == null) ? 0 : infracoes.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((regiao == null) ? 0 : regiao.hashCode());
+		result = prime * result + ((regioe == null) ? 0 : regioe.hashCode());
 		result = prime * result + ((simulados == null) ? 0 : simulados.hashCode());
 		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
 		result = prime * result + ((usuarios == null) ? 0 : usuarios.hashCode());
@@ -261,10 +261,10 @@ public class Estado implements Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (regiao == null) {
-			if (other.regiao != null)
+		if (regioe == null) {
+			if (other.regioe != null)
 				return false;
-		} else if (!regiao.equals(other.regiao))
+		} else if (!regioe.equals(other.regioe))
 			return false;
 		if (simulados == null) {
 			if (other.simulados != null)

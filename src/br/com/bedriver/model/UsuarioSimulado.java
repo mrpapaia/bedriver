@@ -15,8 +15,8 @@ import java.util.Date;
 public class UsuarioSimulado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private UsuarioSimuladoPK id;
+	@Id
+	private int id;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_realizado")
@@ -26,22 +26,22 @@ public class UsuarioSimulado implements Serializable {
 
 	//bi-directional many-to-one association to Simulado
 	@ManyToOne
-	@JoinColumn(name="id_simulados",referencedColumnName = "id",insertable=false, updatable=false)
+	@JoinColumn(name="id_simulados")
 	private Simulado simulado;
 
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne
-	@JoinColumn(name="id_usuario",referencedColumnName = "id",insertable=false, updatable=false)
+	@JoinColumn(name="id_usuario")
 	private Usuario usuario;
 
 	public UsuarioSimulado() {
 	}
 
-	public UsuarioSimuladoPK getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(UsuarioSimuladoPK id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -82,7 +82,7 @@ public class UsuarioSimulado implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((dataRealizado == null) ? 0 : dataRealizado.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		result = prime * result + nota;
 		result = prime * result + ((simulado == null) ? 0 : simulado.hashCode());
 		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
@@ -103,10 +103,7 @@ public class UsuarioSimulado implements Serializable {
 				return false;
 		} else if (!dataRealizado.equals(other.dataRealizado))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (nota != other.nota)
 			return false;

@@ -12,7 +12,6 @@
 		<class>br.com.bedriver.model.Regiao</class>
 		<class>br.com.bedriver.model.Simulado</class>
 		<class>br.com.bedriver.model.UsuarioSimulado</class>
-		<class>br.com.bedriver.model.UsuarioSimuladoPK</class>
 		<class>br.com.bedriver.model.Usuario</class>
 	</persistence-unit>
 </persistence>
