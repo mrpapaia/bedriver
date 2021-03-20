@@ -2,6 +2,7 @@ package br.com.bedriver.web;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.PhaseId;
@@ -19,12 +21,17 @@ import javax.faces.event.ValueChangeEvent;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.component.selectoneradio.SelectOneRadio;
 import org.primefaces.event.data.PageEvent;
+import org.springframework.util.SystemPropertyUtils;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 import br.com.bedriver.model.Pergunta;
+import br.com.bedriver.model.Usuario;
+import br.com.bedriver.model.UsuarioSimulado;
 import br.com.bedriver.rn.PerguntaRN;
 import br.com.bedriver.rn.SimuladoRN;
+import br.com.bedriver.rn.UsuarioRN;
+import br.com.bedriver.rn.UsuarioSimuladoRN;
 
 @ManagedBean(name = "perguntaBean")
 @SessionScoped
@@ -33,7 +40,7 @@ public class PerguntaBean {
 	private List<Pergunta> lista;
 	private List<String> alternativas;
 	private int indexPergunta;
-	private Integer[] resultados;
+	private int[] resultados;
 	private int idSimuladoAtual;
 
 	public List<Pergunta> getLista(int idSimuladoEscolhido) {
@@ -42,7 +49,7 @@ public class PerguntaBean {
 			System.out.println("VAZIO");
 			SimuladoRN simuladoRN = new SimuladoRN();
 			this.lista = simuladoRN.buscar(idSimuladoEscolhido).getPerguntas();
-			resultados = new Integer[lista.size()];
+			resultados = new int[lista.size()];
 		}
 
 		this.idSimuladoAtual = idSimuladoEscolhido;
@@ -72,9 +79,9 @@ public class PerguntaBean {
 
 		String[] alternativa = this.pergunta.getAlternativas().split(";");
 		alternativas = Arrays.asList(alternativa);
-		
+
 		System.out.println("RESP SALVA: " + resultados[indexPergunta]);
-		
+
 		return alternativas;
 	}
 
@@ -83,7 +90,7 @@ public class PerguntaBean {
 	}
 
 	public void getTeste(AjaxBehaviorEvent event) {
-		
+
 		try {
 
 			SelectOneRadio sor = (SelectOneRadio) event.getComponent();
@@ -91,16 +98,55 @@ public class PerguntaBean {
 			int resposta = pergunta.getResposta();
 			int selecionado = alternativas.indexOf(sor.getSubmittedValue().toString());
 
-			resultados[indexPergunta] = selecionado;
-			
-			System.out.println("pergunta id: " + indexPergunta + 
-					" alternativa: " + selecionado + 
-					" resposta: " + resposta + 
-					" acertou? " + (selecionado == resposta));
-			
+			resultados[indexPergunta] = selecionado + 1;
+
+			System.out.println("pergunta id: " + indexPergunta + " alternativa: " + selecionado + " resposta: "
+					+ resposta + " acertou? " + (selecionado == resposta));
+
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("exeção");
 		}
+
+	}
+
+	public Usuario getUsuarioLogado() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext external = context.getExternalContext();
+		String login = external.getRemoteUser();
+		if (login != null) {
+			UsuarioRN usuarioRN = new UsuarioRN();
+			Usuario usuario = usuarioRN.buscarPorLogin(login);
+			return usuario;
+		}
+		return null;
+	}
+
+	public String finalizarSimulado() {
+
+		UsuarioSimulado usuarioSimulado = new UsuarioSimulado();
+		SimuladoRN simuladoRN = new SimuladoRN();
+
+		int nota = 0;
+
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(
+					"Pergunta: " + (i+1) + " Marcada: " + resultados[i] + " Resposta: " + (lista.get(i).getResposta() + 1)
+							+ " Acertou? " + (resultados[i] == lista.get(i).getResposta() + 1 ? "Sim" : "N�o"));
+			
+			if (resultados[i] == lista.get(i).getResposta() + 1) {
+				nota += 1;
+			}
+		}
+
+		usuarioSimulado.setUsuario(getUsuarioLogado());
+		usuarioSimulado.setSimulado(simuladoRN.buscar(idSimuladoAtual));
+		usuarioSimulado.setNota(nota);
+		usuarioSimulado.setDataRealizado(new Date());
+
+		UsuarioSimuladoRN rn = new UsuarioSimuladoRN();
+		rn.salvar(usuarioSimulado);
+
+		return "/public/histsimulado.xhtml";
 
 	}
 
