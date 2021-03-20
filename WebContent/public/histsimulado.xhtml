@@ -18,9 +18,9 @@
 
 		<h:panelGroup id="card">
 			<h:form id="form">
-				<p:dataTable id="simulados" var="simulado" value="#{simuladoBean.lista}"
-					rowKey="#{frota.id}" rows="13" paginator="true"
-					paginatorPosition="bottom"
+				<p:dataTable id="simulados" var="simulado"
+					value="#{simuladoBean.lista}" rowKey="#{frota.id}" rows="13"
+					paginator="true" paginatorPosition="bottom"
 					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
 					<p:column headerText="Data" styleClass="columnList">
@@ -35,6 +35,20 @@
 					</p:column>
 
 				</p:dataTable>
+
+				<h:form>
+					<h:outputLabel value="Data Inicial: " />
+					<p:calendar value="#{simuladoBean.dataInicialRelatorio}"
+						pattern="dd/MM/yyyy" />
+					<h:outputLabel value="Data Final: " />
+					<p:calendar value="#{simuladoBean.dataFinalRelatorio}"
+						pattern="dd/MM/yyyy" />
+					<p:commandButton value="Imprimir" ajax="false">
+						<p:fileDownload value="#{simuladoBean.arquivoRetorno}" />
+					</p:commandButton>
+
+				</h:form>
+
 			</h:form>
 		</h:panelGroup>
 
