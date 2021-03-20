@@ -1,5 +1,6 @@
 package br.com.bedriver.web;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -33,13 +34,14 @@ public class PerguntaBean {
 	private List<String> alternativas;
 	private int indexPergunta;
 	private String aux;
-	private HashMap<Integer, Integer> resultados = new HashMap<>();
-
+//	private HashMap<Integer, Integer> resultados = new HashMap<>();
+	private Integer []resultados1 = new Integer[30];
 	public List<Pergunta> getLista() {
 
 		if (this.lista == null) {
 			PerguntaRN perguntaRN = new PerguntaRN();
 			this.lista = perguntaRN.listar();
+			
 		}
 		return this.lista;
 	}
@@ -70,9 +72,12 @@ public class PerguntaBean {
 
 		alternativas = Arrays.asList(alternativa);
 		
-		Integer altSave = resultados.get(pergunta.getId());
+	//	Integer altSave = resultados.get(pergunta.getId());
 
-		System.out.println("Valor altSave: " + altSave);
+		//System.out.println("Valor altSave: " + altSave);
+	
+			System.out.println("lista: "+ resultados1[pergunta.getId()]);
+		
 
 		return  alternativas;
 	}
@@ -88,8 +93,8 @@ public class PerguntaBean {
 		int resposta = pergunta.getResposta();
 		int selecionado = alternativas.indexOf(sor.getSubmittedValue().toString());
 		
-		resultados.put(idPergunta, selecionado);
-
+	//	resultados.put(idPergunta, selecionado);
+		resultados1[idPergunta]=selecionado;
 		System.out.println("pergunta id: " + idPergunta
 				+ " alternativa: " + selecionado 
 				+ " resposta: " + resposta 
