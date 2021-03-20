@@ -1,11 +1,13 @@
 package br.com.bedriver.web;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
@@ -24,13 +26,14 @@ import br.com.bedriver.model.Pergunta;
 import br.com.bedriver.rn.PerguntaRN;
 
 @ManagedBean(name = "perguntaBean")
-@RequestScoped
+@SessionScoped
 public class PerguntaBean {
 	private Pergunta pergunta = new Pergunta();
 	private List<Pergunta> lista;
 	private List<String> alternativas;
 	private int indexPergunta;
 	private String aux;
+	private HashMap<Integer, Integer> resultados = new HashMap<>();
 
 	public List<Pergunta> getLista() {
 
@@ -66,6 +69,10 @@ public class PerguntaBean {
 		String[] alternativa = aux.split(";");
 
 		alternativas = Arrays.asList(alternativa);
+		
+		Integer altSave = resultados.get(pergunta.getId());
+
+		System.out.println("Valor altSave: " + altSave);
 
 		return  alternativas;
 	}
@@ -81,6 +88,8 @@ public class PerguntaBean {
 		int resposta = pergunta.getResposta();
 		int selecionado = alternativas.indexOf(sor.getSubmittedValue().toString());
 		
+		resultados.put(idPergunta, selecionado);
+
 		System.out.println("pergunta id: " + idPergunta
 				+ " alternativa: " + selecionado 
 				+ " resposta: " + resposta 
