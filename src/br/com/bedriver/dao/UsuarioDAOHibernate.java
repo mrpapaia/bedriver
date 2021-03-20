@@ -47,10 +47,10 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 	}
 
 	public Usuario buscarPorLogin(String login) {
-		Session session1 = HibernateUtil.getSessionFactory().openSession();
+		//Session session1 = HibernateUtil.getSessionFactory().openSession();
 		String hql = "select u from Usuario u where u.email = :login";
 		
-		Query consulta = session1.createQuery(hql);
+		Query consulta = this.session.createQuery(hql);
 		consulta.setString("login", login);
 		return (Usuario) consulta.uniqueResult();
 	}

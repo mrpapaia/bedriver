@@ -2,6 +2,8 @@ package br.com.bedriver.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -19,6 +21,8 @@ public class Pergunta implements Serializable {
 	private int id;
 
 	private String alternativas;
+	
+	//private List<String> alternativasLista;
 
 	private int resposta;
 
@@ -83,6 +87,18 @@ public class Pergunta implements Serializable {
 	public void setSimulados(List<Simulado> simulados) {
 		this.simulados = simulados;
 	}
+
+	/*public List<String> getAlternativasLista() {
+		String[] alternativa = alternativas.split(";");
+
+		alternativasLista = Arrays.asList(alternativa);
+
+		return alternativasLista;
+	}
+
+	public void setAlternativasLista(List<String> alternativasLista) {
+		this.alternativasLista = alternativasLista;
+	} */
 
 	@Override
 	public int hashCode() {

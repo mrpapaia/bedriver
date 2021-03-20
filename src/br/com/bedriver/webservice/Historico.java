@@ -7,8 +7,6 @@ public class Historico {
 	private String nome;
 	private Date dataRealizado;
 	
-	
-	
 	public Historico() {
 		
 	}

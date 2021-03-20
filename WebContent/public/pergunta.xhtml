@@ -10,6 +10,10 @@
 </h:head>
 <h:body>
 
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{perguntaBean.setPergunta(0)}" />
+	</f:metadata>
+
 	<div id="header">
 		<h:form>
 			<p:commandLink onclick="history.go(-1)">
@@ -28,56 +32,45 @@
 			<h:inputHidden value="#{usuarioBean.usuario.id}" />
 			<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
 
-			<div id="spam">
-				<h2>QUESTÕES</h2>
-			</div>
+			<p:dataTable id="pergunta" var="pergunta" rows="1"
+				value="#{perguntaBean.lista}" rowKey="#{pergunta.id}"
+				paginator="true" paginatorPosition="bottom"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
-			<h:panelGrid columns="1">
+				
+				<p:ajax event="page" listener="#{perguntaBean.onPage}" />
 
-				<div id="spam">
-					<h3>Questões 1</h3>
-				</div>
+				<p:column headerText="Questões">
+					<h:outputText id="spam" value="Questão #{pergunta.id}" />
 
-				<div id="questão">
-					<p>#{simuladoBean.simuladoEscolhido.perguntas.get(28).alternativas}</p>
-				</div>
+					<p>#{pergunta.texto}</p>
 
+					<h:form>
 
-				<h:form>
+						<p:selectOneRadio id="alternativa" value="#{pergunta.alternativas}"
+							layout="grid" columns="1" styleClass="grid-radio">
+							<f:selectItems value="#{perguntaBean.getAlternativas(pergunta.alternativas)}" var="c"
+								itemLabel="#{alternativas}" itemValue="#{alternativas}" />
+						</p:selectOneRadio>
 
-					<p:selectOneRadio id="city" value="#{radioView.city}" layout="grid"
-						columns="1" styleClass="grid-radio">
-						<f:selectItems value="#{radioView.cities}" var="c"
-							itemLabel="#{city}" itemValue="#{city}" />
-					</p:selectOneRadio>
+					</h:form>
 
-				</h:form>
+					<div class="container-buttons">
+						<h:form>
+							<h:graphicImage library="imagens" name="icon_!.png"
+								style="border:0" styleClass="icon1" />
+						</h:form>
 
-			</h:panelGrid>
+						<div class="text-h4">
+							<h4>Importante!</h4>
+							<h4>Não deixe as questões em branco</h4>
+						</div>
 
-			<div class="borda"></div>
+					</div>
 
-			<div class="container-buttons">
-				<h:form>
-					<h:graphicImage library="imagens" name="icon_!.png"
-						style="border:0" styleClass="icon1" />
-				</h:form>
+				</p:column>
 
-				<div class="text-h4">
-					<h4>Importante!</h4>
-					<h4>Não deixe as questões em branco</h4>
-				</div>
-
-				<div class="button">
-					<p:commandButton styleClass="apply" value="Anterior"
-						action="pergunta.xhtml" />
-				</div>
-
-				<div class="button">
-					<p:commandButton styleClass="apply" value="Próxima"
-						action="pergunta.xhtml" />
-				</div>
-			</div>
+			</p:dataTable>
 		</h:form>
 
 	</div>

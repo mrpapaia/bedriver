@@ -36,8 +36,8 @@ public class UsuarioSimuladoDAOHibernate implements UsuarioSimuladoDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<UsuarioSimulado> listar(Usuario usuario, Date dataInicio, Date dataFim) {
-		Session session1 = HibernateUtil.getSessionFactory().openSession();
-		Criteria criteria = session1.createCriteria(UsuarioSimulado.class);
+		//Session session1 = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = this.session.createCriteria(UsuarioSimulado.class);
 		System.out.println("sdadasddasdasdasdasdasdasdasdasdasdasdasd");
 		if (dataInicio != null && dataFim != null) {
 			criteria.add(Restrictions.between("dataRealizado", dataInicio, dataFim));
