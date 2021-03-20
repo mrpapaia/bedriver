@@ -52,7 +52,7 @@
 						<p:selectOneRadio id="alternativa" layout="grid" columns="1"
 							styleClass="grid-radio">
 							<f:selectItems
-								value="#{perguntaBean.getAlternativas(pergunta.alternativas)}"
+								value="#{perguntaBean.getAlternativas(pergunta.alternativas, pergunta)}"
 								var="c" itemLabel="#{c}"></f:selectItems>
 
 							<f:ajax event="change" onchange="submit()" immediate="true"

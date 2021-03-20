@@ -61,25 +61,30 @@ public class PerguntaBean {
 		this.indexPergunta = indexPergunta;
 	}
 
-	public List<String> getAlternativas(String aux) {
-		
+	public List<String> getAlternativas(String aux, Pergunta pergunta) {
+		this.pergunta = pergunta;
 		String[] alternativa = aux.split(";");
 
-		System.out.println("ads");
+		alternativas = Arrays.asList(alternativa);
 
-		return  Arrays.asList(alternativa);
+		return  alternativas;
 	}
 
 	public void setAlternativas(List<String> alternativas) {
 		this.alternativas = alternativas;
 	}
-
 	
-
-	 public void getTeste(AjaxBehaviorEvent event){
-		 SelectOneRadio sor = (SelectOneRadio)event.getComponent();
-		 System.out.println(sor.getSubmittedValue().toString());
-		    
-		}
+	public void getTeste(AjaxBehaviorEvent event){
+		SelectOneRadio sor = (SelectOneRadio)event.getComponent();
+		
+		int idPergunta = pergunta.getId();
+		int resposta = pergunta.getResposta();
+		int selecionado = alternativas.indexOf(sor.getSubmittedValue().toString());
+		
+		System.out.println("pergunta id: " + idPergunta
+				+ " alternativa: " + selecionado 
+				+ " resposta: " + resposta 
+				+ " acertou? " + (selecionado == resposta));
+	}
 
 }
