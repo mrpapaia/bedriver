@@ -11,7 +11,8 @@
 <h:body>
 
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{perguntaBean.setPergunta(0)}" />
+		<f:event type="preRenderView"
+			listener="#{perguntaBean.setPergunta(0)}" />
 	</f:metadata>
 
 	<div id="header">
@@ -37,8 +38,8 @@
 				paginator="true" paginatorPosition="bottom"
 				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
-				
-				<p:ajax event="page" listener="#{perguntaBean.onPage}" />
+
+
 
 				<p:column headerText="Questões">
 					<h:outputText id="spam" value="Questão #{pergunta.id}" />
@@ -47,10 +48,16 @@
 
 					<h:form>
 
-						<p:selectOneRadio id="alternativa" value="#{pergunta.alternativas}"
-							layout="grid" columns="1" styleClass="grid-radio">
-							<f:selectItems value="#{perguntaBean.getAlternativas(pergunta.alternativas)}" var="c"
-								itemLabel="#{alternativas}" itemValue="#{alternativas}" />
+
+						<p:selectOneRadio id="alternativa" layout="grid" columns="1"
+							styleClass="grid-radio">
+							<f:selectItems
+								value="#{perguntaBean.getAlternativas(pergunta.alternativas)}"
+								var="c" itemLabel="#{c}"></f:selectItems>
+
+							<f:ajax event="change" onchange="submit()" immediate="true"
+								listener="#{perguntaBean.getTeste}"></f:ajax>
+
 						</p:selectOneRadio>
 
 					</h:form>
