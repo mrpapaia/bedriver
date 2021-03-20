@@ -15,8 +15,10 @@ import org.primefaces.model.StreamedContent;
 
 import br.com.bedriver.model.Simulado;
 import br.com.bedriver.model.Usuario;
+import br.com.bedriver.model.UsuarioSimulado;
 import br.com.bedriver.rn.SimuladoRN;
 import br.com.bedriver.rn.UsuarioRN;
+import br.com.bedriver.rn.UsuarioSimuladoRN;
 import br.com.bedriver.util.RelatorioUtil;
 import br.com.bedriver.util.UtilException;
 
@@ -62,6 +64,12 @@ public class SimuladoBean {
 	public String setSimuladoEscolhido(Simulado simuladoEscolhido) {
 		this.simuladoEscolhido = simuladoEscolhido;
 		return "/public/pergunta.xhtml";
+	}
+	
+	public List<UsuarioSimulado> simuladosRealizados(){
+		Usuario u = getUsuarioLogado();
+		UsuarioSimuladoRN usuarioSimuladoRN = new UsuarioSimuladoRN();
+		return usuarioSimuladoRN.listar(u, null, null);
 	}
 	
 	public StreamedContent getArquivoRetorno() {

@@ -18,8 +18,8 @@
 
 		<h:panelGroup id="card">
 			<h:form id="form">
-				<p:dataTable id="simulados" var="simulado"
-					value="#{simuladoBean.lista}" rowKey="#{frota.id}" rows="13"
+				<p:dataTable id="simulados" var="usuariosimulado"
+					value="#{simuladoBean.simuladosRealizados}" rowKey="#{frota.id}" rows="13"
 					paginator="true" paginatorPosition="bottom"
 					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 

@@ -58,21 +58,22 @@ public class PerguntaBean {
 		this.pergunta = p;
 	}
 
-	public int getIndexPergunta() {
-		return indexPergunta;
+	public int getIndexPergunta(Pergunta p) {
+		this.indexPergunta = this.lista.indexOf(p);
+		this.pergunta = p;
+		return indexPergunta + 1;
 	}
 
 	public void setIndexPergunta(int indexPergunta) {
 		this.indexPergunta = indexPergunta;
 	}
 
-	public List<String> getAlternativas(Pergunta pergunta) {
+	public List<String> getAlternativas() {
 
-		this.pergunta = pergunta;
-		String[] alternativa = pergunta.getAlternativas().split(";");
+		String[] alternativa = this.pergunta.getAlternativas().split(";");
 		alternativas = Arrays.asList(alternativa);
 		
-		System.out.println("RESP SALVA: " + resultados[lista.indexOf(pergunta)]);
+		System.out.println("RESP SALVA: " + resultados[indexPergunta]);
 		
 		return alternativas;
 	}
@@ -87,15 +88,16 @@ public class PerguntaBean {
 
 			SelectOneRadio sor = (SelectOneRadio) event.getComponent();
 
-			int indexPergunta = lista.indexOf(pergunta);
 			int resposta = pergunta.getResposta();
 			int selecionado = alternativas.indexOf(sor.getSubmittedValue().toString());
 
 			resultados[indexPergunta] = selecionado;
+			
 			System.out.println("pergunta id: " + indexPergunta + 
 					" alternativa: " + selecionado + 
 					" resposta: " + resposta + 
 					" acertou? " + (selecionado == resposta));
+			
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("exeção");
 		}
