@@ -10,11 +10,6 @@
 </h:head>
 <h:body>
 
-	<f:metadata>
-		<f:event type="preRenderView"
-			listener="#{perguntaBean.setPergunta(0)}" />
-	</f:metadata>
-
 	<div id="header">
 		<h:form>
 			<p:commandLink onclick="history.go(-1)">
@@ -34,7 +29,7 @@
 			<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
 
 			<p:dataTable id="pergunta" var="pergunta" rows="1"
-				value="#{perguntaBean.lista}" rowKey="#{pergunta.id}"
+				value="#{perguntaBean.getLista(idxSimulado)}" rowKey="#{pergunta.id}"
 				paginator="true" paginatorPosition="bottom"
 				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
@@ -51,8 +46,7 @@
 
 						<p:selectOneRadio id="alternativa" layout="grid" columns="1"
 							styleClass="grid-radio">
-							<f:selectItems
-								value="#{perguntaBean.getAlternativas(pergunta)}"
+							<f:selectItems value="#{perguntaBean.getAlternativas(pergunta)}"
 								var="c" itemLabel="#{c}"></f:selectItems>
 
 							<f:ajax event="change" onchange="submit()" immediate="true"
@@ -84,10 +78,10 @@
 
 	<div id="footer">
 		<h:form>
-			
-				<h:graphicImage library="imagens" name="logo_rodape.png"
-					style="border:0" styleClass="logo_rodape" />
-			
+
+			<h:graphicImage library="imagens" name="logo_rodape.png"
+				style="border:0" styleClass="logo_rodape" />
+
 		</h:form>
 
 	</div>

@@ -138,6 +138,11 @@ public class UsuarioBean {
 		String nome = usuarioRN.buscarPorLogin(email).getNome();
 		String nomeSplited[] = nome.split(" ");
 
-		return nomeSplited[0] + " " + nomeSplited[1];
+		if(nomeSplited.length >= 2) {
+			return nomeSplited[0] + " " + nomeSplited[1];
+		}else {
+			return nome;
+		}
+
 	}
 }

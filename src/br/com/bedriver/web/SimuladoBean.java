@@ -27,38 +27,15 @@ public class SimuladoBean {
 	private StreamedContent arquivoRetorno;
 	private Date dataInicialRelatorio;
 	private Date dataFinalRelatorio;
-	
-	public Date getDataInicialRelatorio() {
-		return dataInicialRelatorio;
-	}
-
-	public void setDataInicialRelatorio(Date dataInicialRelatorio) {
-		this.dataInicialRelatorio = dataInicialRelatorio;
-	}
-
-	public Date getDataFinalRelatorio() {
-		return dataFinalRelatorio;
-	}
-
-	public void setDataFinalRelatorio(Date dataFinalRelatorio) {
-		this.dataFinalRelatorio = dataFinalRelatorio;
-	}
-
-	public void setArquivoRetorno(StreamedContent arquivoRetorno) {
-		this.arquivoRetorno = arquivoRetorno;
-	}
 
 	private Simulado simulado = new Simulado();
 	private List<Simulado> lista;
 	private Simulado simuladoEscolhido;
 
 	public String salvar() {
-		
 		SimuladoRN simuladoRN = new SimuladoRN();
 		simuladoRN.salvar(this.simulado);
-		
 		return "/index";
-		
 	}
 	
 	public List<Simulado> getLista() {
@@ -139,6 +116,26 @@ public class SimuladoBean {
 			return usuario;
 		}
 		return null;
+	}
+	
+	public Date getDataInicialRelatorio() {
+		return dataInicialRelatorio;
+	}
+
+	public void setDataInicialRelatorio(Date dataInicialRelatorio) {
+		this.dataInicialRelatorio = dataInicialRelatorio;
+	}
+
+	public Date getDataFinalRelatorio() {
+		return dataFinalRelatorio;
+	}
+
+	public void setDataFinalRelatorio(Date dataFinalRelatorio) {
+		this.dataFinalRelatorio = dataFinalRelatorio;
+	}
+
+	public void setArquivoRetorno(StreamedContent arquivoRetorno) {
+		this.arquivoRetorno = arquivoRetorno;
 	}
 
 }

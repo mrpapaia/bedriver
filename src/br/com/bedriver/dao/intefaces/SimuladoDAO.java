@@ -13,4 +13,6 @@ public interface SimuladoDAO {
 	public Simulado carregar(Integer codigo);
 
 	public List<Simulado> listar();
+	
+	public Simulado buscar(int idSimulado);
 }

@@ -2,10 +2,16 @@ package br.com.bedriver.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.bedriver.dao.intefaces.PerguntaDAO;
 import br.com.bedriver.model.Pergunta;
+import br.com.bedriver.model.UsuarioSimulado;
+import br.com.bedriver.util.HibernateUtil;
 
 public class PerguntaDAOHibernate implements PerguntaDAO {
 	private Session session;
@@ -41,6 +47,9 @@ public class PerguntaDAOHibernate implements PerguntaDAO {
 
 	@Override
 	public List<Pergunta> listar() {
-		return this.session.createCriteria(Pergunta.class).list();
+		List<Pergunta> p = this.session.createCriteria(Pergunta.class).list();
+		System.out.println("TAMANHO LISTA NO DAO PERGUNTAS: " + p.size());
+		return p;
 	}
+
 }

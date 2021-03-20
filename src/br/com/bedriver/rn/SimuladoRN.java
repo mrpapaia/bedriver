@@ -34,5 +34,9 @@ public class SimuladoRN {
 	public List<Simulado> listar() {
 		return this.simuladoDAO.listar();
 	}
+	
+	public Simulado buscar(int idSimulado) {
+		return this.simuladoDAO.buscar(idSimulado);
+	}
 
 }
