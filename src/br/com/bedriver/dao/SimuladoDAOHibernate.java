@@ -43,12 +43,7 @@ public class SimuladoDAOHibernate implements SimuladoDAO {
 
 	@Override
 	public List<Simulado> listar() {
-		List<Simulado> s = this.session.createCriteria(Simulado.class).list();
-		System.out.println("TAMANHO LISTA SIMULADO DAO: " + s.size());
-		for(int i=0; i<s.size(); i++) {
-			System.out.println("Simulado " + i + " tem " + s.get(i).getPerguntas().size() + " perguntas");
-		}
-		return s;
+		return this.session.createCriteria(Simulado.class).list();
 	}
 
 	@Override

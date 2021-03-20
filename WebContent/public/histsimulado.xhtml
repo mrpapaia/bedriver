@@ -18,24 +18,31 @@
 
 		<h:panelGroup id="card">
 			<h:form id="form">
-				<p:dataTable id="simulados" var="usuariosimulado"
-					value="#{simuladoBean.simuladosRealizados}" rowKey="#{frota.id}" rows="13"
+				<p:dataTable id="simulados" value="#{simuladoBean.simuladosRealizados()}" var="usuariosimulado" rowKey="#{usuariosimulado.id}" rows="13"
 					paginator="true" paginatorPosition="bottom"
 					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
 					<p:column headerText="Data" styleClass="columnList">
-						<!-- <h:outputText value="#{frota.cidade.estado.uf}" />-->
+						<h:outputText value="#{usuariosimulado.dataRealizado}" />
 					</p:column>
 
-					<p:column headerText="Qtd. de Questões" styleClass="columnList">
-						<!-- <h:outputText value="#{frota.cidade.nome}" /> -->
+					<p:column headerText="Estado" styleClass="columnList">
+						<h:outputText value="#{usuariosimulado.simulado.estado.nome}" />
 					</p:column>
+					
+					<p:column headerText="Qtd. Questões" styleClass="columnList">
+						<h:outputText value="#{usuariosimulado.simulado.perguntas.size()}" />
+					</p:column>
+					
 					<p:column headerText="Acertos" styleClass="columnList">
-						<!-- <h:outputText value="#{frota.veiculo}" /> -->
+						<h:outputText value="#{usuariosimulado.nota}" />
 					</p:column>
-
+				
 				</p:dataTable>
-
+				
+				<br/>
+				<br/>
+				
 				<h:form>
 					<h:outputLabel value="Data Inicial: " />
 					<p:calendar value="#{simuladoBean.dataInicialRelatorio}"
