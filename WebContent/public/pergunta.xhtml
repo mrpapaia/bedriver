@@ -52,7 +52,7 @@
 						<p:selectOneRadio id="alternativa" layout="grid" columns="1"
 							styleClass="grid-radio">
 							<f:selectItems
-								value="#{perguntaBean.getAlternativas(pergunta.alternativas, pergunta)}"
+								value="#{perguntaBean.getAlternativas(pergunta)}"
 								var="c" itemLabel="#{c}"></f:selectItems>
 
 							<f:ajax event="change" onchange="submit()" immediate="true"
@@ -84,10 +84,10 @@
 
 	<div id="footer">
 		<h:form>
-			<h:commandLink>
+			
 				<h:graphicImage library="imagens" name="logo_rodape.png"
 					style="border:0" styleClass="logo_rodape" />
-			</h:commandLink>
+			
 		</h:form>
 
 	</div>

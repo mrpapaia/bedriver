@@ -58,7 +58,7 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 			session1=HibernateUtil.getSessionFactory().openSession();
 			consulta = session1.createQuery(hql);
 			consulta.setString("login", login);
-			//session1.close();
+			///session1.close();
 		}
 		
 		return (Usuario) consulta.uniqueResult();

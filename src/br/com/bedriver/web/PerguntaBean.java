@@ -34,8 +34,8 @@ public class PerguntaBean {
 	private List<String> alternativas;
 	private int indexPergunta;
 	private String aux;
-//	private HashMap<Integer, Integer> resultados = new HashMap<>();
-	private Integer []resultados1 = new Integer[30];
+	//private HashMap<Integer, Integer> resultados = new HashMap<>();
+	private Integer []resultados = new Integer[30];
 	
 	public List<Pergunta> getLista() {
 
@@ -69,17 +69,18 @@ public class PerguntaBean {
 		this.indexPergunta = indexPergunta;
 	}
 
-	public List<String> getAlternativas(String aux, Pergunta pergunta) {
+	public List<String> getAlternativas(Pergunta pergunta) {
 		this.pergunta = pergunta;
-		String[] alternativa = aux.split(";");
+		System.out.println("as: "+lista.indexOf(pergunta));
+		String[] alternativa = pergunta.getAlternativas().split(";");
 
 		alternativas = Arrays.asList(alternativa);
 		
-	//	Integer altSave = resultados.get(pergunta.getId());
+		//Integer altSave = resultados.get(pergunta.getId()-1);
 
 		//System.out.println("Valor altSave: " + altSave);
 	try {
-		System.out.println("lista: "+ resultados1[pergunta.getId()]);
+		System.out.println("lista: "+ resultados[pergunta.getId()-1]);
 	}catch(IndexOutOfBoundsException e){
 		System.out.println("Segue o baile");
 	}
@@ -94,18 +95,22 @@ public class PerguntaBean {
 	}
 	
 	public void getTeste(AjaxBehaviorEvent event){
-		SelectOneRadio sor = (SelectOneRadio)event.getComponent();
+		try {SelectOneRadio sor = (SelectOneRadio)event.getComponent();
 		
 		int idPergunta = pergunta.getId();
 		int resposta = pergunta.getResposta();
 		int selecionado = alternativas.indexOf(sor.getSubmittedValue().toString());
 		
-	//	resultados.put(idPergunta, selecionado);
-		resultados1[idPergunta]=selecionado;
+		
+	//resultados.put(idPergunta-1, selecionado);
+		resultados[idPergunta-1]=selecionado;
 		System.out.println("pergunta id: " + idPergunta
 				+ " alternativa: " + selecionado 
 				+ " resposta: " + resposta 
-				+ " acertou? " + (selecionado == resposta));
+				+ " acertou? " + (selecionado == resposta));}catch (IndexOutOfBoundsException e) {
+			System.out.println("exeção");
+		}
+		
 	}
 
 }
