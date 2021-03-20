@@ -2,6 +2,7 @@ package br.com.bedriver.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -47,11 +48,19 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 	}
 
 	public Usuario buscarPorLogin(String login) {
-		//Session session1 = HibernateUtil.getSessionFactory().openSession();
+		Session session1 ;
+		Query consulta;
 		String hql = "select u from Usuario u where u.email = :login";
+		try {
+			consulta = this.session.createQuery(hql);
+			consulta.setString("login", login);
+		}catch (HibernateException e) {
+			session1=HibernateUtil.getSessionFactory().openSession();
+			consulta = session1.createQuery(hql);
+			consulta.setString("login", login);
+			//session1.close();
+		}
 		
-		Query consulta = this.session.createQuery(hql);
-		consulta.setString("login", login);
 		return (Usuario) consulta.uniqueResult();
 	}
 	

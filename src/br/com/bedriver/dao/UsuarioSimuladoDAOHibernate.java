@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -36,9 +37,18 @@ public class UsuarioSimuladoDAOHibernate implements UsuarioSimuladoDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<UsuarioSimulado> listar(Usuario usuario, Date dataInicio, Date dataFim) {
-		//Session session1 = HibernateUtil.getSessionFactory().openSession();
-		Criteria criteria = this.session.createCriteria(UsuarioSimulado.class);
-		System.out.println("sdadasddasdasdasdasdasdasdasdasdasdasdasd");
+		Session session1; 
+		Criteria criteria;
+		try {
+			 criteria = this.session.createCriteria(UsuarioSimulado.class);
+			
+		}catch (HibernateException e) {
+			 session1 = HibernateUtil.getSessionFactory().openSession();
+			 criteria=session1.createCriteria(UsuarioSimulado.class);
+			// session1.close();
+		}
+		
+		
 		if (dataInicio != null && dataFim != null) {
 			criteria.add(Restrictions.between("dataRealizado", dataInicio, dataFim));
 		} else if (dataInicio != null) {

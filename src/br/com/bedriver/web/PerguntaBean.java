@@ -36,9 +36,12 @@ public class PerguntaBean {
 	private String aux;
 //	private HashMap<Integer, Integer> resultados = new HashMap<>();
 	private Integer []resultados1 = new Integer[30];
+	
 	public List<Pergunta> getLista() {
 
 		if (this.lista == null) {
+			System.out.println("VAZIO");
+			
 			PerguntaRN perguntaRN = new PerguntaRN();
 			this.lista = perguntaRN.listar();
 			
@@ -75,8 +78,12 @@ public class PerguntaBean {
 	//	Integer altSave = resultados.get(pergunta.getId());
 
 		//System.out.println("Valor altSave: " + altSave);
-	
-			System.out.println("lista: "+ resultados1[pergunta.getId()]);
+	try {
+		System.out.println("lista: "+ resultados1[pergunta.getId()]);
+	}catch(IndexOutOfBoundsException e){
+		System.out.println("Segue o baile");
+	}
+			
 		
 
 		return  alternativas;
