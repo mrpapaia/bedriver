@@ -11,20 +11,28 @@ import javax.jws.WebService;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import br.com.bedriver.model.Usuario;
 import br.com.bedriver.model.UsuarioSimulado;
 import br.com.bedriver.rn.UsuarioRN;
 import br.com.bedriver.rn.UsuarioSimuladoRN;
+import br.com.bedriver.web.UsuarioBean;
 
 
 @WebService
 public class BedriverWS {
+	private static final Logger logger = LogManager.getLogger(BedriverWS.class);
+
 	@WebMethod
 	@WebResult(name = "historico")
     @ResponseWrapper(localName = "hist")
     @RequestWrapper(localName = "listaNotas")
 	public List<Historico> historico(@WebParam(name = "email") String email, @WebParam(name = "de") Date de,
 			@WebParam(name = "ate") Date ate) {
+		logger.info("Busca realizada via WS, historico dos simulados realizados por: "+ email+", no periodo:"+de+
+				"a "+ate);
 		UsuarioSimuladoRN usuarioSimuladoRN = new UsuarioSimuladoRN();
 		UsuarioRN usuarioRN = new UsuarioRN();
 		List<Historico> retorno = new ArrayList<Historico>();

@@ -12,7 +12,10 @@
 		<intercept-url pattern="/restrito/**" access="ROLE_USUARIO,ROLE_ADMINISTRADOR" />
 		<form-login login-page="/index.jsf" 
 			always-use-default-target="true" default-target-url="/index.jsf"
-			authentication-failure-url="/index.jsf?login_error=1" />
+			authentication-success-handler-ref="authSuccess"
+			authentication-failure-handler-ref="authFailure"
+			authentication-failure-url="/index.jsf?login_error=1" 
+			/>
 		<logout />
 		<remember-me />
 	</http>
@@ -20,7 +23,8 @@
 	
 		<beans:bean id="bCryptPasswordEncoder" 
 			class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
-	
+	<beans:bean id="authSuccess" class="br.com.bedriver.util.AuthenticationSuccess"/>
+	<beans:bean id="authFailure" class="br.com.bedriver.util.AuthenticationFailure"/>
 	<authentication-manager>
 		<authentication-provider>
 		<password-encoder ref="bCryptPasswordEncoder" />

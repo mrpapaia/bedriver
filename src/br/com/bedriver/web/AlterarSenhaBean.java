@@ -9,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.bedriver.model.Usuario;
@@ -28,6 +30,7 @@ public class AlterarSenhaBean implements Serializable {
 	private String confirmarNovaSenha;
 	private String email;
 	private boolean emailSend = false;
+	private static final Logger logger = LogManager.getLogger(AlterarSenhaBean.class);
 
 	public void recuperarSenha() {
 
@@ -38,7 +41,8 @@ public class AlterarSenhaBean implements Serializable {
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("E-mail não encontrado em nosso site.");
+			facesMessage.setDetail("E-mail nÃ£o encontrado em nosso site.");
+			logger.error("E-mail nÃ£o encontrado em nosso site.");
 			context.addMessage("MessageEmailNotFound", facesMessage);
 			return;
 		}
@@ -50,15 +54,18 @@ public class AlterarSenhaBean implements Serializable {
 
 		try {
 			usuarioRN.updateResetPasswordToken(token, this.email);
+			logger.info("Gerando token para: "+email);
 		} catch (DAOException e) {
 			e.printStackTrace();
+			logger.error(e);
 		}
 
 		ExecutorService emailExecutor = Executors.newCachedThreadPool();
 		emailExecutor.execute(new Runnable() {
 			@Override
 			public void run() {
-				Utils.sendEmail(email, "Recuperação de Senha", resetPasswordLink);
+				Utils.sendEmail(email, "Recuperaï¿½ï¿½o de Senha", resetPasswordLink);
+				logger.info("Email de recuperar senha enviado para :" + email);
 			}
 		});
 
@@ -72,7 +79,8 @@ public class AlterarSenhaBean implements Serializable {
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("A senha não foi confirmada corretamente.");
+			facesMessage.setDetail("A senha nÃ£o foi confirmada corretamente.");
+			logger.error("A senha nÃ£o foi confirmada corretamente.");
 			context.addMessage("NewPassNotEquals", facesMessage);
 			return null;
 		}
@@ -83,9 +91,10 @@ public class AlterarSenhaBean implements Serializable {
 			facesMessage.setSummary("Aviso:");
 			facesMessage.setDetail("Informe uma senha mais forte, contendo: "
 					+ "8 ou mais caracteres, "
-					+ "letras maiúsculas e minúsculas, " 
-					+ "números, " 
+					+ "letras maiï¿½sculas e minï¿½sculas, " 
+					+ "nï¿½meros, " 
 					+ "caracteres especiais.");
+			logger.error("A senha fraca.");
 			context.addMessage("NewPasswordNotStrong", facesMessage);
 			return null;
 		}
@@ -93,11 +102,12 @@ public class AlterarSenhaBean implements Serializable {
 		// Utilizando BCrypt na senha
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		this.usuario.setSenha(bcpe.encode(this.novaSenha));
-
+		
 		this.usuario.setResetPasswordToken(null);
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
+		logger.info("Senha alterada com sucesso pelo usuario: "+email);
 		
 		return "/index";
 	}
@@ -124,9 +134,10 @@ public class AlterarSenhaBean implements Serializable {
 		Usuario usuario = usuarioRN.get(token);
 
 		if (usuario == null) {
+			logger.error("token invalido");
 			return;
 		}
-
+		logger.info("token valido");
 		this.usuario = usuario;
 	}
 

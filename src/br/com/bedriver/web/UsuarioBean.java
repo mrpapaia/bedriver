@@ -1,13 +1,18 @@
 package br.com.bedriver.web;
 
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.web.WebLoggerContextUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.bedriver.model.Usuario;
@@ -22,6 +27,8 @@ public class UsuarioBean {
 	private String confirmarSenha;
 	private List<Usuario> lista;
 	private String destinoSalvar;
+	private boolean logado=false;
+	private static final Logger logger = LogManager.getLogger(UsuarioBean.class);
 
 	public String salvar() {
 		
@@ -34,6 +41,7 @@ public class UsuarioBean {
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			facesMessage.setSummary("Aviso:");
 			facesMessage.setDetail(errorMsg);
+			logger.error(errorMsg);
 			context.addMessage("InvalidsInputs", facesMessage);
 			return null;
 		}
@@ -46,7 +54,7 @@ public class UsuarioBean {
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
-
+		logger.info("Usuario: "+ usuario.getEmail()+", cadastrado com sucesso!");
 		return "/index";
 	}
 	
@@ -64,27 +72,33 @@ public class UsuarioBean {
 		String regexSenha = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 		
 		if (!senha.matches(regexSenha) || !confirmSenha.matches(regexSenha)) {
-			detailsErrors = "Senha inválida, informe pelo menos: " 
+			detailsErrors = "Senha invï¿½lida, informe pelo menos: " 
 					+ "8 ou mais caracteres, "
-					+ "letras maiúsculas e minúsculas, " 
-					+ "números, " 
+					+ "letras maiï¿½sculas e minï¿½sculas, " 
+					+ "nï¿½meros, " 
 					+ "caracteres especiais.";
+			logger.error(detailsErrors);
 		}
 
 		if (!senha.equals(confirmSenha)) {
-			detailsErrors = "A senha não foi confirmada corretamente.";
+			detailsErrors = "A senha nï¿½o foi confirmada corretamente.";
+			logger.error(detailsErrors);
 		}
 
 		if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
-			detailsErrors = "Informe um e-mail válido.";
+			detailsErrors = "Informe um e-mail vï¿½lido.";
+			logger.error(detailsErrors);
 		}else if(usuarioRN.buscarPorLogin(email) != null){
-			detailsErrors = "E-mail já utilizado.";
+			detailsErrors = "E-mail jï¿½ utilizado.";
+			logger.error(detailsErrors);
 		}
 		
 		if (nome.equals("")) {
 			detailsErrors = "Informe um nome.";
+			logger.error(detailsErrors);
 		} else if(nome.length() < 5){
 			detailsErrors = "Informe um nome com mais de 5 letras.";
+			logger.error(detailsErrors);
 		}
 		
 		return detailsErrors;
@@ -93,6 +107,7 @@ public class UsuarioBean {
 	public String excluir(String email) {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.excluir(usuarioRN.buscarPorLogin(email));
+		logger.info("Usuario: "+ email+", excluido com sucesso!");
 		this.lista = null;
 		return null;
 	}
@@ -130,10 +145,13 @@ public class UsuarioBean {
 	}
 
 	public String getNameUser(HttpServletRequest request) {
+	
 		String email = request.getRemoteUser();
 		if (email == null) {
 			return "";
 		}
+		
+		
 		UsuarioRN usuarioRN = new UsuarioRN();
 		String nome = usuarioRN.buscarPorLogin(email).getNome();
 		String nomeSplited[] = nome.split(" ");
@@ -145,4 +163,6 @@ public class UsuarioBean {
 		}
 
 	}
+	
+	
 }

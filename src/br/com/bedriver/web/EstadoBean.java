@@ -5,6 +5,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import br.com.bedriver.model.Estado;
 import br.com.bedriver.rn.EstadoRN;
 @ManagedBean(name = "estadoBean")
@@ -12,7 +15,8 @@ import br.com.bedriver.rn.EstadoRN;
 public class EstadoBean {
 	private List<Estado> lista;
 	private Estado estado;
-	
+	private static final Logger logger = LogManager.getLogger(EstadoBean.class);
+
 	public Estado estadoAtual() {
 		if(estado == null) {
 			estado = new Estado();

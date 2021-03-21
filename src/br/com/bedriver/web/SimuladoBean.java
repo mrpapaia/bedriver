@@ -12,6 +12,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.StreamedContent;
@@ -36,15 +38,17 @@ public class SimuladoBean {
 	private Simulado simulado = new Simulado();
 	private List<Simulado> lista;
 	private Simulado simuladoEscolhido;
+	private static final Logger logger = LogManager.getLogger(SimuladoBean.class);
 
 	public String salvar() {
 		SimuladoRN simuladoRN = new SimuladoRN();
+		logger.info("Simulado finalizado e salvo");
 		simuladoRN.salvar(this.simulado);
 		return "/index";
 	}
 
 	public List<Simulado> getLista() {
-
+		logger.info("Listando simulados");
 		if (this.lista == null) {
 			SimuladoRN simuladoRN = new SimuladoRN();
 			this.lista = simuladoRN.listar();
@@ -66,12 +70,14 @@ public class SimuladoBean {
 
 	public String setSimuladoEscolhido(Simulado simuladoEscolhido) {
 		this.simuladoEscolhido = simuladoEscolhido;
+		logger.info("Simulado iniciado");
 		return "/public/pergunta.xhtml";
 	}
 
 	public List<UsuarioSimulado> simuladosRealizados() {
 		Usuario u = getUsuarioLogado();
 		UsuarioSimuladoRN usuarioSimuladoRN = new UsuarioSimuladoRN();
+		logger.info("Simulado realizados pelo usuario:"+ u.getEmail());
 		return usuarioSimuladoRN.listar(u, null, null);
 	}
 
@@ -93,9 +99,7 @@ public class SimuladoBean {
 		String datainicio = sdf.format(dataInicialRelatorio);
 		String datafim = sdf.format(dataFinalRelatorio);
 
-		System.out.println("usuarioemail: " + usuarioemail);
-		System.out.println("datainicio: " + datainicio);
-		System.out.println("datafim: " + datafim);
+		
 
 		HashMap parametrosRelatorio = new HashMap();
 		parametrosRelatorio.put("usuarioemail", usuarioemail);
@@ -105,16 +109,22 @@ public class SimuladoBean {
 		try {
 			this.arquivoRetorno = relatorioUtil.geraRelatorio(parametrosRelatorio, nomeRelatorioJasper,
 					nomeRelatorioSaida, RelatorioUtil.RELATORIO_PDF);
-			if (this.arquivoRetorno == null)
-				throw new NullPointerException();
+			
+			if (this.arquivoRetorno == null) {
+				logger.error( new NullPointerException());				
+			}
+		
 		} catch (UtilException e) {
+			logger.error(e);
 			context.addMessage(null, new FacesMessage(e.getMessage()));
 			return null;
 		} catch (NullPointerException e) {
-			System.out.println("BATEU NULL AE OH");
+			
+			logger.error(e);
 			return null;
 		}
-		System.out.println("saiu");
+		
+		logger.info("Relatorio gerado pelo usuario: "+ u.getEmail());
 		return this.arquivoRetorno;
 	}
 

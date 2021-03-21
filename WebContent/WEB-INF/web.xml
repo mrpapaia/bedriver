@@ -13,6 +13,7 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
+	
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
@@ -32,12 +33,24 @@
 		<res-type>javax.sql.DataSource</res-type>
 		<res-auth>Container</res-auth>
 	</resource-ref>
+
 	<!-- Spring Security --> 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value> /WEB-INF/applicationContext.xml  /WEB-INF/applicationContext-security.xml    
 		</param-value>
 	</context-param>
+		<!-- LOGS -->
+		
+    <context-param>
+        <param-name> log4jContextName </param-name>
+        <param-value> bedriver </param-value>
+    </context-param>
+	<context-param>
+    <param-name>log4jConfiguration</param-name>
+    <param-value>WEB-INF/classes/log4j2.xml</param-value>
+</context-param>
+   
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>

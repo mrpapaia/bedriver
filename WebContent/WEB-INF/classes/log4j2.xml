@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="trace" strict="true" name="XMLConfigTest"
+               packages="">         
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <RollingRandomAccessFile name="RollingRandomAccessFileDebug" fileName="./logs/debug.log"
+                                 filePattern="./logs/$${date:yyyy-MM}/etl-%d{MM-dd-yyyy}-%i.log.gz"
+                                 >
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+            <OnStartupTriggeringPolicy />
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="RollingRandomAccessFile" fileName="./logs/info.log"
+                                 filePattern="./logs/$${date:yyyy-MM}/etl-%d{MM-dd-yyyy}-%i.log.gz"    >
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+            <OnStartupTriggeringPolicy />
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <!--<Async name="AsyncConsole">-->
+        <!--<AppenderRef ref="Console"/>-->
+        <!--</Async>-->
+          <RollingRandomAccessFile name="RollingRandomAccessERRO" fileName="./logs/error.log"
+                                 filePattern="./logs/$${date:yyyy-MM}/etl-%d{MM-dd-yyyy}-%i.log.gz"    >
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+            <OnStartupTriggeringPolicy />
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+    </Appenders>
+    <Loggers>
+        <Root  level="TRACE">
+            <AppenderRef ref="RollingRandomAccessFileDebug" level="DEBUG"/>
+            <AppenderRef ref="RollingRandomAccessFile" level="INFO"/>
+            <AppenderRef ref="RollingRandomAccessERRO" level="ERROR"/>
+            <AppenderRef ref="Console"  level="TRACE"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -196,4 +196,11 @@ public class Usuario implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", ativo=" + ativo + ", email=" + email + ", nome=" + nome + ", permissao="
+				+ permissao + ", resetPasswordToken=" + resetPasswordToken + ", senha=" + senha + ", usuarioSimulados="
+				+ usuarioSimulados + ", estado=" + estado + "]";
+	}
+
 }
