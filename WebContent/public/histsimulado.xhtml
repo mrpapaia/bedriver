@@ -12,8 +12,8 @@
 		<c:set var="title" scope="session" value="Hist. do Simulado" />
 
 		<p:commandButton value="Relatório" type="button"
-			onclick="PF('sample').show();" style="margin-left: 400px; margin-top: -56px"  />
-		<p:dialog header="Dialog Box" widgetVar="sample" minHeight="10" width="650">
+			onclick="PF('sample').show();" style="margin-left: 400px; margin-top: -56px; background-color: #8257E5; border-color: #FFFFFF"  />
+		<p:dialog header="Dialog Box" widgetVar="sample" minHeight="10" width="650" showEffect="puff" hideEffect="puff" closeOnEscape="true" modal="true">
 			<h:form>
 				<h:outputLabel value="Data Inicial: " />
 				<p:calendar value="#{simuladoBean.dataInicialRelatorio}"
