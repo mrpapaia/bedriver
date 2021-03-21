@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -11,6 +12,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.PrimeFaces;
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.StreamedContent;
 
 import br.com.bedriver.model.Simulado;
@@ -39,16 +42,16 @@ public class SimuladoBean {
 		simuladoRN.salvar(this.simulado);
 		return "/index";
 	}
-	
+
 	public List<Simulado> getLista() {
-		
+
 		if (this.lista == null) {
 			SimuladoRN simuladoRN = new SimuladoRN();
 			this.lista = simuladoRN.listar();
 		}
 		return this.lista;
 	}
-	
+
 	public Simulado getSimulado() {
 		return simulado;
 	}
@@ -65,35 +68,35 @@ public class SimuladoBean {
 		this.simuladoEscolhido = simuladoEscolhido;
 		return "/public/pergunta.xhtml";
 	}
-	
-	public List<UsuarioSimulado> simuladosRealizados(){
+
+	public List<UsuarioSimulado> simuladosRealizados() {
 		Usuario u = getUsuarioLogado();
 		UsuarioSimuladoRN usuarioSimuladoRN = new UsuarioSimuladoRN();
 		return usuarioSimuladoRN.listar(u, null, null);
 	}
-	
+
 	public StreamedContent getArquivoRetorno() {
 		System.out.println("entrou");
 		FacesContext context = FacesContext.getCurrentInstance();
-		
+
 		Usuario u = getUsuarioLogado();
 		String[] splitNome = u.getNome().split(" ");
 		String nomeUser = (splitNome.length > 0) ? splitNome[0] : u.getNome();
 		String nomeRelatorioJasper = "simuladorelatorio";
 		String nomeRelatorioSaida = nomeUser.toLowerCase() + "_simulados";
-		
+
 		RelatorioUtil relatorioUtil = new RelatorioUtil();
-		
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		
+
 		String usuarioemail = u.getEmail();
 		String datainicio = sdf.format(dataInicialRelatorio);
 		String datafim = sdf.format(dataFinalRelatorio);
-		
+
 		System.out.println("usuarioemail: " + usuarioemail);
 		System.out.println("datainicio: " + datainicio);
 		System.out.println("datafim: " + datafim);
-		
+
 		HashMap parametrosRelatorio = new HashMap();
 		parametrosRelatorio.put("usuarioemail", usuarioemail);
 		parametrosRelatorio.put("datainicio", datainicio);
@@ -102,18 +105,19 @@ public class SimuladoBean {
 		try {
 			this.arquivoRetorno = relatorioUtil.geraRelatorio(parametrosRelatorio, nomeRelatorioJasper,
 					nomeRelatorioSaida, RelatorioUtil.RELATORIO_PDF);
-			if(this.arquivoRetorno == null) throw new NullPointerException();
+			if (this.arquivoRetorno == null)
+				throw new NullPointerException();
 		} catch (UtilException e) {
 			context.addMessage(null, new FacesMessage(e.getMessage()));
 			return null;
-		} catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			System.out.println("BATEU NULL AE OH");
 			return null;
 		}
 		System.out.println("saiu");
 		return this.arquivoRetorno;
 	}
-	
+
 	public Usuario getUsuarioLogado() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext external = context.getExternalContext();
@@ -125,7 +129,7 @@ public class SimuladoBean {
 		}
 		return null;
 	}
-	
+
 	public Date getDataInicialRelatorio() {
 		return dataInicialRelatorio;
 	}
@@ -144,6 +148,17 @@ public class SimuladoBean {
 
 	public void setArquivoRetorno(StreamedContent arquivoRetorno) {
 		this.arquivoRetorno = arquivoRetorno;
+	}
+
+	public void openLevel1() {
+		Map<String, Object> options = new HashMap<String, Object>();
+		options.put("modal", true);
+		PrimeFaces.current().dialog().openDynamic("level1", options, null);
+	}
+
+	public void onReturnFromLevel1(SelectEvent event) {
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("Data Returned", event.getObject().toString()));
 	}
 
 }

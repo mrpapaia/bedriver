@@ -6,9 +6,30 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jstl/core">
 
+
 <ui:composition template="/templates/base.xhtml">
 	<ui:define name="corpo">
 		<c:set var="title" scope="session" value="Hist. do Simulado" />
+
+		<p:commandButton value="Relatório" type="button"
+			onclick="PF('sample').show();" style="margin-left: 400px; margin-top: -56px"  />
+		<p:dialog header="Dialog Box" widgetVar="sample" minHeight="10" width="650">
+			<h:form>
+				<h:outputLabel value="Data Inicial: " />
+				<p:calendar value="#{simuladoBean.dataInicialRelatorio}"
+					pattern="dd/MM/yyyy" />
+				<h:outputLabel value="Data Final: " />
+				<p:calendar value="#{simuladoBean.dataFinalRelatorio}"
+					pattern="dd/MM/yyyy" />
+				<p:commandButton value="Imprimir" ajax="false">
+					<p:fileDownload value="#{simuladoBean.arquivoRetorno}" />
+				</p:commandButton>
+
+			</h:form>
+
+		</p:dialog>
+
+
 
 		<h:form>
 			<div id="div-tabs">
@@ -18,8 +39,10 @@
 
 		<h:panelGroup id="card">
 			<h:form id="form">
-				<p:dataTable id="simulados" value="#{simuladoBean.simuladosRealizados()}" var="usuariosimulado" rowKey="#{usuariosimulado.id}" rows="8"
-					paginator="true" paginatorPosition="bottom"
+				<p:dataTable id="simulados"
+					value="#{simuladoBean.simuladosRealizados()}" var="usuariosimulado"
+					rowKey="#{usuariosimulado.id}" rows="8" paginator="true"
+					paginatorPosition="bottom"
 					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
 					<p:column headerText="Data" styleClass="columnList">
@@ -29,32 +52,16 @@
 					<p:column headerText="Estado" styleClass="columnList">
 						<h:outputText value="#{usuariosimulado.simulado.estado.nome}" />
 					</p:column>
-					
+
 					<p:column headerText="Qtd. Questões" styleClass="columnList">
 						<h:outputText value="#{usuariosimulado.simulado.perguntas.size()}" />
 					</p:column>
-					
+
 					<p:column headerText="Acertos" styleClass="columnList">
 						<h:outputText value="#{usuariosimulado.nota}" />
 					</p:column>
-				
-				</p:dataTable>
-				
-				<br/>
-				<br/>
-				
-				<h:form>
-					<h:outputLabel value="Data Inicial: " />
-					<p:calendar value="#{simuladoBean.dataInicialRelatorio}"
-						pattern="dd/MM/yyyy" />
-					<h:outputLabel value="Data Final: " />
-					<p:calendar value="#{simuladoBean.dataFinalRelatorio}"
-						pattern="dd/MM/yyyy" />
-					<p:commandButton value="Imprimir" ajax="false">
-						<p:fileDownload value="#{simuladoBean.arquivoRetorno}" />
-					</p:commandButton>
 
-				</h:form>
+				</p:dataTable>
 
 			</h:form>
 		</h:panelGroup>
