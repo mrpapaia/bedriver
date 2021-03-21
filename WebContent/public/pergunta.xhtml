@@ -40,11 +40,11 @@
 					<p>#{pergunta.texto}</p>
 
 					<h:form>
-
-						<p:selectOneRadio id="alternativa" layout="grid" columns="1"
-							styleClass="grid-radio">
-							<f:selectItems value="#{perguntaBean.alternativas}" var="c"
-								itemLabel="#{c}"></f:selectItems>
+					
+					<p:selectOneRadio id="alternativa" value="#{perguntaBean.alternativaSalva}" 
+						layout="grid" columns="1" styleClass="grid-radio">
+						
+							<f:selectItems value="#{perguntaBean.alternativas}" var="c" itemLabel="#{c}"></f:selectItems>
 
 							<f:ajax event="change" onchange="submit()" immediate="true"
 								listener="#{perguntaBean.getTeste}"></f:ajax>

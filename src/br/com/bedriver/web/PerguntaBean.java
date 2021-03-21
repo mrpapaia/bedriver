@@ -10,6 +10,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
@@ -34,14 +35,16 @@ import br.com.bedriver.rn.UsuarioRN;
 import br.com.bedriver.rn.UsuarioSimuladoRN;
 
 @ManagedBean(name = "perguntaBean")
-@SessionScoped
+@ViewScoped
 public class PerguntaBean {
+	
 	private Pergunta pergunta = new Pergunta();
 	private List<Pergunta> lista;
 	private List<String> alternativas;
 	private int indexPergunta;
 	private int[] resultados;
 	private int idSimuladoAtual;
+	private String alternativaSalva;
 
 	public List<Pergunta> getLista(int idSimuladoEscolhido) {
 
@@ -56,6 +59,16 @@ public class PerguntaBean {
 
 		return this.lista;
 	}
+	
+	public String getAlternativaSalva() {
+		int saveResp = resultados[indexPergunta];
+		alternativaSalva = (saveResp != 0) ? alternativas.get(saveResp-1) : "";
+		return alternativaSalva;
+	}
+
+	public void setAlternativaSalva(String alternativaSalva) {
+		this.alternativaSalva = alternativaSalva;
+	}
 
 	public Pergunta getPergunta() {
 		return pergunta;
@@ -66,6 +79,7 @@ public class PerguntaBean {
 	}
 
 	public int getIndexPergunta(Pergunta p) {
+		System.out.println("etra aq msm");
 		this.indexPergunta = this.lista.indexOf(p);
 		this.pergunta = p;
 		return indexPergunta + 1;
