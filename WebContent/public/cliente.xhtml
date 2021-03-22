@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jstl/core">
+
+
+<ui:composition template="/templates/base.xhtml">
+	<ui:define name="corpo">
+		<c:set var="title" scope="session" value="Hist. do Simulado" />
+
+			<h:form>
+			<p:inputText id="float-input" value="#{clienteWS.email}"/>
+      
+				<h:outputLabel value="Data Inicial: " />
+				<p:calendar value="#{clienteWS.dataI}"
+					pattern="dd/MM/yyyy" />
+				<h:outputLabel value="Data Final: " />
+				<p:calendar value="#{clienteWS.dataF}"
+					pattern="dd/MM/yyyy" />
+				<p:commandButton value="Imprimir" update=":formWS:histWS" action="#{clienteWS.buscaHist()}">
+				</p:commandButton>
+			</h:form>	
+		<h:panelGroup id="cardWS">
+			<h:form id="formWS">
+				<p:dataTable id="histWS"
+					value="#{clienteWS.historico}" var="historico"
+					rowKey="#{historico.nome}" rows="8" paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+
+					<p:column headerText="Data" styleClass="columnList">
+						<h:outputText value="#{clienteWS.dateFormat(historico.dataRealizado)}" />
+					</p:column>
+
+					<p:column headerText="Nome" styleClass="columnList">
+						<h:outputText value="#{historico.nome}" />
+					</p:column>
+
+					<p:column headerText="Acertos" styleClass="columnList">
+						<h:outputText value="#{historico.nota}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+		</h:panelGroup>
+
+	</ui:define>
+</ui:composition>
+</html>

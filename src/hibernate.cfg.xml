@@ -35,5 +35,6 @@
 		<mapping class="br.com.bedriver.model.CategoriaPergunta" /> 
 		<mapping class="br.com.bedriver.model.UsuarioSimulado" />
 		<mapping class="br.com.bedriver.model.Usuario" /> 
+		<mapping class="br.com.bedriver.client.Historico" /> 
 	</session-factory>
 </hibernate-configuration>
