@@ -17,5 +17,9 @@ public class InfracaoRN {
 	public List<Infracoe> listar() {
 		return this.infracaoDAO.listar();
 	}
+	
+	public List<Infracoe> listar(String uf) {
+		return this.infracaoDAO.listar(uf);
+	}
 
 }

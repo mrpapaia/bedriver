@@ -12,15 +12,13 @@
 	
 		<h:form>
 			<div id="div-tabs">
-				<p:commandButton styleClass="tab-item" value="Lista"
-					action="#{infracaoBean.setMostraLista(true)}" update=":card" />
-				<p:commandButton styleClass="tab-item" value="Graficos"
-					action="#{infracaoBean.setMostraGrafico(true)}" update=":card" />
+				<p:commandButton styleClass="tab-item" value="Lista" />
+				<p:commandButton styleClass="tab-item" value="Graficos" action="/public/grafico_infracoes.jsf" />
 			</div>
 		</h:form>
 		
 		<h:panelGroup id="card">
-			<h:form id="form" rendered="#{infracaoBean.mostraLista}">
+			<h:form id="form">
 				<p:dataTable id="infrações" var="infracao"
 					value="#{infracaoBean.lista}" rowKey="#{infracao.id}" rows="13"
 					paginator="true"
@@ -38,10 +36,7 @@
 					</p:column>
 				</p:dataTable>
 			</h:form>
-			
-			<h:form id="formGraph" rendered="#{infracaoBean.mostraGrafico}">
-				<ui:include src="/public/grafico_infracoes.xhtml" />
-			</h:form>
+
 		</h:panelGroup>
 	</ui:define>
 </ui:composition>

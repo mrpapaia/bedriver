@@ -2,10 +2,16 @@ package br.com.bedriver.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.bedriver.dao.intefaces.InfracaoDAO;
 import br.com.bedriver.model.Infracoe;
+import br.com.bedriver.model.UsuarioSimulado;
+import br.com.bedriver.util.HibernateUtil;
 
 
 public class InfracaoDAOHIbernate implements InfracaoDAO{
@@ -43,8 +49,17 @@ public class InfracaoDAOHIbernate implements InfracaoDAO{
 	public List<Infracoe> listar() {
 		return this.session.createCriteria(Infracoe.class).list();
 	}
-
-
-
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Infracoe> listar(String uf) {
+ 
+		Criteria criteria = this.session.createCriteria(Infracoe.class);
+		
+		criteria.createAlias("estado", "e");
+		criteria.add(Restrictions.eq("e.uf", uf));
+		
+		return criteria.list();
+	}
 
 }

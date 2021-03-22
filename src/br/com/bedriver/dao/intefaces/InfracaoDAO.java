@@ -17,5 +17,7 @@ public interface InfracaoDAO {
 	public Infracoe carregar(Integer codigo);
 
 	public List<Infracoe> listar();
+	
+	public List<Infracoe> listar(String uf);
 
 }
