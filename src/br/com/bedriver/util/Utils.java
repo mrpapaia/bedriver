@@ -1,5 +1,6 @@
 package br.com.bedriver.util;
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -10,7 +11,24 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import br.com.bedriver.model.Estado;
+import br.com.bedriver.rn.EstadoRN;
+
 public class Utils {
+	
+	public static Estado getEstados(String sigla) {
+		
+		EstadoRN estadoRN = new EstadoRN();
+		List<Estado> estados = estadoRN.listar();
+	
+        for (Estado estado : estados){
+            if (sigla.equals(estado.getUf())){
+                return estado;
+            }
+        }
+        
+        return null;
+	}
 	
 	public static boolean isStrongPassword(String password) {
 		return password.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");

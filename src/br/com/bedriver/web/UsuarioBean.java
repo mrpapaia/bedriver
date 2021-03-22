@@ -27,10 +27,20 @@ public class UsuarioBean {
 	private String confirmarSenha;
 	private List<Usuario> lista;
 	private String destinoSalvar;
-	private boolean logado=false;
+	private String ufSelecionado;
 	private static final Logger logger = LogManager.getLogger(UsuarioBean.class);
 
+	public String getUfSelecionado() {
+		return ufSelecionado;
+	}
+
+	public void setUfSelecionado(String ufSelecionado) {
+		this.ufSelecionado = ufSelecionado;
+	}
+
 	public String salvar() {
+		
+		System.out.println("entrou no salvar usuario");
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 
@@ -48,6 +58,7 @@ public class UsuarioBean {
 
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		
+		this.usuario.setEstado(Utils.getEstados(ufSelecionado));
 		this.usuario.setSenha(bcpe.encode(this.usuario.getSenha()));
 		this.usuario.setPermissao("ROLE_USUARIO");
 		this.usuario.setAtivo(true);

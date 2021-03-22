@@ -58,7 +58,7 @@ public class UsuarioSimuladoDAOHibernate implements UsuarioSimuladoDAO {
 		}
 		
 		criteria.add(Restrictions.eq("usuario", usuario));
-		criteria.addOrder(Order.asc("dataRealizado"));
+		criteria.addOrder(Order.desc("dataRealizado"));
 		return criteria.list();
 	}
 

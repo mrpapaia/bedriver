@@ -58,10 +58,9 @@
 					 
 				<!-- Estado -->
 				<h:outputLabel value="Estado:" for="id_estado" styleClass="text" />
-				<h:selectOneMenu value="#{usuarioBean.usuario.estado}"
-					converter="estadoConverter" styleClass="menu">
-					<f:selectItems value="#{estadoBean.lista}" var="estado"
-						itemValue="#{estado}" itemLabel="#{estado.nome}" />
+				<h:selectOneMenu value="#{usuarioBean.ufSelecionado}"  styleClass="menu">
+					<f:selectItems value="#{estadoBean.getEstadosREST()}" var="estado"
+						itemValue="#{estado.sigla}" itemLabel="#{estado.nome}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
 
