@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="trace" strict="true" name="XMLConfigTest"
-               packages="">         
-
+               packages=""  >         
+<Properties>
+        <Property name="log4j.skipJansi">false</Property>
+    </Properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="[%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}{UTC}][%level][%logger{36}]:%msg%n"/>
         </Console>
 
-        <RollingRandomAccessFile name="RollingRandomAccessFileDebug" fileName="./logs/debug.log"
+        <RollingRandomAccessFile name="RollingRandomAccessFileDebug"  fileName="./logs/debug.log"
                                  filePattern="./logs/$${date:yyyy-MM}/etl-%d{MM-dd-yyyy}-%i.log.gz"
                                  >
             <PatternLayout>
-                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                <Pattern>%d{UTC} %p %c{1.} [%t] %m%n</Pattern>
             </PatternLayout>
             <Policies>
             <OnStartupTriggeringPolicy />

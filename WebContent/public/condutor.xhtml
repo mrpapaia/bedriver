@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jstl/core">
 
-<ui:composition template="/templates/base.xhtml">
+<ui:composition template="/templates/base3.xhtml">
 	<ui:define name="corpo">
 	<c:set var="title" scope="session" value="Condutores" />
 	
@@ -28,7 +28,7 @@
 					<p:column headerText="REGIÃO" styleClass="columnList" >
 						<h:outputText value="#{condutor.estado.regioe.nome}" />
 					</p:column>
-					<p:column headerText="UF" styleClass="columnList , uf">
+					<p:column headerText="UF" styleClass="columnList, uf">
 						<h:outputText value="#{condutor.estado.uf}" />
 					</p:column>
 					<p:column headerText="SEXO" styleClass="columnList, sexo">

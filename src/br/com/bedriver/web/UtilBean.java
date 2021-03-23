@@ -21,10 +21,13 @@ public class UtilBean implements Serializable {
 	boolean opControl = false;
 
 	public boolean isOpControl() {
+		System.out.println("is: " +opControl);
 		return opControl;
 	}
 
 	public void setOpControl(boolean opControl) {
+		System.out.println("set: " +opControl);
+
 		this.opControl = opControl;
 	}
 

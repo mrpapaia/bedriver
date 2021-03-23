@@ -29,6 +29,7 @@ public class FrotaBean {
 			if (this.lista == null) {
 				logger.error("Erro ao listar frotas");
 			} else {
+				
 				logger.info("Frotas listadas com sucesso");
 			}
 		}

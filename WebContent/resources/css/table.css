@@ -30,9 +30,17 @@
 	width:10rem;
 	line-height: 2.6rem;
 }
-th.uf,tf.uf , th.sexo, td.sexo{
-	width:5rem !important;
-	text-align: center;
+th.sexo, td.sexo{
+	width: 5rem !important;
+	text-align: center !important;
+}
+th.municipio, td.municipio{
+	width: 10rem !important;
+	text-align: center !important;
+}
+th.uf, td.uf {
+	width: 1rem !important;
+	text-align: center !important;
 }
 .ui-datatable thead th {
 	background-color:  var(--color-title-in-primary) !important;
@@ -67,7 +75,7 @@ th.uf,tf.uf , th.sexo, td.sexo{
 }
 
 .ui-paginator-bottom{
-	height:3.5rem;
+	height:7rem;
 	border-bottom-left-radius: 1rem;
 	border-bottom-right-radius: 1rem;
 }
@@ -82,6 +90,8 @@ th.uf,tf.uf , th.sexo, td.sexo{
     background: var(--color-primary-dark) !important;
     color: var(--color-title-in-primary) !important;
 }
+
+
 @media ( min-width : 700px) {
 	.columnList {	
 	width:5rem;	

@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jstl/core">
 
-<ui:composition template="/templates/base.xhtml">
+<ui:composition template="/templates/base3.xhtml">
 	<ui:define name="corpo">
 		<c:set var="title" scope="session" value="Frotas" />
 
@@ -17,7 +17,7 @@
 				<p:commandButton styleClass="tab-item" value="Mapa" action="/public/mapa_frotas.jsf" />
 			</div>
 		</h:form>
-
+	
 		<h:panelGroup id="card">
 			<h:form id="form">
 				<p:dataTable id="frotas" var="frota" value="#{frotaBean.lista}"
@@ -29,7 +29,7 @@
 						<h:outputText value="#{frota.cidade.estado.uf}" />
 					</p:column>
 
-					<p:column headerText="MUNICIPIO" styleClass="columnList">
+					<p:column headerText="MUNICIPIO" styleClass="columnList, municipio">
 						<h:outputText value="#{frota.cidade.nome}" />
 					</p:column>
 					<p:column headerText="TIPO DE VEICULO" styleClass="columnList">
@@ -43,6 +43,7 @@
 			</h:form>
 
 		</h:panelGroup>
+		
 
 	</ui:define>
 </ui:composition>

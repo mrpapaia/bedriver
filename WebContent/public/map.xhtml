@@ -62,7 +62,7 @@
 			<p:commandButton value="OK" event="onclick"
 				actionListener="#{autoescolaBean.getAutoEscola(autoescolaBean.cidade)}"
 				update="pmap" />
-			<p:gmap center="#{autoescolaBean.geo}" zoom="12" type="HYBRID"
+			<p:gmap center="#{autoescolaBean.geo}" zoom="15" type="HYBRID"
 				style="width:800px;height:400px" streetView="true"
 				model="#{autoescolaBean.simpleModel}">
 				<p:ajax event="overlaySelect"

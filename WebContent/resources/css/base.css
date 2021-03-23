@@ -123,11 +123,13 @@ body {
 	font-weight: bold;
 }
 
-
+#from-card{
+	
+}
 #container {
-margin: 0 auto;
-	width: 90vw;
-	max-width: 1058px;
+margin: 0 auto !important;
+	
+	width: 90vw !important;
 	height:75vh;
 	background: var(--color-background-container);
 	border: 1px solid #8257E5;
@@ -137,9 +139,16 @@ margin: 0 auto;
 	border-bottom-right-radius: 1rem;
 	
 }
-#corpo{
-	margin-top:-3.2rem;
+#containerTable{
+	margin: 0 auto !important;
+	width: 90vw !important;
+	background: transparent;
+	
 }
+#corpo{	
+	margin: -5.2rem auto !important;	
+}
+
 
 @media(min-width: 360px){
 	.top-buttons{
@@ -223,7 +232,7 @@ margin: 0 auto;
 	#container {
 	margin: 0 auto;
 		width: 90vw;
-		max-width: 1058px;
+		
 		height:75vh;
 		background: var(--color-background-container);
 		border: 1px solid #8257E5;
@@ -232,10 +241,3 @@ margin: 0 auto;
 }
 
 
-
-@media(min-width: 360px){
-	
-	#corpo{
-		margin-top:-5rem;
-	}
-}

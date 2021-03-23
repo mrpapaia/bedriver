@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +13,7 @@ import br.com.bedriver.model.Infracoe;
 import br.com.bedriver.rn.InfracaoRN;
 
 @ManagedBean(name = "infracaoBean")
-@RequestScoped
+@ViewScoped
 public class InfracaoBean {
 	
 	private List<Infracoe> lista;
