@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +14,7 @@ import br.com.bedriver.rn.CondutorRN;
 
 
 @ManagedBean(name = "condutorBean")
-@RequestScoped
+@ViewScoped
 public class CondutorBean {
 	
 	private List<CondutoresHab> lista;

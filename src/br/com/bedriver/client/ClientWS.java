@@ -34,12 +34,35 @@ public class ClientWS {
 	private Date dataF;
 	private String email;
 	public  void buscaHist() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String datainicio ="";
+		String datafim="";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");	
+		try {
+						
+			datainicio = sdf.format(dataI);
+			datafim = sdf.format(dataF);
+		}catch (Exception e) {
+			
+			if(dataI==null&&dataF==null) {
+				datainicio = null;
+				 datafim = null;
+				 logger.info("Data de inicio e fim não informados, a busca retorna todos os dados");
+			}else if(dataI==null) {
+				logger.info("Data de inicio  não informada, a busca retorna todos os dados ate a data final");
+				datainicio = null;
+				datafim = sdf.format(dataF);
+			}
+			else if(dataF==null) {
+				logger.info("Data de final  não informada, a busca retorna todos os dados aparti da data inicial");
+				datainicio = sdf.format(dataI);
+				datafim = null;
+			}
+		}
 		
-		String datainicio = sdf.format(dataI);
-		String datafim = sdf.format(dataF);
 		
 		try {
+			
+			
 			// Create SOAP Connection
 			SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
 			SOAPConnection soapConnection = soapConnectionFactory.createConnection();

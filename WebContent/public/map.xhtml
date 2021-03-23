@@ -49,20 +49,25 @@
 		</div>
 
 	</div>
-<!-- <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyBrf17T2gCZwAjxgrEFC68_bZcAEt8k7iE&amp;sensor=false&amp;callback=initMap"></script>
+	<!-- <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyBrf17T2gCZwAjxgrEFC68_bZcAEt8k7iE&amp;sensor=false&amp;callback=initMap"></script>
  -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?query=restaurants+in+Sydney&amp;sensor=true&amp;key=AIzaSyBVvrkOP2LWY3QF4noU1I081zQelL0JXGA"></script>
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?query=restaurants+in+Sydney&amp;sensor=true&amp;key=AIzaSyBVvrkOP2LWY3QF4noU1I081zQelL0JXGA"></script>
 
-	
-<div id="div-search">
-	<input id="input-search" class="controls" type="text"
-			placeholder="Search Box" />
-		<h:graphicImage styleClass="ic-search" library="imagens" name="search.png" />
-	</div>
-	<div class="card">		
-		<p:gmap center="-17.72428524014474, -48.160838406295795" zoom="15"
-			type="HYBRID"  id="gmap"/>
-	</div>
 
+
+	<h:form>
+		<h:panelGroup id="pmap">
+			<p:inputText value="#{autoescolaBean.cidade}" label="Adresa" />
+			<h:outputText value="#{autoescolaBean.cidade}" id="m" />
+			<p:commandButton value="OK" event="onclick"
+				actionListener="#{autoescolaBean.updateMapCenter(ae)}" update="pmap" />
+			<p:gmap center="#{autoescolaBean.geo}" zoom="7" type="HYBRID"
+				style="width:800px;height:400px" streetView="true"
+				model="#{autoescolaBean.simpleModel}">
+
+			</p:gmap>
+		</h:panelGroup>
+	</h:form>
 </h:body>
 </html>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +14,7 @@ import br.com.bedriver.rn.FrotaRN;
 import br.com.bedriver.rn.UsuarioRN;
 
 @ManagedBean(name = "frotaBean")
-@RequestScoped
+@ViewScoped
 public class FrotaBean {
 
 	private List<FrotaVeiculo> lista;
@@ -43,8 +44,8 @@ public class FrotaBean {
 		this.lista = lista;
 	}
 
-	public List<FrotaVeiculo> getLista() {
-
+	public List<FrotaVeiculo> getLista() {			
+		
 		if (this.lista == null) {
 			FrotaRN frotaRN = new FrotaRN();
 			this.lista = frotaRN.listar();
