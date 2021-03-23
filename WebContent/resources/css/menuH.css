@@ -31,8 +31,6 @@
 
 #painel-login2 input {
 	position: relative !important;
-	top: 0 !important;
-	left: 0 !important;
 	width: 30rem !important;
 	height: 4rem !important;
 	opacity: 100% !important;
@@ -204,7 +202,7 @@
 #menu {
 	position: absolute;
 	width: 45rem;
-	height: 110vh;
+	height: 111vh !important;
 	margin: -12rem 0 0 -8rem;
 	padding: 50px;
 	padding-top: 125px;
@@ -262,8 +260,8 @@
 }
 
 .menu-h-item img, .menu-h-item-sair img {
-	height: 8rem;
-	width: 8rem;
+	height: 3rem;
+	width: 3rem;
 	margin-right: 1rem;
 	margin-left: 1rem;
 }
@@ -276,7 +274,7 @@
 	display: flex;
 	align-items: center;
 	width: 35rem;
-	height: 7rem;
+	height: 5rem;
 	background: var(--color-button-background);
 	border-radius: 15px;
 	color: #8257E5 !important;
@@ -292,7 +290,7 @@
 	display: flex;
 	align-items: center;
 	width: 35rem;
-	height: 7rem;
+	height: 4rem;
 	color: var(--color-background-container);
 	background: #E19F9F;
 	border: 3px solid #FFFFFF;
@@ -321,8 +319,8 @@
 }
 
 .button-admin img{
-	height: 8rem;
-	width: 8rem;
+	height: 4rem;
+	width: 4rem;
 	margin-right: 1rem;
 	margin-left: 1rem;	
 }

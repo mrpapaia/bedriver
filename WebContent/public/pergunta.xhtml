@@ -33,8 +33,8 @@
 				rowKey="#{pergunta.id}" paginator="true" paginatorPosition="bottom"
 				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
-				<p:column headerText="Questões">
-					<h:outputText id="spam"
+				<p:column class="header-text" headerText="Questões">
+					<h:outputText styleClass="spam"
 						value="Questão #{perguntaBean.getIndexPergunta(pergunta)}" />
 
 					<p>#{pergunta.texto}</p>
@@ -64,7 +64,7 @@
 							<h4>Não deixe as questões em branco</h4>
 						</div>
 
-						<p:commandButton styleClass="buttons"
+						<p:commandButton styleClass="button-finalizar"
 							value="Finalizar Simulado"
 							action="#{perguntaBean.finalizarSimulado()}"></p:commandButton>
 					</div>

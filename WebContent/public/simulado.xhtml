@@ -15,7 +15,7 @@
 			<p:dataTable id="simulado" var="simulado"
 				value="#{simuladoBean.lista}">
 				<p:column headerText="Simulados Disponíveis">
-					<p:commandButton styleClass="buttons" value="Simulado #{simulado.estado.uf}"
+					<p:commandButton id="" styleClass="buttons" value="Simulado #{simulado.estado.uf}"
 						action="#{simuladoBean.setSimuladoEscolhido(simulado)}">
 						<f:actionListener binding="#{request.session.setAttribute('idxSimulado', simulado.id)}" />
 					</p:commandButton>

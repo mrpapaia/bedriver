@@ -75,6 +75,21 @@ body {
     overflow: hidden;
 }
 
+th {
+	display: flex !important;
+	background: var(--color-background) !important;
+	font-size: 2rem !important;
+	margin-top: 1rem !important;
+	margin-right: 1rem !important ;
+	margin-left: 1rem !important ;
+	margin-bottom: 1rem !important;
+	
+	
+	border-radius: 5px;
+}
+
+
+
 h1 {
 	margin: 0 17rem;
 	color: var(--color-box-base);
@@ -82,10 +97,10 @@ h1 {
 	
 }
 
-#spam {
-	border: 0;
-	margin-top: 1.4rem;
-    padding: 0 2.4rem;
+.spam {
+	margin: 5rem 2rem;
+	color: var(--color-text-base);
+	font-size: 2rem;
 }
 
 h2 {
@@ -112,13 +127,14 @@ h3 {
 }
 
 p {
-	font: 700 1.9rem Archivo;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding-bottom: 1.6rem;
-   	text-indent: 3.1rem;
+	font: 700 1.9rem Archivo !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding-top: 1.6rem !important;
+    padding-bottom: 1.6rem !important;
+   	text-indent: 3.1rem !important;
    	
 
 }
@@ -147,7 +163,12 @@ h4 {
 
 .container-buttons {
 	display: flex;
-	background: var(--color-container-bottons);
+	background: var(--color-container-bottons) !important;
+	margin-top: 3rem !important;
+	
+	border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 1px var(--color-line-in-white) !important;
 }
 
 .container-buttons .icon1 {
@@ -161,37 +182,33 @@ h4 {
 	margin-left: -3rem;
 }
 
-
-.button input {
-	margin: 5px;
-    padding: 5px 5px 5px 20px; /* 20px makes room for your background image */
-    border: 1px solid #aaa;
+.button-finalizar {
+	width: 30% !important;
+    height: 3.6rem !important;
+    background: var(--color-secundary) !important;
+    color: var(--color-button-text) !important;
+    border: 0 !important;
+    border-radius: 0.8rem !important;
+    cursor: pointer !important;
+    font: 700 2rem Archivo !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s !important;
+    margin-top: 4.3rem !important;
+    margin-left: 7.4rem !important;
+    margin-bottom: 3rem !important;
+   
 }
 
-.button .apply {
-	width: 90%;
-    height: 3.6rem;
-    background: var(--color-secundary);
-    color: var(--color-button-text);
-    border: 0;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    font: 700 2rem Archivo;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: background-color 0.2s;
-    margin-top: 4.3rem;
-    margin-left: 7.4rem;
-    margin-bottom: 3rem;
-    
-
- 
+.button_finalizar:hover {
+    background: var(--color-secundary-dark) !important;
 }
+
 
 #footer .logo_rodape {
-	margin-left: 140rem;
+	margin-left: 120rem;
 	margin-top: -10.5rem;
 	
 }

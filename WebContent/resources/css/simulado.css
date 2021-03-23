@@ -1,13 +1,26 @@
-.form-buttons {
-	width: 620px !important;
-	display: block !important;
-	margin-top: 5rem !important;
-	margin-left: 13rem !important;
+
+body .ui-datatable thead th {
+	display: flex !important;
 	align-items: center !important;
+	justify-content: center !important;
+	padding: 1rem !important;
+	margin: 1rem !important;
+	margin-top: 5rem !important;
+}
+
+.ui-datatable tbody.ui-datatable-data {
+	justify-content: center !important;
+	align-content: center !important;
+}
+
+.form-buttons .buttons {
+	width: 40% !important;
+	margin-top: 2rem !important;
+	margin-left: 20rem !important;
 }
 
 .buttons {
-	width: 30% !important;
+	width: 80% !important;
     height: 5.6rem !important;
     float: left !important;
     background: #04D361 !important;
@@ -28,5 +41,16 @@
 
 .ui-button-text {
 	font-size: 2.3rem !important;
+}
+
+th {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	background: var(--color-background) !important;
+	font-size: 2rem !important;
+	
+	
+	border-radius: 5px;
 }
 
