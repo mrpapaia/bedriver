@@ -2,10 +2,7 @@ package br.com.bedriver.dao.intefaces;
 
 import java.util.List;
 
-
 import br.com.bedriver.model.Infracoe;
-
-
 
 public interface InfracaoDAO {
 	public void salvar(Infracoe infracao);
@@ -17,7 +14,4 @@ public interface InfracaoDAO {
 	public Infracoe carregar(Integer codigo);
 
 	public List<Infracoe> listar();
-	
-	public List<Infracoe> listar(String uf);
-
 }

@@ -3,7 +3,7 @@ package br.com.bedriver.rn;
 import java.util.List;
 
 import br.com.bedriver.dao.intefaces.InfracaoDAO;
-
+import br.com.bedriver.model.Estado;
 import br.com.bedriver.model.Infracoe;
 import br.com.bedriver.util.DAOFactory;
 
@@ -16,10 +16,6 @@ public class InfracaoRN {
 
 	public List<Infracoe> listar() {
 		return this.infracaoDAO.listar();
-	}
-	
-	public List<Infracoe> listar(String uf) {
-		return this.infracaoDAO.listar(uf);
 	}
 
 }

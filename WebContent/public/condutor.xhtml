@@ -12,15 +12,14 @@
 	
 		<h:form>
 			<div id="div-tabs">
-				<p:commandButton styleClass="tab-item" value="Lista"
-					action="#{condutorBean.setMostraLista(true)}" update=":card" />
-				<p:commandButton styleClass="tab-item" value="Graficos"
-					action="#{condutorBean.setMostraGrafico(true)}" update=":card" />
+				<p:commandButton styleClass="tab-item" value="Lista" />
+				<p:commandButton styleClass="tab-item" value="Grafico" action="/public/grafico_condutores.jsf" />
+				<p:commandButton styleClass="tab-item" value="Mapa" action="/public/mapa_condutores.jsf" />
 			</div>
 		</h:form>
 
 		<h:panelGroup id="card">
-			<h:form id="form" rendered="#{condutorBean.mostraLista}">
+			<h:form id="form">
 				<p:dataTable id="condutores" var="condutor"
 					value="#{condutorBean.lista}" rowKey="#{condutor.id}" rows="13"
 					paginator="true" paginatorPosition="bottom"
@@ -47,11 +46,7 @@
 
 				</p:dataTable>
 			</h:form>
-			
-			<h:form id="formGraph" rendered="#{condutorBean.mostraGrafico}">
-				<ui:include src="/public/grafico_condutores.xhtml" />
-			</h:form>
-			
+
 		</h:panelGroup>
 	</ui:define>
 </ui:composition>

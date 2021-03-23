@@ -7,10 +7,10 @@ and open the template in the editor.
     Created on : 16/11/2019, 17:15:58
     Author     : 1513 FOX
 */
-#svg-map path { fill:#0094d9 }
+#svg-map path { fill:#8257E5 }
     #svg-map text { fill:#fff; font:12px Arial-BoldMT, sans-serif; cursor:pointer }
     #svg-map a{ text-decoration:none }
     #svg-map a:hover { cursor:pointer; text-decoration:none }
-    #svg-map a:hover path{ fill:#003399 !important }
-    #svg-map .circle { fill:#66ccff }
-    #svg-map a:hover .circle { fill:#003399 !important; cursor:pointer }
+    #svg-map a:hover path{ fill:#523791 !important }
+    #svg-map .circle { fill:#C8B0FF }
+    #svg-map a:hover .circle { fill:#523791 !important; cursor:pointer }

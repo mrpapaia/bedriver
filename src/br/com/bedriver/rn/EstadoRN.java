@@ -16,5 +16,9 @@ public class EstadoRN {
 	public List<Estado> listar() {
 		return this.estadoDAO.listar();
 	}
+	
+	public Estado carregar(String uf) {
+		return this.estadoDAO.carregar(uf);
+	}
 
 }

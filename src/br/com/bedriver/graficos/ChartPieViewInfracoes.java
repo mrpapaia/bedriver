@@ -51,7 +51,7 @@ public class ChartPieViewInfracoes implements Serializable {
         }
 
         pieModel.setData(dados);
-        pieModel.setTitle("Quantidade de Infracões por Estado");
+        pieModel.setTitle("Porcentagem de Infracões por Estado");
         pieModel.setLegendCols(6);
         pieModel.setShowDataLabels(true);
         pieModel.setDataLabelFormatString("%d %%");

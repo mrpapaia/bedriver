@@ -49,17 +49,5 @@ public class InfracaoDAOHIbernate implements InfracaoDAO{
 	public List<Infracoe> listar() {
 		return this.session.createCriteria(Infracoe.class).list();
 	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Infracoe> listar(String uf) {
- 
-		Criteria criteria = this.session.createCriteria(Infracoe.class);
-		
-		criteria.createAlias("estado", "e");
-		criteria.add(Restrictions.eq("e.uf", uf));
-		
-		return criteria.list();
-	}
 
 }

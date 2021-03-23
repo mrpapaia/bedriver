@@ -49,7 +49,7 @@ public class ChartPieViewFrotas implements Serializable {
         }
 
         pieModel.setData(dados);
-        pieModel.setTitle("Quantidade de Veículos por Estado");
+        pieModel.setTitle("Porcentagem de Veículos por Estado");
         pieModel.setLegendCols(4);
         pieModel.setShowDataLabels(true);
         pieModel.setDataLabelFormatString("%d %%");

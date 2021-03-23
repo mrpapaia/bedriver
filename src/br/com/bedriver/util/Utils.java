@@ -1,6 +1,8 @@
 package br.com.bedriver.util;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -12,9 +14,35 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import br.com.bedriver.model.Estado;
+import br.com.bedriver.model.FrotaVeiculo;
 import br.com.bedriver.rn.EstadoRN;
+import br.com.bedriver.rn.FrotaRN;
 
 public class Utils {
+	
+    public static Map<String, Number> getFrotasEstados() {
+    	
+        Map<String, Number> dados = new HashMap<>();
+        
+        FrotaRN frotaRN = new FrotaRN();
+        List<FrotaVeiculo> listaFrotas = frotaRN.listar();
+        HashMap<String, Integer> qtdVeiculos = new HashMap<>();
+        
+        for(FrotaVeiculo f : listaFrotas) {
+        	String uf = f.getCidade().getEstado().getUf();
+        	Integer qtdVeiculo = qtdVeiculos.get(uf);
+        	if(qtdVeiculo == null){
+        		qtdVeiculo = 0;
+        	}
+        	qtdVeiculos.put(uf, qtdVeiculo + f.getQtdVeiculos());
+        }
+        
+        for(String estado : qtdVeiculos.keySet()) {
+        	dados.put(estado, qtdVeiculos.get(estado));
+        }
+
+        return dados;
+    }
 	
 	public static Estado getEstados(String sigla) {
 		
