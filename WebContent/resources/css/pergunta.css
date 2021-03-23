@@ -206,13 +206,25 @@ h4 {
     background: var(--color-secundary-dark) !important;
 }
 
+#form-footer{
+	width: 100%;
+	display:flex;
+	justify-content: flex-end;
+}
+#form-footer{
+	width: 100%;
+	display:flex;
+	justify-content: flex-end;
+}
+#footer{
+	display:flex;
+}
+#form-footer .logo_rodape {
+	display:flex;
+	align-content:center;
 
-#footer .logo_rodape {
-	margin-left: 120rem;
-	margin-top: -10.5rem;
 	
 }
-
 .button .apply:hover {
     background: var(--color-secundary-dark);
 }

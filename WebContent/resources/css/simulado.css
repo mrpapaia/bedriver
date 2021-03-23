@@ -53,4 +53,8 @@ th {
 	
 	border-radius: 5px;
 }
-
+#form-footer{
+	width: 100%;
+	display:flex;
+	justify-content: flex-end;
+}

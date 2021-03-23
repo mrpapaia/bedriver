@@ -119,10 +119,18 @@ body {
 #corpo{
 	margin-top:-3.2rem;
 }
+#form-footer{
+	width: 100%;
+	display:flex;
+	justify-content: flex-end;
+}
+#footer{
+	display:flex;
+}
+#form-footer .logo_rodape {
+	display:flex;
+	align-content:center;
 
-#footer .logo_rodape {
-	margin-left: 125rem;
-	margin-top: -10.5rem;
 	
 }
 
@@ -216,9 +224,3 @@ body {
 
 
 
-@media(min-width: 360px){
-	
-	#corpo{
-		margin-top:-5rem;
-	}
-}
