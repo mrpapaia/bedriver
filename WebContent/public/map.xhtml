@@ -58,14 +58,27 @@
 
 	<h:form>
 		<h:panelGroup id="pmap">
-			<p:inputText value="#{autoescolaBean.cidade}" label="Adresa" />
-			<h:outputText value="#{autoescolaBean.cidade}" id="m" />
+			<p:inputText value="#{autoescolaBean.cidade}" label="Adresa" />			
 			<p:commandButton value="OK" event="onclick"
-				actionListener="#{autoescolaBean.updateMapCenter(ae)}" update="pmap" />
-			<p:gmap center="#{autoescolaBean.geo}" zoom="7" type="HYBRID"
+				actionListener="#{autoescolaBean.getAutoEscola(autoescolaBean.cidade)}"
+				update="pmap" />
+			<p:gmap center="#{autoescolaBean.geo}" zoom="12" type="HYBRID"
 				style="width:800px;height:400px" streetView="true"
 				model="#{autoescolaBean.simpleModel}">
+				<p:ajax event="overlaySelect"
+					listener="#{autoescolaBean.onMarkerSelect}" />
+  
+			<!--  <p:gmapInfoWindow id="infoWindow">
+					<p:outputPanel
+						style="text-align: center; display: block; margin: auto">
 
+						<p:graphicImage name="https://lh5.googleusercontent.com/p/#{autoescolaBean.fotoRef}" height="150" />
+						<br />
+						<h:outputText value="#{autoescolaBean.marker.title}" />
+
+					</p:outputPanel>
+				</p:gmapInfoWindow>
+			-->	
 			</p:gmap>
 		</h:panelGroup>
 	</h:form>
