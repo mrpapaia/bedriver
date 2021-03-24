@@ -35,7 +35,7 @@ html, body {
 
 body {
 	
-	 background-image:url(#{resource['imagens:img_init.png']});
+	 background-image:url(#{resource['imagens:teste1.png']});
 	 background-repeat: no-repeat;
 }
 
@@ -54,20 +54,19 @@ body {
 
 
 .top-buttons{
-	margin-top:1rem;	
-	margin-left:50rem;
-	width: 70rem;
-	height: 20rem;
+	display: flex;
+	justify-content: space-between;
 }
 .top-button{
-	margin-top:0.05rem;	
-	margin-left:40rem;
-	display:flex;
-	width: 30rem;
+	display: flex;
+	
+	justify-content: space-between;
+
 	
 	
 }
-.top-button .menu-item {	
+.top-button .menu-item {
+	
 	font-size: 4rem !important;
 	padding:1rem;
 	width: 22rem;
@@ -75,6 +74,7 @@ body {
 	background: var(--color-button-background);	
 	box-shadow: 3.5px 2.5px 2.5px #c2c2c2;
 	padding:0.5rem;	
+	margin-right: 3rem;
 	
 	border-radius: 15px;		
 	border-color: var(--color-text-in-primary)!important;	

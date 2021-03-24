@@ -37,6 +37,9 @@
 							rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}"
 							styleClass="menu-item" value="Entrar" event="click" action="#{utilBean.change()}" update=":tas"/>
 							
+							<p:commandButton
+							styleClass="menu-item" value="Auto Escola" event="click" action="/public/map.xhtml?faces-redirect=true" />
+							
 						
 					</div>
 

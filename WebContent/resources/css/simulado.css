@@ -39,6 +39,10 @@ body .ui-datatable thead th {
  
 }
 
+.buttons:hover {
+	background: #04BF58 !important;
+}
+
 .ui-button-text {
 	font-size: 2.3rem !important;
 }

@@ -83,24 +83,24 @@ public class UsuarioBean {
 		String regexSenha = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 		
 		if (!senha.matches(regexSenha) || !confirmSenha.matches(regexSenha)) {
-			detailsErrors = "Senha invï¿½lida, informe pelo menos: " 
+			detailsErrors = "Senha inválida, informe pelo menos: " 
 					+ "8 ou mais caracteres, "
-					+ "letras maiï¿½sculas e minï¿½sculas, " 
-					+ "nï¿½meros, " 
+					+ "letras maiúsculas e minúsculas, " 
+					+ "números, " 
 					+ "caracteres especiais.";
 			logger.error(detailsErrors);
 		}
 
 		if (!senha.equals(confirmSenha)) {
-			detailsErrors = "A senha nï¿½o foi confirmada corretamente.";
+			detailsErrors = "A senha não foi confirmada corretamente.";
 			logger.error(detailsErrors);
 		}
 
 		if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
-			detailsErrors = "Informe um e-mail vï¿½lido.";
+			detailsErrors = "Informe um e-mail válido.";
 			logger.error(detailsErrors);
 		}else if(usuarioRN.buscarPorLogin(email) != null){
-			detailsErrors = "E-mail jï¿½ utilizado.";
+			detailsErrors = "E-mail já utilizado.";
 			logger.error(detailsErrors);
 		}
 		

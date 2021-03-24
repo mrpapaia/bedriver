@@ -12,16 +12,16 @@
 		<c:set var="title" scope="session" value="Hist. do Simulado" />
 
 		<p:commandButton value="Relatório" type="button"
-			onclick="PF('sample').show();" style="margin-left: 400px; margin-top: -56px; background-color: #8257E5; border-color: #FFFFFF"  />
-		<p:dialog header="Dialog Box" widgetVar="sample" minHeight="10" width="650" showEffect="puff" hideEffect="puff" closeOnEscape="true" modal="true">
-			<h:form>
-				<h:outputLabel value="Data Inicial: " />
+			onclick="PF('sample').show();" styleClass="button-relatorio" />
+		<p:dialog  header="Relatório" widgetVar="sample" minHeight="10" width="650" showEffect="puff" hideEffect="puff" closeOnEscape="true" modal="true">
+			<h:form styleClass="dialogo">
+				<h:outputLabel styleClass="button-inicial" value="Data Inicial: " />
 				<p:calendar value="#{simuladoBean.dataInicialRelatorio}"
 					pattern="dd/MM/yyyy" />
-				<h:outputLabel value="Data Final: " />
-				<p:calendar value="#{simuladoBean.dataFinalRelatorio}"
+				<h:outputLabel styleClass="button-final" value="Data Final: " />
+				<p:calendar styleClass="calendar-final"  value="#{simuladoBean.dataFinalRelatorio}"
 					pattern="dd/MM/yyyy" />
-				<p:commandButton value="Imprimir" ajax="false">
+				<p:commandButton styleClass="button-imprimir" value="Imprimir" ajax="false">
 					<p:fileDownload value="#{simuladoBean.arquivoRetorno}" />
 				</p:commandButton>
 

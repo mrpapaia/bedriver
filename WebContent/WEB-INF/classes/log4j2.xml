@@ -9,8 +9,8 @@
             <PatternLayout pattern="[%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}{UTC}][%level][%logger{36}]:%msg%n"/>
         </Console>
 
-        <RollingRandomAccessFile name="RollingRandomAccessFileDebug"  fileName="./logs/debug.log"
-                                 filePattern="./logs/$${date:yyyy-MM}/etl-%d{MM-dd-yyyy}-%i.log.gz"
+        <RollingRandomAccessFile name="RollingRandomAccessFileDebug"  fileName="C:/logs/debug.log"
+                                 filePattern="C:/logs/$${date:yyyy-MM}/etl-%d{MM-dd-yyyy}-%i.log.zip"
                                  >
             <PatternLayout>
                 <Pattern>%d{UTC} %p %c{1.} [%t] %m%n</Pattern>
@@ -21,8 +21,8 @@
                 <SizeBasedTriggeringPolicy size="250 MB"/>
             </Policies>
         </RollingRandomAccessFile>
-        <RollingRandomAccessFile name="RollingRandomAccessFile" fileName="./logs/info.log"
-                                 filePattern="./logs/$${date:yyyy-MM}/etl-%d{MM-dd-yyyy}-%i.log.gz"    >
+        <RollingRandomAccessFile name="RollingRandomAccessFile" fileName="C:/logs/info.log"
+                                 filePattern="C:/logs/$${date:yyyy-MM}/etl-%d{MM-dd-yyyy}-%i.log.zip"    >
             <PatternLayout>
                 <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
             </PatternLayout>
@@ -35,8 +35,8 @@
         <!--<Async name="AsyncConsole">-->
         <!--<AppenderRef ref="Console"/>-->
         <!--</Async>-->
-          <RollingRandomAccessFile name="RollingRandomAccessERRO" fileName="./logs/error.log"
-                                 filePattern="./logs/$${date:yyyy-MM}/etl-%d{MM-dd-yyyy}-%i.log.gz"    >
+          <RollingRandomAccessFile name="RollingRandomAccessERRO" fileName="C:/logs/error.log"
+                                 filePattern="C:/logs/$${date:yyyy-MM}/etl-%d{MM-dd-yyyy}-%i.log.zip"    >
             <PatternLayout>
                 <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
             </PatternLayout>

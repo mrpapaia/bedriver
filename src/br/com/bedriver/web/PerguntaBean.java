@@ -118,7 +118,7 @@ public class PerguntaBean {
 					+ resposta + " acertou? " + (selecionado == resposta));
 
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("exeção");
+			System.out.println("excess�o");
 		}
 
 	}
@@ -160,7 +160,7 @@ public class PerguntaBean {
 		UsuarioSimuladoRN rn = new UsuarioSimuladoRN();
 		rn.salvar(usuarioSimulado);
 
-		return "/public/histsimulado.xhtml";
+		return "/restrito/histsimulado.xhtml";
 
 	}
 

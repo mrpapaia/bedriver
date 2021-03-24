@@ -13,6 +13,7 @@ import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.soap.MessageFactory;
@@ -26,7 +27,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 @ManagedBean(name = "clienteWS")
-@RequestScoped
+@ViewScoped
 public class ClientWS {
 	private static final Logger logger = LogManager.getLogger(ClientWS.class);
 	private List<Historico> historico;

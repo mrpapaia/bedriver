@@ -31,18 +31,15 @@
 					<div class="top-button">
 						<p:commandButton
 							rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}"
-							styleClass="menu-item" value="Entrar" action="#{bean.metodo}" />
+							styleClass="menu-item" value="Entrar" event="click" action="#{utilBean.change()}" update=":tas"/>
 					</div>
 
 					<div class="top-button">
-
-						<div class="top-button">
-							<p:commandButton
-								rendered="#{request.getRequestURI().toString()!='/bedriver/'}"
-								styleClass="menu-item" value="Ínicio"
-								action="/public/map.xhtml'" />
-						</div>
+						<p:commandButton
+							rendered="#{request.getRequestURI().toString()!='/bedriver/'}"
+							styleClass="menu-item" value="Ínicio" action="/index" />
 					</div>
+
 
 				</h:form>
 			</div>
@@ -55,17 +52,20 @@
 		src="https://maps.googleapis.com/maps/api/js?query=restaurants+in+Sydney&amp;sensor=true&amp;key=AIzaSyBVvrkOP2LWY3QF4noU1I081zQelL0JXGA"></script>
 
 	<h:form>
-			<div id="container-search">
-				<p:inputText value="#{autoescolaBean.cidade}" label="Adresa" styleClass="input-search-map" />			
-				<p:commandButton value="OK" event="onclick" styleClass="button-search-map"
-					actionListener="#{autoescolaBean.getAutoEscola(autoescolaBean.cidade)}"
-					update="pmap" />
-			</div>
-			<p:gmap center="#{autoescolaBean.geo}" zoom="17" type="HYBRID" styleClass="mapa" streetView="true"
-				model="#{autoescolaBean.simpleModel}" id="pmap">
-				<p:ajax event="overlaySelect"
-					listener="#{autoescolaBean.onMarkerSelect}" />
-			</p:gmap>
+		<div id="container-search">
+			<p:inputText value="#{autoescolaBean.cidade}" label="Adresa"
+				styleClass="input-search-map" />
+			<p:commandButton value="OK" event="onclick"
+				styleClass="button-search-map"
+				actionListener="#{autoescolaBean.getAutoEscola(autoescolaBean.cidade)}"
+				update="pmap" />
+		</div>
+		<p:gmap center="#{autoescolaBean.geo}" zoom="17" type="HYBRID"
+			styleClass="mapa" streetView="true"
+			model="#{autoescolaBean.simpleModel}" id="pmap">
+			<p:ajax event="overlaySelect"
+				listener="#{autoescolaBean.onMarkerSelect}" />
+		</p:gmap>
 	</h:form>
 </h:body>
 </html>

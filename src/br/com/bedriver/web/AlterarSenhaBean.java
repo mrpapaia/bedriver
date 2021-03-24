@@ -41,8 +41,8 @@ public class AlterarSenhaBean implements Serializable {
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("E-mail nÃ£o encontrado em nosso site.");
-			logger.error("E-mail nÃ£o encontrado em nosso site.");
+			facesMessage.setDetail("E-mail não encontrado em nosso site.");
+			logger.error("E-mail não encontrado em nosso site.");
 			context.addMessage("MessageEmailNotFound", facesMessage);
 			return;
 		}
@@ -64,7 +64,7 @@ public class AlterarSenhaBean implements Serializable {
 		emailExecutor.execute(new Runnable() {
 			@Override
 			public void run() {
-				Utils.sendEmail(email, "Recuperaï¿½ï¿½o de Senha", resetPasswordLink);
+				Utils.sendEmail(email, "Recuperação de Senha", resetPasswordLink);
 				logger.info("Email de recuperar senha enviado para :" + email);
 			}
 		});
@@ -79,8 +79,8 @@ public class AlterarSenhaBean implements Serializable {
 			FacesMessage facesMessage = new FacesMessage();
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			facesMessage.setSummary("Aviso:");
-			facesMessage.setDetail("A senha nÃ£o foi confirmada corretamente.");
-			logger.error("A senha nÃ£o foi confirmada corretamente.");
+			facesMessage.setDetail("A senha não foi confirmada corretamente.");
+			logger.error("A senha não foi confirmada corretamente.");
 			context.addMessage("NewPassNotEquals", facesMessage);
 			return null;
 		}
@@ -91,8 +91,8 @@ public class AlterarSenhaBean implements Serializable {
 			facesMessage.setSummary("Aviso:");
 			facesMessage.setDetail("Informe uma senha mais forte, contendo: "
 					+ "8 ou mais caracteres, "
-					+ "letras maiï¿½sculas e minï¿½sculas, " 
-					+ "nï¿½meros, " 
+					+ "letras maiúsculas e minúsculas, " 
+					+ "números, " 
 					+ "caracteres especiais.");
 			logger.error("A senha fraca.");
 			context.addMessage("NewPasswordNotStrong", facesMessage);

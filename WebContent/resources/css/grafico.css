@@ -8,4 +8,46 @@
 
 .container-charts canvas {
 	margin-top: 2rem !important;
+	
+}
+
+.button-relatorio {
+	margin-left: 43rem !important;
+	margin-top: -8rem !important;
+	background-color: #8257E5 !important;
+	border-color: #FFFFFF !important;
+}
+
+.button-relatorio:hover {
+	background: #6842c2 !important;
+}
+
+.dialogo {
+	display: flex;
+	align-items: center;
+	justify-content: evenly;
+	
+}
+
+.calendar-final {
+	margin-right: 1rem;
+}
+
+.button-inicial {
+	margin-right: 1.5rem;
+}
+
+.button-final {
+	margin-right: 1.5rem;
+	margin-left: 1.5rem;
+}
+
+
+.button-imprimir {
+	background-color: #8257E5 !important;
+	border-color: #FFFFFF !important;
+}
+
+.button-imprimir:hover {
+	background: #6842c2 !important;
 }

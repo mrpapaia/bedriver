@@ -71,7 +71,7 @@ public class SimuladoBean {
 	public String setSimuladoEscolhido(Simulado simuladoEscolhido) {
 		this.simuladoEscolhido = simuladoEscolhido;
 		logger.info("Simulado iniciado");
-		return "/public/pergunta.xhtml";
+		return "/restrito/pergunta.xhtml";
 	}
 
 	public List<UsuarioSimulado> simuladosRealizados() {
@@ -158,17 +158,6 @@ public class SimuladoBean {
 
 	public void setArquivoRetorno(StreamedContent arquivoRetorno) {
 		this.arquivoRetorno = arquivoRetorno;
-	}
-
-	public void openLevel1() {
-		Map<String, Object> options = new HashMap<String, Object>();
-		options.put("modal", true);
-		PrimeFaces.current().dialog().openDynamic("level1", options, null);
-	}
-
-	public void onReturnFromLevel1(SelectEvent event) {
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage("Data Returned", event.getObject().toString()));
 	}
 
 }

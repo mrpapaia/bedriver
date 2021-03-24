@@ -22,7 +22,7 @@ public class AuthenticationSuccess implements AuthenticationSuccessHandler{
 			org.springframework.security.core.Authentication authentication) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		if(authentication.isAuthenticated()) {
-		     logger.info("Logado com sucesso, "+request.getRemoteUser()+", IP: "+request.getRemoteAddr()+", Navegador: "+request.getHeader("user-agent"));
+		     logger.info("Logado com sucesso, "+authentication.getName()+", IP: "+request.getRemoteAddr()+", Navegador: "+request.getHeader("user-agent"));
 
 			response.sendRedirect("/bedriver/");
 		 }else {
