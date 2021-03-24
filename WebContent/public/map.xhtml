@@ -58,10 +58,12 @@
 
 	<h:form>
 		<h:panelGroup id="pmap">
+		<div id="pac-input" class="controls" type="text">
 			<p:inputText value="#{autoescolaBean.cidade}" label="Adresa" />			
 			<p:commandButton value="OK" event="onclick"
 				actionListener="#{autoescolaBean.getAutoEscola(autoescolaBean.cidade)}"
 				update="pmap" />
+				</div>
 			<p:gmap center="#{autoescolaBean.geo}" zoom="15" type="HYBRID"
 				style="width:800px;height:400px" streetView="true"
 				model="#{autoescolaBean.simpleModel}">

@@ -21,7 +21,7 @@
 	--color-box-base: #FFFFFF; 
 	--color-box-footer: #FAFAFC; 
 	--color-small-info: #C1BCCC;
-	font-size: 45%; /* controle das medidas rem */
+	font-size: 60%; /* controle das medidas rem */
 }
 
 * {
@@ -46,56 +46,88 @@ body {
 }
 #header {	
 	background: var(--color-primary);	
-	width:100%;
-	height:19rem;
-	margin: 0 auto;
+	width:100%;	
+	height:17rem;			
 	display: flex;
 	align-items: center;
-	align-self:center;
+	justify-content: space-between;
 	
-	padding: 1.1rem 0;
+	
 	
 }
 
 
 #header #title{
-	margin-bottom:2rem;
-	font-family: "Mr Dafoe";
+	display:flex;
+	align-self:flex-start;
+	justify-self:start;
+	margin-top:2rem;
+	margin-left:-15rem;
+	font-family: "Roboto";
 	font-style: normal;
 	font-weight: normal;
-	font-size: 2rem;
-	line-height:2.5rem;
+	font-size: 5rem;
+	
 	color: var(--color-title-in-primary);
 	
 }
+
 .top-buttons{
 		
-	margin-left:15rem;
-	width: 1rem;
+	
+	width: 70rem;
+	height: 20rem;
+		
+	
 	height: 10rem;	
+	display:flex;
+	
+	align-items:flex-start;	
+	justify-content: space-evenly;
 	
 }
 .top-button{
 	margin-top:0.05rem;	
 	display:flex;
-	width: 15rem;
-		
-	
+	width: 30rem;	
 }
+
 .top-button .menu-item {	
 	
 	padding:0.5rem;
-	width: 15rem ;
+	width: 30rem;	
 	color: var(--color-button-text);
 	background: var(--color-button-background);
 	border-radius: 1rem;	
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	border-color:var(--color-text-in-primary)!important;	
 }
+.top-button .menu-item.ui-state-hover {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: #ffffff;
+}
+.top-button .menu-item.ui-state-focus {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: #ffffff;
+    border:1rem !important;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+#header #menu-hamburguer {
+	display:flex;
+	align-self: start;
+	align-items:center;
+	justify-content: center;
+	margin-top:2rem;
+}
+
+
 
  .ui-button-text{
 	font-family: Roboto !important;
-	font-size: 1.5rem !important;
-	margin-top: -0.4rem;	
+	font-size: 1.5rem !important;	
 	text-decoration:none !important;
 	text-align:center;
 	font-style: normal;
@@ -133,94 +165,3 @@ body {
 
 	
 }
-
-@media(min-width: 360px){
-	.top-buttons{
-		
-	margin-left:20rem;
-	}
-}
-@media(min-width: 375px){
-	:root{
-	font-size: 50%;}
-	
-}
-
-@media(min-width: 700px){
-	:root{
-	font-size: 60%;}
-	.top-buttons{
-		display:flex;
-		margin-left:30rem;
-		align-items:center;	
-		justify-content: rigth;	
-	}
-	.top-button{
-		height: 5rem;		
-	}
-}
-@media(min-width: 1024px){
-    :root {
-        font-size: 62.5%; /*1rem = 10px*/
-    }
-    html, body {
-	height: 100vh;
-	}
-	
-	
-	
-	#header {			
-		height:20rem;		
-		align-items: center;
-		justify-content: space-between;
-		padding: 1.6rem 0;
-		
-	}
-	#header #title{
-		font-family: "Mr Dafoe";
-		font-style: normal;
-		font-weight: normal;
-		font-size: 5.4rem;
-		margin-left: -35.2rem;
-		line-height:7.5rem;
-		color: var(--color-title-in-primary);
-	}
-	.top-buttons{
-		margin-left:10rem;
-		width: 70rem;
-		height: 20rem;
-		
-		
-	}
-	.top-button{
-		
-		width: 30rem;
-		
-			
-		
-	}
-	.top-button .menu-item {	
-	
-		font-size: 4rem !important;	
-	
-		
-		padding:1rem;
-		width: 45rem;
-		color: var(--color-button-text);
-		background: var(--color-button-background);
-		border-radius: 15px;	
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	}
-	
-
-	
-	#container {
-		margin: -3.2rem auto 3.2rem;
-		
-		background: var(--color-background-container);
-	
-	}
-}
-
-
-
