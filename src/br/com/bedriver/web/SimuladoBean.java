@@ -77,7 +77,7 @@ public class SimuladoBean {
 	public List<UsuarioSimulado> simuladosRealizados() {
 		Usuario u = getUsuarioLogado();
 		UsuarioSimuladoRN usuarioSimuladoRN = new UsuarioSimuladoRN();
-		logger.info("Simulado realizados pelo usuario:"+ u.getEmail());
+		logger.info("Simulado realizados pelo usuario:" + u.getEmail());
 		return usuarioSimuladoRN.listar(u, null, null);
 	}
 
@@ -96,10 +96,8 @@ public class SimuladoBean {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
 		String usuarioemail = u.getEmail();
-		String datainicio = sdf.format(dataInicialRelatorio);
-		String datafim = sdf.format(dataFinalRelatorio);
-
-		
+		String datainicio = dataInicialRelatorio == null ? "0001/01/01" : sdf.format(dataInicialRelatorio);
+		String datafim = dataFinalRelatorio == null ? "9999/12/12" : sdf.format(dataFinalRelatorio);
 
 		HashMap parametrosRelatorio = new HashMap();
 		parametrosRelatorio.put("usuarioemail", usuarioemail);
@@ -109,22 +107,22 @@ public class SimuladoBean {
 		try {
 			this.arquivoRetorno = relatorioUtil.geraRelatorio(parametrosRelatorio, nomeRelatorioJasper,
 					nomeRelatorioSaida, RelatorioUtil.RELATORIO_PDF);
-			
+
 			if (this.arquivoRetorno == null) {
-				logger.error( new NullPointerException());				
+				logger.error(new NullPointerException());
 			}
-		
+
 		} catch (UtilException e) {
 			logger.error(e);
 			context.addMessage(null, new FacesMessage(e.getMessage()));
 			return null;
 		} catch (NullPointerException e) {
-			
+
 			logger.error(e);
 			return null;
 		}
-		
-		logger.info("Relatorio gerado pelo usuario: "+ u.getEmail());
+
+		logger.info("Relatorio gerado pelo usuario: " + u.getEmail());
 		return this.arquivoRetorno;
 	}
 
