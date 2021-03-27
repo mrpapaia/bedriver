@@ -2,17 +2,18 @@ package br.com.bedriver.dao.intefaces;
 
 import java.util.List;
 
-import br.com.bedriver.model.Frota;
+
+import br.com.bedriver.model.FrotaVeiculo;
 
 
 public interface FrotaDAO {
-	public void salvar(Frota frota);
+	public void salvar(FrotaVeiculo frota);
 
-	public void atualizar(Frota frota);
+	public void atualizar(FrotaVeiculo frota);
 
-	public void excluir(Frota frota);
+	public void excluir(FrotaVeiculo frota);
 
-	public Frota carregar(Integer codigo);
+	public FrotaVeiculo carregar(Integer codigo);
 
-	public List<Frota> listar();
+	public List<FrotaVeiculo> listar();
 }

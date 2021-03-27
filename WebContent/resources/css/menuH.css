@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+#menu-hamburguer{
+	display:flex;
+	
+	justify-content: center;
+	align-items: center;
+	height: 4rem;
+	margin-left: 3rem;
+}
+#menu-hamburguer nav{
+	
+	height: 4rem;
+}
+#menuToggle {
+	display: block;
+	position: relative;	
+	z-index: 1;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.error-msg {
+	font-family: 'Roboto';
+	font-size: 2rem;
+	color: red;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#painel-login2 input {
+	position: relative !important;
+	width: 30rem !important;
+	height: 4rem !important;
+	opacity: 100% !important;
+	border-radius: 15px;
+	border: 0;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	background-repeat: no-repeat;
+	background-position: 1rem 0.8rem;
+	font-family: 'Roboto' !important;
+	font-size: 1.8rem;
+	outline: none;
+}
+
+#input-email {
+	background-image: url(#{resource['imagens:ic_email.png']});
+	padding-left: 4.2rem !important;
+	margin-top: 1rem;
+}
+
+#input-senha {
+	background-image: url(#{resource['imagens:ic_password.png']});
+	padding-left: 4.2rem !important;
+	margin-top: 2rem;
+}
+
+.img-login {
+	width: 20rem;
+	height: 8rem;
+	margin-left: 8rem;
+	margin-top: -4rem;
+}
+
+#painel-login2 a {
+	margin-top: 2rem;
+	text-decoration: none;
+	color: #8348FF;
+	float:right;
+	font-family: 'Roboto';
+	font-weight: bold;
+	font-size: 1.8rem;
+}
+
+#new-account {
+	margin-top: 1.5rem !important;
+	font-size: 2.5rem !important;
+	text-align: center;
+	float:none !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#input-submit {
+	margin-top: 6rem;
+	background-color: #04D361;
+	color: #fff;
+}
+	
+#painel-logado {
+	width: 50rem;
+	margin: 0 1rem 0.1rem 2rem;
+	display: flex;
+	padding: 1rem;
+	font-family: 'Roboto';
+	display:flex;
+	align-items: center;
+}
+
+#foto-user {
+	width: 8rem;
+	height: 8rem;
+	background: #fff;
+	border-radius: 10rem;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	color: #8348FF;
+	border: 4px solid #8257E5;
+	box-sizing: border-box;
+	font-size: 5rem;
+}
+
+#nome-user {
+	width: 24rem;
+	height: auto;
+	padding: 0.5rem;
+	background: #fff;
+	color: #8348FF;
+	margin-left: 2rem;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	color: #8348FF;
+	border: 4px solid #8257E5;
+	border-radius: 2rem;
+	box-sizing: border-box;
+	font-size: 2.5rem;
+	font-weight: bold;
+}
+
+#menuToggle input {
+	display: block;
+	width: 4rem;
+	height: 4rem;
+	position: absolute;
+	top: -7px;
+	left: -5px;
+	cursor: pointer;
+	opacity: 0; /* hide this */
+	z-index: 2; /* and place it over the hamburger */
+	-webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span {
+	display: block;
+	width: 3.3rem;
+	height: 0.5rem;
+	margin-top: 0.5rem;
+	position: relative;
+	background: var(--color-button-background);
+	border-radius: 3px;
+	
+	z-index: 1;
+	transform-origin: 4px 0px;
+	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+		background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+	transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+	transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span {
+	opacity: 1;
+	transform: rotate(45deg) translate(-2px, -1px);
+	background: var(- -color-button-background);
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3) {
+	opacity: 0;
+	transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2) {
+	transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+	position: absolute;
+	width: 45rem;
+	height: 111vh !important;
+	margin: -12rem 0 0 -8rem;
+	padding: 50px;
+	padding-top: 125px;
+	background: #D2C6EB;
+	list-style-type: none;
+	-webkit-font-smoothing: antialiased;
+	/* to stop flickering of text in safari */
+	transform-origin: 0% 0%;
+	transform: translate(-100%, 0);
+	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#menuToggle input:checked ~ div {
+	transform: none;
+}
+
+.divider {
+
+	width: 38rem;
+	height: 0.3rem;
+	background: var(--color-background-container);
+	border-radius: 1rem;
+	margin-top: 1rem
+}
+
+.div-item {
+	padding: 0.6rem 0;
+}
+
+.div-label {
+	width: 35rem !important;
+	height: 3rem;
+	margin-top: 1rem;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--color-button-background);
+	border: 2px solid #8257E5;
+	box-sizing: border-box;
+	border-radius: 1rem;
+}
+
+.menu-h-label {
+	font-family: Roboto !important;
+	font-size: 2.5rem !important;
+	font-weight: 900 !important;
+	text-decoration: none !important;
+	color: #8257E5 !important;
+}
+
+.div-item a {
+	display: flex;
+	align-items: center;
+}
+
+.menu-h-item img, .menu-h-item-sair img {
+	height: 3rem;
+	width: 3rem;
+	margin-right: 1rem;
+	margin-left: 1rem;
+}
+
+.menu-h-item {
+	font-family: Roboto !important;
+	font-size: 2.3rem;
+	font-weight: 900;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	width: 35rem;
+	height: 5rem;
+	background: var(--color-button-background);
+	border-radius: 15px;
+	color: #8257E5 !important;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.menu-h-item-sair {
+	margin-top: 1rem;
+	font-family: Roboto !important;
+	font-size: 2rem;
+	font-weight: 900;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	width: 35rem;
+	height: 4rem;
+	color: var(--color-background-container);
+	background: #E19F9F;
+	border: 3px solid #FFFFFF;
+	box-sizing: border-box;
+	border-radius: 1rem;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.button-admin {
+	font-family: Roboto !important;
+	font-size: 2.3rem;
+	font-weight: 900;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	width: 35rem;
+	height: 7rem;
+	color: var(--color-background-container);
+	background: #000;
+	border: 3px solid #fff;
+	box-sizing: border-box;
+	border-radius: 1rem;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.button-admin img{
+	height: 4rem;
+	width: 4rem;
+	margin-right: 1rem;
+	margin-left: 1rem;	
+}
+
+#container-bt-admin {
+	display: flex !important;
+	justify-content: center !important;
+	margin-left: 4rem !important;
+}
+
+.painel-login {
+	width: 35rem;
+	height: 28rem;
+	border: 5px solid #774FD1;
+	border-radius: 25px;
+	display: flex;
+	
+	padding: 1rem;
+	background: #D2C6EB;
+	margin-top: 1rem;
+	margin-bottom: 2.5rem;
+	margin-left: 1rem;
+	
+}
+
+
+#login{
+	margin-left:1rem;
+}
+
+#div-email label, #div-senha label{
+	color: #000000 !important;
+	font-size: 2rem !important;
+	top:1rem;
+	
+}
+
+#div-email input, #div-senha input{
+	color: #000000 !important;
+	font-size: 2rem;
+	opacity:100% !important;
+	background: #FFFFFF !important;
+	width: 30rem !important;
+	height: 5rem !important;	
+}
+
+#div-submit span{
+	background: none;
+}
+#div-submit button{
+	margin-top: 5rem;
+	height:5rem !important;
+	width: 10rem !important;
+}
+#login #div-email{
+	margin-top:5rem;
+}
+#login #div-senha{
+	margin-top:6rem;
+}
+@media(min-width: 280px){
+   
+    #menu{
+    	height: 112vh;
+    }    
+}
+
+@media(min-width: 360px){
+	
+   
+    #menu{
+    	height: 108vh;
+    }    
+}
+@media(min-width: 375px){
+ 
+    #menu{
+    	height: 107vh;
+    } 
+    .menu-h-item, .div-label{
+      margin-left: 2rem;
+   } 
+    .menu-h-item-sair{
+      margin-left: 2rem;
+   }   
+}
+
+@media(min-width: 700px){
+   
+    #menu{
+    	height: 105vh;
+    }    
+}
+@media(min-width: 1024px){
+   
+    #menu{
+    	height: 104vh;
+    }    
+}
+
+@media(min-width: 1300px){
+   
+    #menu{
+    	height: 107.6vh;
+    }    
+}
+
+    

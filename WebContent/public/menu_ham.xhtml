@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jstl/core">
+<ui:component>
+
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{utilBean.setErrorLogin(!empty param.login_error)}" />
+	</f:metadata>
+
+	<div id="menu-hamburguer">
+		<nav role="navigation">
+			<div id="menuToggle">
+
+				<h:panelGroup>
+					<h:selectBooleanCheckbox id="tas" styleClass="check-menu"
+						type="checkbox" value="#{utilBean.opControl}">
+					</h:selectBooleanCheckbox>
+					<span></span>
+					<span></span>
+					<span></span>
+				</h:panelGroup>
+
+				<div id="menu">
+					<h:panelGroup
+						rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')||request.isUserInRole('ROLE_USUARIO')}">
+
+						<c:set var="nomeUsuario" scope="session"
+							value="#{usuarioBean.getNameUser(request)}" />
+
+						<div id="painel-logado">
+							<div id="foto-user">#{nomeUsuario.charAt(0)}</div>
+							<div id="nome-user">#{nomeUsuario}</div>
+						</div>
+
+					</h:panelGroup>
+
+					<h:panelGroup
+						rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}">
+						<div class="divider"></div>
+						<div class="div-item">
+							<div class="div-label">
+								<h:outputLabel styleClass="menu-h-label" value="Administração" />
+							</div>
+						</div>
+
+
+
+						<div class="div-item" id="container-bt-admin">
+							<h:form>
+								<h:commandLink styleClass="button-admin"
+									action="/admin/principal.xhtml">
+									<h:graphicImage library="imagens" name="ic_admin.png" />
+									<h:outputText value="ADMINISTRAÇÃO" />
+								</h:commandLink>
+							</h:form>
+						</div>
+					</h:panelGroup>
+
+
+
+
+					<h:panelGroup rendered="#{request.remoteUser == null}">
+						<h:graphicImage library="imagens" name="login.png"
+							styleClass="img-login" />
+						<h:panelGroup rendered="#{!empty param.login_error}">
+							<p class="error-msg">Credenciais inválidas.</p>
+						</h:panelGroup>
+						<div class="painel-login">
+
+							<div id="painel-login2">
+
+								<form id="login" method="post"
+									action="#{request.contextPath}/j_spring_security_check">
+
+									<input placeholder="E-mail" autocomplete="off" id="input-email"
+										type='text' name='j_username' /> <input placeholder="Senha"
+										autocomplete="off" id="input-senha" type='password'
+										name='j_password' /> <a
+										href="#{request.contextPath}/public/recuperar_senha.jsf">Esqueci
+										a senha.</a> <input id="input-submit" type="submit"  value="Entrar" />
+
+									<a id="new-account"
+										href="#{request.contextPath}/public/usuario.jsf">Não tenho
+										cadastro?</a>
+
+								</form>
+
+
+							</div>
+						</div>
+					</h:panelGroup>
+					<h:form>
+
+
+
+
+						<h:panelGroup
+							rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')||request.isUserInRole('ROLE_USUARIO')}">
+							<div class="divider"></div>
+							<div class="div-item">
+								<div class="div-label">
+									<h:outputLabel styleClass="menu-h-label" value="Simulados" />
+								</div>
+							</div>
+							<div class="div-item">
+								<h:commandLink styleClass="menu-h-item"
+									action="/restrito/simulado.xhtml" >
+									<h:graphicImage library="imagens"
+										name="ic_realizar_simulado.png" />
+									<h:outputText value="Realizar Simulado" />
+								</h:commandLink>
+							</div>
+							<div class="div-item">
+								<h:commandLink styleClass="menu-h-item"
+									action="/restrito/histsimulado.xhtml">
+									<h:graphicImage library="imagens" name="ic_historico.png" />
+									<h:outputText value="Histórico" />
+								</h:commandLink>
+							</div>
+						</h:panelGroup>
+
+						<div class="divider"></div>
+						<div class="div-item">
+							<div class="div-label">
+								<h:outputLabel styleClass="menu-h-label" value="Informações" />
+							</div>
+						</div>
+						<div class="div-item">
+							<h:commandLink styleClass="menu-h-item"
+								action="/public/frota.xhtml">
+								<h:graphicImage library="imagens" name="ic_frota.png" />
+								<h:outputText value="Frotas" />
+							</h:commandLink>
+						</div>
+
+						<div class="div-item">
+							<h:commandLink styleClass="menu-h-item"
+								action="/public/infracao.xhtml'">
+								<h:graphicImage library="imagens" name="ic_infracao.png" />
+								<h:outputText value="Infrações" />
+							</h:commandLink>
+						</div>
+
+						<div class="div-item">
+							<h:commandLink styleClass="menu-h-item"
+								action="/public/condutor.xhtml'">
+								<h:graphicImage library="imagens" name="ic_condutor.png" />
+								<h:outputText value="Condutores Habilitados" />
+							</h:commandLink>
+						</div>
+						<div class="divider"></div>
+
+						<h:panelGroup
+							rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')||request.isUserInRole('ROLE_USUARIO')}">
+							<div class="div-item">
+								<a class="menu-h-item-sair"
+									onclick="document.location='#{request.contextPath}/j_spring_security_logout'">
+									<h:graphicImage library="imagens" name="ic_sair.png" /> <h:outputText
+										value="SAIR" />
+								</a>
+							</div>
+						</h:panelGroup>
+					</h:form>
+				</div>
+			</div>
+		</nav>
+
+	</div>
+</ui:component>
+
+</html>

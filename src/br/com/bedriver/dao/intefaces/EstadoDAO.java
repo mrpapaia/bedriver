@@ -12,6 +12,8 @@ public interface EstadoDAO {
 	public void excluir(Estado estado);
 
 	public Estado carregar(Integer codigo);
+	
+	public Estado carregar(String uf);
 
 	public List<Estado> listar();
 }

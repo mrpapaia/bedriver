@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title><ui:insert name="titulo">BEDRIVER</ui:insert></title>
+	<h:outputStylesheet library="css" name="cliente.css" />
+	<h:outputStylesheet library="css" name="table.css" />
+	<h:outputStylesheet library="stylesheet" type="text/css"
+		href="//fonts.googleapis.com/css?family=Mr+Dafoe" />
+
+</h:head>
+<h:body>
+
+	<div id="div-header">
+		<div id="header">
+
+			<h1>ClientWS BEDRIVER</h1>
+		</div>
+		
+		<h:form id="formInput">
+			<span class="ui-float-label"> <p:inputText id="float-input"
+					styleClass="entradaWS" value="#{clienteWS.email}" /> <p:outputLabel styleClass="entradaLB"
+					for="@previous" value="E-mail" />
+			</span>
+			<span class="ui-float-label"> <p:calendar
+					styleClass="entradaWS" value="#{clienteWS.dataI}"
+					pattern="dd/MM/yyyy" /> <h:outputLabel styleClass="entradaLB" for="@previous"
+					value="Data Inicial" />
+			</span>
+			<span class="ui-float-label"> <p:calendar
+					styleClass="entradaWS" value="#{clienteWS.dataF}"
+					pattern="dd/MM/yyyy" /> <h:outputLabel styleClass="entradaLB" for="@previous"
+					value="Data Final" />
+					</span>
+			<span class="ui-float-label">
+			<p:commandButton value="Buscar" styleClass="entradaBT"
+				update=":formWS:histWS" action="#{clienteWS.buscaHist()}">
+			</p:commandButton>
+			</span>
+		</h:form>
+		
+	</div>
+	<div id="container">
+		<div id="corpo">
+			<c:set var="title" scope="session" value="Hist. do Simulado" />
+
+
+			<h:panelGroup id="cardWS">
+				<h:form id="formWS">
+					<p:dataTable id="histWS" value="#{clienteWS.historico}"
+						var="historico" rowKey="#{historico.nome}" rows="8"
+						paginator="true" paginatorPosition="bottom"
+						emptyMessage="VAZIO"
+						paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+
+						<p:column headerText="Data" styleClass="columnList">
+							<h:outputText
+								value="#{clienteWS.dateFormat(historico.dataRealizado)}" />
+						</p:column>
+
+						<p:column headerText="Nome" styleClass="columnList">
+							<h:outputText value="#{historico.nome}" />
+						</p:column>
+
+						<p:column headerText="Acertos" styleClass="columnList">
+							<h:outputText value="#{historico.nota}" />
+						</p:column>
+
+					</p:dataTable>
+
+				</h:form>
+			</h:panelGroup>
+
+		</div>
+		<div id="rodape">
+			<ui:insert name="rodape">
+
+				<!-- <ui:include src="/publico/rodape.xhtml" /> -->
+
+			</ui:insert>
+		</div>
+	</div>
+</h:body>
+</html>

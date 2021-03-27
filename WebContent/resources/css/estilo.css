@@ -1,0 +1,16 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/11/2019, 17:15:58
+    Author     : 1513 FOX
+*/
+#svg-map path { fill:#8257E5 }
+    #svg-map text { fill:#fff; font:12px Arial-BoldMT, sans-serif; cursor:pointer }
+    #svg-map a{ text-decoration:none }
+    #svg-map a:hover { cursor:pointer; text-decoration:none }
+    #svg-map a:hover path{ fill:#523791 !important }
+    #svg-map .circle { fill:#C8B0FF }
+    #svg-map a:hover .circle { fill:#523791 !important; cursor:pointer }

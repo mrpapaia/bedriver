@@ -1,0 +1,64 @@
+
+body .ui-datatable thead th {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	padding: 1rem !important;
+	margin: 1rem !important;
+	margin-top: 5rem !important;
+}
+
+.ui-datatable tbody.ui-datatable-data {
+	justify-content: center !important;
+	align-content: center !important;
+}
+
+.form-buttons .buttons {
+	width: 40% !important;
+	margin-top: 2rem !important;
+	margin-left: 20rem !important;
+}
+
+.buttons {
+	width: 80% !important;
+    height: 5.6rem !important;
+    float: left !important;
+    background: #04D361 !important;
+    color: #FFFFFF !important;
+    border: 0 !important;
+    border-radius: 0.8rem !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s !important;
+    margin-top: 2.2rem !important;
+    margin-left: 3.4rem !important;
+    margin-bottom: 3.4rem !important;
+ 
+}
+
+.buttons:hover {
+	background: #04BF58 !important;
+}
+
+.ui-button-text {
+	font-size: 2.3rem !important;
+}
+
+th {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	background: var(--color-background) !important;
+	font-size: 2rem !important;
+	
+	
+	border-radius: 5px;
+}
+#form-footer{
+	width: 100%;
+	display:flex;
+	justify-content: flex-end;
+}

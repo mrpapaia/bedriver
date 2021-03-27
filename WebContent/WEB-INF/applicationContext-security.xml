@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 	<http auto-config="true">
 		<intercept-url pattern="/admin/**" access="ROLE_ADMINISTRADOR" />
 		<intercept-url pattern="/restrito/**" access="ROLE_USUARIO,ROLE_ADMINISTRADOR" />
-		<form-login login-page="/public/login.jsf"
-			always-use-default-target="true" default-target-url="/restrito/principal.jsf"
-			authentication-failure-url="/public/login.jsf?login_error=1" />
+		<form-login login-page="/index.jsf" 
+			always-use-default-target="true" default-target-url="/index.jsf"
+			authentication-success-handler-ref="authSuccess"
+			authentication-failure-handler-ref="authFailure"
+			authentication-failure-url="/index.jsf?login_error=1" 
+			/>
 		<logout />
 		<remember-me />
 	</http>
 	
+	
+		<beans:bean id="bCryptPasswordEncoder" 
+			class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	<beans:bean id="authSuccess" class="br.com.bedriver.util.AuthenticationSuccess"/>
+	<beans:bean id="authFailure" class="br.com.bedriver.util.AuthenticationFailure"/>
 	<authentication-manager>
 		<authentication-provider>
+		<password-encoder ref="bCryptPasswordEncoder" />
 		<jdbc-user-service data-source-ref="bedriverDataSource"
 				authorities-by-username-query="SELECT u.email, u.permissao FROM usuarios u WHERE  u.email = ?"
                 users-by-username-query="SELECT email, senha, ativo FROM usuarios WHERE email = ?" />

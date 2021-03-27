@@ -3,7 +3,8 @@ package br.com.bedriver.rn;
 import java.util.List;
 
 import br.com.bedriver.dao.intefaces.InfracaoDAO;
-import br.com.bedriver.model.Infracao;
+import br.com.bedriver.model.Estado;
+import br.com.bedriver.model.Infracoe;
 import br.com.bedriver.util.DAOFactory;
 
 public class InfracaoRN {
@@ -13,7 +14,7 @@ public class InfracaoRN {
 		this.infracaoDAO = DAOFactory.criarInfracaoDAO();
 	}
 
-	public List<Infracao> listar() {
+	public List<Infracoe> listar() {
 		return this.infracaoDAO.listar();
 	}
 

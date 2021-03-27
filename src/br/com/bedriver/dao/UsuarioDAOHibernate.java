@@ -2,14 +2,21 @@ package br.com.bedriver.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.bedriver.dao.intefaces.UsuarioDAO;
 import br.com.bedriver.model.Usuario;
+import br.com.bedriver.util.HibernateUtil;
 
 public class UsuarioDAOHibernate implements UsuarioDAO {
 
+	@Autowired
+	private SessionFactory sessionFactory;
+	
 	private Session session;
 
 	public void setSession(Session session) {
@@ -41,9 +48,26 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 	}
 
 	public Usuario buscarPorLogin(String login) {
-		String hql = "select u from usuarios u where u.email = :email";
+		Session session1 ;
+		Query consulta;
+		String hql = "select u from Usuario u where u.email = :login";
+		try {
+			consulta = this.session.createQuery(hql);
+			consulta.setString("login", login);
+		}catch (HibernateException e) {
+			session1=HibernateUtil.getSessionFactory().openSession();
+			consulta = session1.createQuery(hql);
+			consulta.setString("login", login);
+			///session1.close();
+		}
+		
+		return (Usuario) consulta.uniqueResult();
+	}
+	
+	public Usuario buscarPorResetPasswordToken(String resetPasswordToken) {
+		String hql = "select u from Usuario u where u.resetPasswordToken = :rpt";
 		Query consulta = this.session.createQuery(hql);
-		consulta.setString("login", login);
+		consulta.setString("rpt", resetPasswordToken);
 		return (Usuario) consulta.uniqueResult();
 	}
 }

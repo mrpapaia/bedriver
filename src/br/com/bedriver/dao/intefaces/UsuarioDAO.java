@@ -14,6 +14,8 @@ public interface UsuarioDAO {
 	public Usuario carregar(Integer codigo);
 
 	public Usuario buscarPorLogin(String login);
+	
+	public Usuario buscarPorResetPasswordToken(String resetPasswordToken);
 
 	public List<Usuario> listar();
 }

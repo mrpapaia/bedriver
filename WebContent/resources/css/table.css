@@ -1,0 +1,118 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-weight: bold;
+	font-family: Roboto !important;
+	font-size: 1rem;
+}
+
+.ui-datatable-odd {
+	background: #F0F0F7 !important ;
+}
+
+.ui-datatable-even {
+	background: #D2C6EB !important ;
+}
+
+.ui-datatable tbody td, th {
+	border-color: #000000 !important;
+}
+
+.img-table{
+	width: 3rem;
+	height: 3rem;
+}
+
+.columnList {
+	text-align: center !important;
+	height: 3.18rem !important;
+	width:10rem;
+	line-height: 2.6rem;
+}
+th.sexo, td.sexo{
+	width: 5rem !important;
+	text-align: center !important;
+}
+th.municipio, td.municipio{
+	width: 10rem !important;
+	text-align: center !important;
+}
+th.uf, td.uf {
+	width: 1rem !important;
+	text-align: center !important;
+}
+.ui-datatable thead th {
+	background-color:  var(--color-title-in-primary) !important;
+}
+
+.ui-datatable-selectable {
+	height: 4.5rem;
+}
+.tab-item{
+	border:0;
+	height:5rem !important;
+	width:15rem !important;
+	background: var(--color-text-in-primary)!important;
+	color:var(--color-button-background) !important;
+	box-shadow: 0px -4px 0px rgba(0, 0, 0, 0.1) !important;
+	border-top-left-radius:0.9rem !important;
+	border-top-right-radius: 0.9rem  !important;
+	border-bottom-left-radius: 0rem !important;
+	border-bottom-right-radius: 0rem !important;
+	border-color:var(--color-text-in-primary)!important;
+}
+
+.tab-item.ui-state-hover {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: var(--color-title-in-primary) !important;
+}
+.tab-item.ui-state-focus {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+  color: var(--color-title-in-primary) !important;
+}
+
+.ui-paginator-bottom{
+	height:7rem;
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+}
+
+.ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-hover, 
+.ui-paginator .ui-paginator-next.ui-state-hover, .ui-paginator .ui-paginator-last.ui-state-hover,
+.ui-paginator .ui-paginator-prev.ui-state-hover, .ui-paginator .ui-paginator-first.ui-state-hover{
+    background: var(--color-text-in-primary)!important;
+    color: var(--color-title-in-primary) !important;
+}
+.ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {
+    background: var(--color-primary-dark) !important;
+    color: var(--color-title-in-primary) !important;
+}
+
+
+@media ( min-width : 700px) {
+	.columnList {	
+	width:5rem;	
+  }
+}
+@media ( min-width : 1100px) {
+	* {	
+	font-size: 2.2rem;	
+}
+	.columnList {
+		text-align: center;
+		height: 3.18rem !important;
+		line-height: 2.6rem;
+	}
+	.ui-datatable thead th {
+		background-color: #FFFFFF !important;
+	}
+	.ui-datatable-selectable {
+		height: 4.5rem;
+	}
+	.tab-item{
+	width:25rem;
+	height:4.5rem;}
+}

@@ -1,46 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jstl/core">
 
-<h:head>
-	<title>Bedriver</title>
-	<h:outputStylesheet library="css" name="style.css" />
-</h:head>
-<h:body>
-
-
-	<div class="card">
-		<h:form id="form">
-			<p:dataTable id="condutores" var="condutor"
-				value="#{condutorBean.lista}" rowKey="#{condutor.id}"
-				selection="#{dtContextMenuView.selectedProduct}"
-				selectionMode="single">
-				<f:facet name="header">
-             CONDUTORES
-              </f:facet>
-				<p:column headerText="REGIÃO" styleClass="columnList">
-					<h:outputText value="#{condutor.estado.regiao.nome}" />
-				</p:column>
-				<p:column headerText="UF" styleClass="columnList">
-					<h:outputText value="#{condutor.estado.uf}" />
-				</p:column>
-				<p:column headerText="SEXO" styleClass="columnList">
-					<h:outputText value="#{condutor.sexo}" />
-				</p:column>
-				<p:column headerText="FAIXA ETARIA" styleClass="columnList">
-					<h:outputText value="#{condutor.faixa_etaria}" />
-				</p:column>
-				<p:column headerText="Categoria" styleClass="columnList">
-					<h:outputText value="#{condutor.categoria}" />
-				</p:column>
-				<p:column headerText="Quantidade" styleClass="columnList">
-					<h:outputText value="#{condutor.qtd_habilitados}" />
-				</p:column>
-
-			</p:dataTable>
+<ui:composition template="/templates/base3.xhtml">
+	<ui:define name="corpo">
+	<c:set var="title" scope="session" value="Condutores" />
+	
+		<h:form>
+			<div id="div-tabs">
+				<p:commandButton styleClass="tab-item" value="Lista" />
+				<p:commandButton styleClass="tab-item" value="Grafico" action="/public/grafico_condutores.jsf" />
+				<p:commandButton styleClass="tab-item" value="Mapa" action="/public/mapa_condutores.jsf" />
+			</div>
 		</h:form>
-	</div>
-</h:body>
+
+		<h:panelGroup id="card">
+			<h:form id="form">
+				<p:dataTable id="condutores" var="condutor"
+					value="#{condutorBean.lista}" rowKey="#{condutor.id}" rows="9"
+					paginator="true" paginatorPosition="bottom"
+					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+
+					<p:column headerText="REGIÃO" styleClass="columnList" >
+						<h:outputText value="#{condutor.estado.regioe.nome}" />
+					</p:column>
+					<p:column headerText="UF" styleClass="columnList, uf">
+						<h:outputText value="#{condutor.estado.uf}" />
+					</p:column>
+					<p:column headerText="SEXO" styleClass="columnList, sexo">
+						<h:outputText value="#{condutor.sexo}" />
+					</p:column>
+					<p:column headerText="FAIXA ETARIA" styleClass="columnList">
+						<h:outputText value="#{condutor.faixaEtaria}" />
+					</p:column>
+					<p:column headerText="Categoria" styleClass="columnList">
+						<h:outputText value="#{condutor.categoriaCnh.id}" />
+					</p:column>
+					<p:column headerText="Quantidade" styleClass="columnList">
+						<h:outputText value="#{condutor.qtdHabilitados}" />
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
+
 </html>

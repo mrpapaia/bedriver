@@ -1,21 +1,111 @@
+:root {
+	/*variáveis css*/ 
+	--color-background: #D6D6D6; 
+	--color-background-container: #FFFFFF; 
+	--color-primary-lighter: #9871F5; 
+	--color-primary-light: #916BEA; 
+	--color-primary: #8257E5; 
+	--color-primary-dark: #774FD1; 	
+	--color-primary-darker: #6842c2; 
+	--color-secondary: #04D361; 
+	--color-secondary-dark: #04BF58; 
+	--color-title-in-primary: #FFFFFF; 
+	--color-text-in-primary: #D4C2FF; 
+	--color-text-title: #32264D; 
+	--color-text-complement: #9C98A6; 
+	--color-text-base: #6A6180; 
+	--color-line-in-white: #E6E6F0; 
+	--color-input-background: #F8F8FC; 
+	--color-button-text: #774FD1; 
+	--color-button-background: #FFFFFF; 
+	--color-box-base: #FFFFFF; 
+	--color-box-footer: #FAFAFC; 
+	--color-small-info: #C1BCCC;
+	 font-size: 62.5%; /* /* controle das medidas rem */
+}
+
 * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html, body {
+	height: 100vh;
+}
+
+body {
+	
+	 background-image:url(#{resource['imagens:teste1.png']});
+	 background-repeat: no-repeat;
+}
+
+#header {	
+	width:100%;
+
+	margin: 0 auto;
+	display: flex;
+	align-self:center;
+	height:17rem;		
+	
+	justify-content: space-between;
+	padding: 1.6rem 0;
+}
+
+
+
+.top-buttons{
+	display: flex;
+	justify-content: space-between;
+}
+.top-button{
+	display: flex;
+	
+	justify-content: space-between;
+
+	
+	
+}
+.top-button .menu-item {
+	
+	font-size: 4rem !important;
+	padding:1rem;
+	width: 22rem;
+	color: var(--color-button-text);
+	background: var(--color-button-background);	
+	box-shadow: 3.5px 2.5px 2.5px #c2c2c2;
+	padding:0.5rem;	
+	margin-right: 3rem;
+	
+	border-radius: 15px;		
+	border-color: var(--color-text-in-primary)!important;	
+}
+.top-button .menu-item.ui-state-hover {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: #ffffff;
+}
+.top-button .menu-item.ui-state-focus {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: #ffffff;
+    border:1rem !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+ .ui-button-text{
+	font-family: Roboto !important;
+	font-size: 3rem !important;	
+	text-decoration:none !important;
+	text-align:center;
+	font-style: normal;
 	font-weight: bold;
-	font-family: arial;
-	font-size: 10px;
-}
-.ui-datatable-odd {
-    background: #F0F0F7;
 }
 
-.ui-datatable-even {
-    background: #D2C6EB;
+.logo_rodape {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 75rem;
+	margin-left: -50rem;
 }
 
-td.columnList{
-    text-align: center;
-}
-
-.ui-datatable thead th {    
-    background-color: #FFFFFF !important;
-   
-}

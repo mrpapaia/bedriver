@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title><ui:insert name="titulo">BEDRIVER</ui:insert></title>
+	<h:outputStylesheet library="css" name="base.css" />
+	<h:outputStylesheet library="css" name="table.css" />
+	<h:outputStylesheet library="css" name="menuH.css" />
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputStylesheet library="css" name="grafico.css" />
+	<h:outputStylesheet library="css" name="recuperarSenha.css" />
+	<h:outputStylesheet library="stylesheet" type="text/css"
+		href="//fonts.googleapis.com/css?family=Mr+Dafoe" />
+
+</h:head>
+<h:body>
+
+	<div id="div-header">
+		<div id="header">
+			<ui:include src="/public/menu_ham.xhtml" />
+			<div id="title">
+
+				<ui:insert id="aqui" name="titulo">${title} </ui:insert>
+			</div>
+			<div id="div-top-buttons">
+				<h:form styleClass="top-buttons">
+
+					<div class="top-button">
+
+						<p:commandButton
+							rendered="#{!request.isUserInRole('ROLE_ADMINISTRADOR')  &amp;&amp; !request.isUserInRole('ROLE_USUARIO')}"
+							styleClass="menu-item" value="Entrar" event="click" action="#{utilBean.change()}" update=":tas"/>
+							
+						
+					</div>
+
+					<div class="top-button">
+
+						<div class="top-button">
+							<p:commandButton
+								rendered="#{request.getRequestURI().toString()!='/bedriver/'}"
+								styleClass="menu-item" value="Ínicio" action="/index.xhtml" />
+						</div>
+					</div>
+
+				</h:form>
+			</div>
+		</div>
+
+	</div>
+	<div id="containerTable">
+
+
+		<div id="corpo">
+			<ui:insert name="corpo" />
+		</div>
+		<div id="rodape">
+			<ui:insert name="rodape">
+
+				<!-- <ui:include src="/publico/rodape.xhtml" /> -->
+
+			</ui:insert>
+		</div>
+	</div>
+</h:body>
+</html>

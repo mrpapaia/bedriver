@@ -1,0 +1,35 @@
+.mapa {
+	width: 100%;
+	height: 100%;
+}
+
+#container-search {
+	margin-top: 0.85rem;
+	width: 40rem;
+	position: absolute;
+	z-index: 1;
+	margin-left: 50rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.input-search-map {
+	font-size: 2rem !important;
+	width: 25rem;
+	height: 4rem;
+}
+
+.button-search-map {
+	margin-top: 2rem;
+	width: 10rem;
+	height: 4rem;
+	background: var(--color-button-background) !important;
+	color: var(--color-button-text) !important;
+}
+
+.button-search-map.ui-state-hover {
+    background:  var(--color-primary-dark) !important;
+    border-color: var(--color-text-in-primary)!important;
+    color: #ffffff !important;
+}

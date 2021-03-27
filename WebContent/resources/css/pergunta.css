@@ -1,0 +1,245 @@
+:root {
+    font-size: 60%;
+
+    --color-background: #F0F0F7;
+    --color-primary-lighter: #9871F5;
+    --color-primary-light: #916BEA;
+    --color-primary: #8257E5;
+    --color-primary-dark: #774DD6;
+    --color-primary-darker: #6842C2;
+    --color-secundary: #04D361;
+    --color-secundary-dark: #04BF58;
+    --color-title-in-primary: #FFFFFF;
+    --color-text-in-primary: #D4C2FF;
+    --color-text-title: #32264D;
+    --color-text-complement: #9C98A6;
+    --color-text-base: #6A6180;
+    --color-line-in-white: #E6E6F0;
+    --color-input-background: #F8F8FC;
+    --color-button-text: #FFFFFF;
+    --color-box-base: #FFFFFF;
+    --color-line: #C2C2C2;
+    --color-container-bottons: #FAFAFC;
+    --color-box-footer: #FAFAFC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+hmlt, body, #root {
+    height: 100vh;
+}
+
+body {
+    background: var(--color-background);
+    font: 500 1.6rem Poppins;
+    color: var(--color-text-base);
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#header {
+	background: var(--color-primary);	
+	width:100%;
+	height:15rem;
+	
+	display: flex;
+	align-items: center;
+	align-self:center;
+	justify-content: flex-start;
+	
+	
+}
+
+#div-h1{
+	margin-left: 10rem;
+	display:flex;
+	justify-self: start;
+}
+
+.seta_left {
+	margin: -6rem 4rem 3.2rem;
+	
+}
+
+.container {
+    background: var(--color-box-base);
+    width: 100%;
+    max-width: 74rem;
+    margin: -3.2rem auto 3.2rem;
+    padding-top: 1.4rem;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 5px 5px var(--color-line-in-white);
+    
+    overflow: hidden;
+}
+
+th {
+	display: flex !important;
+	background: var(--color-background) !important;
+	font-size: 2rem !important;
+	margin-top: 1rem !important;
+	margin-right: 1rem !important ;
+	margin-left: 1rem !important ;
+	margin-bottom: 1rem !important;
+	
+	
+	border-radius: 5px;
+}
+
+
+
+h1 {
+	display:flex;
+	align-self:center;
+	color: var(--color-box-base);
+	font-size: 5rem;
+	
+}
+
+.spam {
+	margin: 5rem 2rem;
+	color: var(--color-text-base);
+	font-size: 2rem;
+}
+
+h2 {
+	font: 700 2rem Archivo;
+    color: var(--color-text-title);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+h3 {
+	font: 700 1.6rem Archivo;
+    color: var(--color-text-complement);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 1.6rem;
+    margin-left: 0.9rem;
+
+    
+}
+
+p {
+	font: 700 1.9rem Archivo !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding-top: 1.6rem !important;
+    padding-bottom: 1.6rem !important;
+   	text-indent: 3.1rem !important;
+   	
+
+}
+
+.grid-radio td {
+	padding: .3rem;
+	padding-left: 3rem;
+	color: var(--color-text-title);
+	font-size: 1.3rem;
+	
+}
+
+h4 {
+	font: 700 1.6rem Archivo;
+    color: var(--color-text-complement);
+    width: 100%;
+    padding-bottom: 1rem;
+    margin-left: 0.1rem;
+   
+}
+
+.borda {
+	border-bottom: 2px solid var(--color-line);
+	margin-top: 3rem;
+}
+
+.container-buttons {
+	display: flex;
+	background: var(--color-container-bottons) !important;
+	margin-top: 3rem !important;
+	
+	border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 1px var(--color-line-in-white) !important;
+}
+
+.container-buttons .icon1 {
+	margin: 3rem 3rem;
+}
+
+.text-h4 {
+	display: flex;
+	flex-direction: column;
+	margin-top: 3.3rem;
+	margin-left: -3rem;
+}
+
+.button-finalizar {
+	width: 30% !important;
+    height: 3.6rem !important;
+    background: var(--color-secundary) !important;
+    color: var(--color-button-text) !important;
+    border: 0 !important;
+    border-radius: 0.8rem !important;
+    cursor: pointer !important;
+    font: 700 2rem Archivo !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s !important;
+    margin-top: 4.3rem !important;
+    margin-left: 7.4rem !important;
+    margin-bottom: 3rem !important;
+   
+}
+
+.button_finalizar:hover {
+    background: var(--color-secundary-dark) !important;
+}
+
+#form-footer{
+	width: 100%;
+	display:flex;
+	justify-content: flex-end;
+}
+#form-footer{
+	width: 100%;
+	display:flex;
+	justify-content: flex-end;
+}
+#footer{
+	display:flex;
+}
+#form-footer .logo_rodape {
+	display:flex;
+	align-content:center;
+
+	
+}
+.button .apply:hover {
+    background: var(--color-secundary-dark);
+}
+
+
+@media (min-width: 700px) {
+    :root {
+        font-size: 62.5%;
+    }
+}

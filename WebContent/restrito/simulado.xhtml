@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jstl/core">
+
+<ui:composition template="/templates/base2.xhtml">
+	<ui:define name="corpo">
+		<c:set var="title" scope="session" value="Simulado" />
+
+		<h:form styleClass="form-buttons">
+
+			<p:dataTable id="simulado" var="simulado"
+				value="#{simuladoBean.lista}">
+				<p:column headerText="Simulados Disponíveis">
+					<p:commandButton styleClass="buttons" value="Simulado #{simulado.estado.uf}"
+						action="#{simuladoBean.setSimuladoEscolhido(simulado)}">
+						<f:actionListener binding="#{request.session.setAttribute('idxSimulado', simulado.id)}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

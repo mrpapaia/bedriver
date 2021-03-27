@@ -5,46 +5,35 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
 import br.com.bedriver.model.Estado;
 import br.com.bedriver.rn.EstadoRN;
+import br.com.bedriver.web.api.EstadoREST;
 @ManagedBean(name = "estadoBean")
 @RequestScoped
 public class EstadoBean {
-	private List<Estado> lista;
-	private Estado estado;
+
+	private static final Logger logger = LogManager.getLogger(EstadoBean.class);
 	
-	public Estado estadoAtual() {
-		if(estado == null) {
-			estado = new Estado();
-		}
-		
-		return estado;
-	}
-	
-	public List<Estado> getLista() {
-		checkNullList();
-		return this.lista;
-	}
-	
-    public Estado getEstado(Integer id) {
-        if (id == null){
-            throw new IllegalArgumentException("no id provided");
-        }
+    public List<EstadoREST> getEstadosREST() {
+    	
+    	RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<List<EstadoREST>> rateResponse =
+                restTemplate.exchange("https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome",
+                            HttpMethod.GET, null, new ParameterizedTypeReference<List<EstadoREST>>() {
+                    });
         
-        checkNullList();
+        List<EstadoREST> estadosREST = rateResponse.getBody();
         
-        for (Estado estado : lista){
-            if (id.equals(estado.getId())){
-                return estado;
-            }
-        }
-        return null;
+        logger.info("Requisição REST realizada em https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome");
+
+        return estadosREST;
     }
-    
-	public void checkNullList() {
-		if (this.lista == null) {
-			EstadoRN estadoRN = new EstadoRN();
-			this.lista = estadoRN.listar();
-		}
-	}
 }

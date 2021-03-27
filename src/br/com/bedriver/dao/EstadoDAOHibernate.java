@@ -2,10 +2,13 @@ package br.com.bedriver.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.bedriver.dao.intefaces.EstadoDAO;
 import br.com.bedriver.model.Estado;
+import br.com.bedriver.model.Infracoe;
 
 public class EstadoDAOHibernate implements EstadoDAO {
 	
@@ -36,6 +39,13 @@ public class EstadoDAOHibernate implements EstadoDAO {
 	@Override
 	public List<Estado> listar() {
 		return this.session.createCriteria(Estado.class).list();
+	}
+
+	@Override
+	public Estado carregar(String uf) {
+		Criteria criteria = this.session.createCriteria(Estado.class);
+		criteria.add(Restrictions.eq("uf", uf));
+		return (Estado) criteria.uniqueResult();
 	}
 
 }

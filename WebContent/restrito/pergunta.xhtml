@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet name="pergunta.css" library="css" />
+	<title>Perguntas</title>
+</h:head>
+<h:body>
+
+	<div id="header">
+	<div id="div-from">
+		<h:form>
+			<p:commandLink action="/restrito/simulado.xhtml">
+				<h:graphicImage library="imagens" name="seta_left.png"
+					style="border:0" styleClass="seta_left" />
+			</p:commandLink>
+		</h:form>
+</div><div id="div-h1"><h1>Simulado</h1></div>
+		
+
+	</div>
+
+	<div class="container">
+
+		<h:form id="cadastro">
+			<h:inputHidden value="#{usuarioBean.usuario.id}" />
+			<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
+
+			<p:dataTable id="pergunta" var="pergunta" rows="1"
+				value="#{perguntaBean.getLista(idxSimulado)}"
+				rowKey="#{pergunta.id}" paginator="true" paginatorPosition="bottom"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+
+				<p:column class="header-text" headerText="Questões">
+					<h:outputText styleClass="spam"
+						value="Questão #{perguntaBean.getIndexPergunta(pergunta)}" />
+
+					<p>#{pergunta.texto}</p>
+
+					<h:form>
+					
+					<p:selectOneRadio id="alternativa" value="#{perguntaBean.alternativaSalva}" 
+						layout="grid" columns="1" styleClass="grid-radio">
+						
+							<f:selectItems value="#{perguntaBean.alternativas}" var="c" itemLabel="#{c}"></f:selectItems>
+
+							<f:ajax event="change" onchange="submit()" immediate="true"
+								listener="#{perguntaBean.getTeste}"></f:ajax>
+
+						</p:selectOneRadio>
+
+					</h:form>
+
+					<div class="container-buttons">
+						<h:form>
+							<h:graphicImage library="imagens" name="icon_!.png"
+								style="border:0" styleClass="icon1" />
+						</h:form>
+
+						<div class="text-h4">
+							<h4>Importante!</h4>
+							<h4>Não deixe as questões em branco</h4>
+						</div>
+
+						<p:commandButton styleClass="button-finalizar"
+							value="Finalizar Simulado"
+							action="#{perguntaBean.finalizarSimulado()}"></p:commandButton>
+					</div>
+
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</div>
+
+	<div id="footer">
+		<h:form id="form-footer">
+
+			<h:graphicImage library="imagens" name="logo_rodape.png"
+				style="border:0" styleClass="logo_rodape" />
+
+		</h:form>
+
+	</div>
+</h:body>
+</html>

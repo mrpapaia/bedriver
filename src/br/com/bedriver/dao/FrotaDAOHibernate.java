@@ -6,7 +6,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.com.bedriver.dao.intefaces.FrotaDAO;
-import br.com.bedriver.model.Frota;
+import br.com.bedriver.model.FrotaVeiculo;
+
 
 public class FrotaDAOHibernate implements FrotaDAO {
 
@@ -18,29 +19,29 @@ public class FrotaDAOHibernate implements FrotaDAO {
 	}
 
 	@Override
-	public void salvar(Frota frota) {
+	public void salvar(FrotaVeiculo frota) {
 		//this.session.save(frota);
 	}
 
 	@Override
-	public void atualizar(Frota frota) {
+	public void atualizar(FrotaVeiculo frota) {
 
 	}
 
 	@Override
-	public void excluir(Frota frota) {
+	public void excluir(FrotaVeiculo frota) {
 		//this.session.delete(frota);
 	}
 
 	@Override
-	public Frota carregar(Integer codigo) {
+	public FrotaVeiculo carregar(Integer codigo) {
 		return null;
 		//return (Frota) this.session.get(Frota.class, codigo);
 	}
 
 	@Override
-	public List<Frota> listar() {
-		return this.session.createCriteria(Frota.class).list();
+	public List<FrotaVeiculo> listar() {
+		return this.session.createCriteria(FrotaVeiculo.class).list();
 	}
 
 }

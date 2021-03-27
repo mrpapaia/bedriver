@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jstl/core">
+
+
+<ui:composition template="/templates/base.xhtml">
+	<ui:define name="corpo">
+		<c:set var="title" scope="session" value="Hist. do Simulado" />
+
+		<p:commandButton value="Relatório" type="button"
+			onclick="PF('sample').show();" styleClass="button-relatorio" />
+		<p:dialog  header="Relatório" widgetVar="sample" minHeight="10" width="650" showEffect="puff" hideEffect="puff" closeOnEscape="true" modal="true">
+			<h:form styleClass="dialogo">
+				<h:outputLabel styleClass="button-inicial" value="Data Inicial: " />
+				<p:calendar value="#{simuladoBean.dataInicialRelatorio}"
+					pattern="dd/MM/yyyy" />
+				<h:outputLabel styleClass="button-final" value="Data Final: " />
+				<p:calendar styleClass="calendar-final"  value="#{simuladoBean.dataFinalRelatorio}"
+					pattern="dd/MM/yyyy" />
+				<p:commandButton styleClass="button-imprimir" value="Imprimir" ajax="false">
+					<p:fileDownload value="#{simuladoBean.arquivoRetorno}" />
+				</p:commandButton>
+
+			</h:form>
+
+		</p:dialog>
+
+
+
+		<h:form>
+			<div id="div-tabs">
+				<p:commandButton styleClass="tab-item" value="Lista" />
+			</div>
+		</h:form>
+
+		<h:panelGroup id="card">
+			<h:form id="form">
+				<p:dataTable id="simulados"
+					value="#{simuladoBean.simuladosRealizados()}" var="usuariosimulado"
+					rowKey="#{usuariosimulado.id}" rows="8" paginator="true"
+					paginatorPosition="bottom"
+					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+
+					<p:column headerText="Data" styleClass="columnList">
+						<h:outputText value="#{usuariosimulado.dataRealizado}" />
+					</p:column>
+
+					<p:column headerText="Estado" styleClass="columnList">
+						<h:outputText value="#{usuariosimulado.simulado.estado.nome}" />
+					</p:column>
+
+					<p:column headerText="Qtd. Questões" styleClass="columnList">
+						<h:outputText value="#{usuariosimulado.simulado.perguntas.size()}" />
+					</p:column>
+
+					<p:column headerText="Acertos" styleClass="columnList">
+						<h:outputText value="#{usuariosimulado.nota}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+		</h:panelGroup>
+
+	</ui:define>
+</ui:composition>
+</html>
