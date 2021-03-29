@@ -28,6 +28,9 @@ Para instalar o iPet, siga estas etapas:
 
 ## 📷 Screenshots
 
+### Tela Inicial
+![teste](/Screenshots/tela_Inicial.png)
+
 
 ## 🤝 Colaboradores
 
@@ -55,7 +58,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
       <a href="#">
         <img src="https://avatars.githubusercontent.com/u/43225982?v=4" width="100px;" alt="Foto do Mrpapaia no GitHub"/><br>
         <sub> 
-          <b>Valtenis Souza</b>
+          <b>Diogo José</b>
         </sub>
       </a>
     </td>
