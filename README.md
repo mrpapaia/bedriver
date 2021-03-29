@@ -12,19 +12,23 @@ A aplicação possibilitará o usuário verificar estatísticas sobre a quantida
 
 ## 🚀 Instalando BeDriver
 
-Para instalar o iPet, siga estas etapas:
+Para instalar o BeDriver, siga estas etapas:
 
 1. Faça um clone deste repositório em sua máquina
 2. Extraia o zip em uma pasta de sua preferência
-3. Abra a pasta extraida em uma IDE de sua preferência, recomendamos Android Studio
-4. Execute o projeto no emulador
+3. Instale o Java 8
+4. Abra a pasta extraida em uma IDE de sua preferência, recomendamos Eclipse EE
+5. Execute o projeto em um servidor, recomendamos Tomcat
 
 
 ## 🔋 Stacks Utilizadas
 
 1. Java
-2. MySQL
-3. Eclipse
+2. JSF
+3. Hibernate
+4. PrimeFaces
+5. MySQL
+6. Eclipse
 
 ## 📷 Screenshots
 
