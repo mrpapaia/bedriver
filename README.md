@@ -29,7 +29,33 @@ Para instalar o iPet, siga estas etapas:
 ## 📷 Screenshots
 
 ### Tela Inicial
-![teste](/Screenshots/tela_Inicial.png)
+![](/Screenshots/tela_inicial.png)
+### Tela Login
+![](/Screenshots/tela_menu_deslogado.png)
+### Tela Mapa Auto Escolas
+![](/Screenshots/tela_autoEscola.png)
+### Tela Recuperar Senha
+![](/Screenshots/tela_recuperarSenha.png)
+### Tela Cadastro
+![](/Screenshots/tela_cadastro.png)
+### Tela Infração
+![](/Screenshots/tela_infracao.png)
+### Tela Frotas
+![](/Screenshots/tela_frotas.png)
+### Tela Condutores Habilitados
+![](/Screenshots/tela_condutores.png)
+### Tela Usuário Logado
+![](/Screenshots/tela_usuarioLogado.png)
+### Tela Simulado
+![](/Screenshots/Tela_simulados.png)
+### Tela Pergunta
+![](/Screenshots/tela_perguntas.png)
+### Tela Histórico do Simulado
+![](/Screenshots/tela_histSimulado.png)
+### Tela Relatório do Simulado
+![](/Screenshots/tela_relatoriSimulado.png)
+### Tela WebService
+![](/Screenshots/tela_webService.png)
 
 
 ## 🤝 Colaboradores
